@@ -66,6 +66,18 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         });
 
+        activitePersoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //PASSAGE A L'ACTIVITE "IDEE"
+                Intent gererPersoActivity = new Intent(MainActivity.this, GererPersoActivity.class);
+                startActivity(gererPersoActivity);
+
+
+            }
+        });
+
     }
 
     @Override
