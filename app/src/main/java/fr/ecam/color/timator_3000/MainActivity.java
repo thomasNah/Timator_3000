@@ -2,6 +2,7 @@ package fr.ecam.color.timator_3000;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -42,7 +43,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 R.array.arrayTempsDispo, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerTempsDispo.setAdapter(adapter);
-
         spinnerTempsDispo.setOnItemSelectedListener(this);
 
 
@@ -56,11 +56,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         giveAnIdeaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tempsDispo.setText(inputTempsDispo);
 
-                if(inputTempsDispo.equals("5 minutes")) {
-                    tempsDispo.setText("Crevard");
-                }
+                //PASSAGE A L'ACTIVITE "IDEE"
+                Intent ideeActivity = new Intent(MainActivity.this, IdeeActivity.class);
+                ideeActivity.putExtra("inputTempsDispo",inputTempsDispo);
+                startActivity(ideeActivity);
+
 
             }
         });
@@ -69,7 +70,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        //RECUPERATION DE L'INTERIEUR DU SPINNER
         inputTempsDispo = parent.getItemAtPosition(position).toString();
+
         //PERMET D'AFFICHER LE TEMPS DISPO EN PETITE CASE QUI DISPARAIT RAPIDEMENT
         //Toast.makeText(parent.getContext(),text,Toast.LENGTH_SHORT).show();
     }
