@@ -25,11 +25,22 @@ public class IdeeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_idee);
 
+        //LIEN VARIABLE AVEC LAYOUT
         affichageTempsIdee = findViewById(R.id.affichageTempsIdee);
         ideeText = findViewById(R.id.ideeText);
         autreIdeeButton = findViewById(R.id.autreIdeeButton);
         likeButton = findViewById(R.id.likeButton);
         noLikeButton = findViewById(R.id.noLikeButton);
+
+        //ADD BACK BUTTON POUR RETOURNER SUR MAIN ACTIVITY
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
 
         //RECUPERATION DE LA VARIABLE inputTempsDispo
         Intent intent = getIntent();
@@ -53,11 +64,6 @@ public class IdeeActivity extends AppCompatActivity {
 
             }
         });
-
-        //ADD BACK BUTTON POUR RETOURNER SUR MAIN ACTIVITY
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
     }
 
     //BACK BUTTON MANAGE TO GO TO MAIN ACTIVITY
