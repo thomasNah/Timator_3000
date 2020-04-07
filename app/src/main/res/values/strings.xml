@@ -13,4 +13,10 @@
         <item>1h30</item>
     </string-array>
 
+    //CECI EST UN TEST
+    <string-array name="arrayActiviteExistantes">
+        <item>Regarder les Simpsons</item>
+        <item>Dormir</item>
+    </string-array>
+
 </resources>

@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public void onClick(View v) {
 
-                //PASSAGE A L'ACTIVITE "IDEE"
+                //PASSAGE A L'ACTIVITE "GERER PERSO"
                 Intent gererPersoActivity = new Intent(MainActivity.this, GererPersoActivity.class);
                 startActivity(gererPersoActivity);
 
