@@ -76,7 +76,7 @@ public class GererPersoActivity extends AppCompatActivity implements AdapterView
 
             }
 
-            @Override
+           @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s.toString().length() != 0){
                     userPutSomethingInNomIdee = true;
@@ -86,7 +86,7 @@ public class GererPersoActivity extends AppCompatActivity implements AdapterView
                     userPutSomethingInNomIdee = false;
                 }
 
-                if(userPutSomethingInNomIdee && userPutSomethingInPassword){
+               if(userPutSomethingInNomIdee ){
                     creerNouvelleIdeePerso.setEnabled(true);
                     creerNouvelleIdeePersoState = true;
                 }

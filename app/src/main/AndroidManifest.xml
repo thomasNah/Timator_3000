@@ -11,6 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".GererPersoActivity"></activity>
         <activity android:name=".IdeeActivity" />
+        <activity android:name=".Preferences" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

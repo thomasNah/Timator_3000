@@ -1,6 +1,7 @@
 package fr.ecam.color.timator_3000;
 
 import android.os.Bundle;
+import android.widget.Switch;
 
 import androidx.appcompat.app.AppCompatActivity;
 
