@@ -34,7 +34,7 @@ public class GererPersoActivity extends AppCompatActivity implements AdapterView
 
         spinnerIdeeDejaExistantes = findViewById(R.id.spinnerIdeeDejaExistantes);
         editerIdee = findViewById(R.id.editerIdee);
-        creerNouvelleIdeePerso = findViewById(R.id.editerIdee);
+        creerNouvelleIdeePerso = findViewById(R.id.creerNouvelleIdeePerso);
         inputNomIdee = findViewById(R.id.inputNomIdee);
         spinnerChoixTempsActivity = findViewById(R.id.spinnerChoixTempsActivity);
         inputDescription = findViewById(R.id.inputDescription);
@@ -42,7 +42,6 @@ public class GererPersoActivity extends AppCompatActivity implements AdapterView
 
         //GERER ACTIVATION BOUTON creerNouvelleIdeePerso
         userPutSomethingInNomIdee = false;
-        userPutSomethingInDescription = false;
         creerNouvelleIdeePersoState = false;
 
 
@@ -86,7 +85,7 @@ public class GererPersoActivity extends AppCompatActivity implements AdapterView
                     userPutSomethingInNomIdee = false;
                 }
 
-                if(userPutSomethingInNomIdee && userPutSomethingInDescription){
+                if(userPutSomethingInNomIdee){
                     creerNouvelleIdeePerso.setEnabled(true);
                     creerNouvelleIdeePersoState = true;
                 }
@@ -104,6 +103,8 @@ public class GererPersoActivity extends AppCompatActivity implements AdapterView
 
             }
         });
+
+
 
         editerIdee.setOnClickListener(new View.OnClickListener() {
             @Override

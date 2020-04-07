@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public void onClick(View v) {
 
-                //PASSAGE A L'ACTIVITE "GERER PERSO"
+                //PASSAGE A L'ACTIVITE "PREFERENCES"
                 Intent preferencesActivity = new Intent(MainActivity.this, Preferences.class);
                 startActivity(preferencesActivity);
 
