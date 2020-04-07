@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".DatabaseManager" />
-        <activity android:name=".GererPersoActivity"></activity>
+        <activity android:name=".GererPersoActivity"/>
         <activity android:name=".IdeeActivity" />
         <activity android:name=".Preferences" />
         <activity android:name=".MainActivity">
