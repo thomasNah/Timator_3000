@@ -1,153 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".GererPersoActivity">
+
+
+
 
     <TextView
         android:id="@+id/texteIdeePersoDejaExistante"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginRight="0dp"
         android:foregroundGravity="center_vertical|center_horizontal"
         android:gravity="center_horizontal|center_vertical"
         android:text="Idées personnelles déjà existantes :"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.026" />
 
     <Spinner
         android:id="@+id/spinnerIdeeDejaExistantes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/texteIdeePersoDejaExistante"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="13dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.109" />
 
     <Button
         android:id="@+id/editerIdee"
         android:layout_width="176dp"
         android:layout_height="36dp"
-        android:layout_below="@+id/texteIdeePersoDejaExistante"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="72dp"
-        android:layout_marginLeft="72dp"
-        android:layout_marginTop="47dp"
-        android:layout_marginEnd="73dp"
-        android:layout_marginRight="73dp"
-        android:text="Editer l'idée !" />
+        android:text="Editer l'idée !"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.182" />
 
     <TextView
         android:id="@+id/texteCreerIdeePerso"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/texteIdeePersoDejaExistante"
-        android:layout_marginTop="90dp"
         android:gravity="center_horizontal"
         android:text="Créer une nouvelle idée perso :"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.28" />
 
     <Button
         android:id="@+id/creerNouvelleIdeePerso"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/texteIdeePersoDejaExistante"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="87dp"
-        android:layout_marginLeft="87dp"
-        android:layout_marginTop="453dp"
-        android:layout_marginEnd="86dp"
-        android:layout_marginRight="86dp"
-        android:text="Ajouter l'idée !" />
+        android:text="Ajouter l'idée !"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.972" />
 
     <EditText
         android:id="@+id/inputNomIdee"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/texteIdeePersoDejaExistante"
-        android:layout_marginTop="114dp"
         android:ems="10"
         android:gravity="center_horizontal"
         android:hint="Nom de l'idée"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.338" />
 
     <TextView
         android:id="@+id/texteChoixTempsIdeePerso"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/texteIdeePersoDejaExistante"
-        android:layout_marginTop="165dp"
         android:foregroundGravity="center_vertical|center|center_horizontal"
         android:gravity="center_horizontal"
         android:text="Choix du temps de l'idée perso :"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.431" />
 
     <Spinner
         android:id="@+id/spinnerChoixTempsActivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/inputNomIdee"
-        android:layout_marginTop="47dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.467" />
 
     <TextView
         android:id="@+id/texteNoteIdee"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/texteIdeePersoDejaExistante"
-        android:layout_marginTop="-37dp"
-        android:layout_marginBottom="-394dp"
         android:gravity="center_horizontal"
         android:text=" (1 : jamais proposée ; 5 : très souvent proposée)"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.747" />
 
     <TextView
         android:id="@+id/texteNoteIdee2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/spinnerIdeeDejaExistantes"
-        android:layout_marginTop="314dp"
         android:gravity="center_horizontal"
         android:text="Notez votre idée"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.717" />
 
     <EditText
         android:id="@+id/inputNoteIdee"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/texteIdeePersoDejaExistante"
-        android:layout_marginTop="398dp"
         android:ems="10"
         android:gravity="center_horizontal"
         android:hint="Note de l'idée (défaut = 3)"
-        android:inputType="numberSigned" />
+        android:inputType="numberSigned"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.813" />
 
     <EditText
         android:id="@+id/inputDescription"
         android:layout_width="match_parent"
         android:layout_height="82dp"
-        android:layout_below="@+id/texteIdeePersoDejaExistante"
-        android:layout_marginTop="234dp"
         android:ems="10"
         android:gravity="center_horizontal|center_vertical"
         android:hint="Description éventuelle / lien Internet de votre activité"
-        android:inputType="textMultiLine" />
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.589" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
