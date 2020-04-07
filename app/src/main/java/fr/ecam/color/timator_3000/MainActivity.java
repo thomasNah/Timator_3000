@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private Button challengeLongTerme;
     private Button activitePersoButton;
     private Button preferencesButton;
-
+    private DatabaseManager databaseManager;
     String inputTempsDispo;
 
     @Override
@@ -45,6 +45,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         spinnerTempsDispo.setAdapter(adapter);
         spinnerTempsDispo.setOnItemSelectedListener(this);
 
+        //Création de la BDD
+        databaseManager = new DatabaseManager(this);
+        databaseManager.insertIdee("manger des pates",20,"cuisine"); //ajout des données
+        databaseManager.insertIdee("lire un livre",60,"culture");
+        databaseManager.close();
 
     }
 
@@ -77,6 +82,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
             }
         });
+
 
     }
 
