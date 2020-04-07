@@ -86,7 +86,7 @@ public class GererPersoActivity extends AppCompatActivity implements AdapterView
                     userPutSomethingInNomIdee = false;
                 }
 
-                if(userPutSomethingInNomIdee && userPutSomethingInPassword){
+                if(userPutSomethingInNomIdee && userPutSomethingInDescription){
                     creerNouvelleIdeePerso.setEnabled(true);
                     creerNouvelleIdeePersoState = true;
                 }
