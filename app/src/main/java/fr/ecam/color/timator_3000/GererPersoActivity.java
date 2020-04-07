@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -38,6 +40,11 @@ public class GererPersoActivity extends AppCompatActivity implements AdapterView
         inputDescription = findViewById(R.id.inputDescription);
         inputNoteIdee = findViewById(R.id.inputNoteIdee);
 
+        //GERER ACTIVATION BOUTON creerNouvelleIdeePerso
+        userPutSomethingInNomIdee = false;
+        userPutSomethingInDescription = false;
+        creerNouvelleIdeePersoState = false;
+
 
         //SPINNER spinnerIdeeDejaExistantes
         ArrayAdapter<CharSequence> adapterSpinnerIdeeDejaExistantes = ArrayAdapter.createFromResource(this,
@@ -60,6 +67,43 @@ public class GererPersoActivity extends AppCompatActivity implements AdapterView
     @Override
     protected void onResume() {
         super.onResume();
+
+        creerNouvelleIdeePerso.setEnabled(creerNouvelleIdeePersoState);
+
+        inputNomIdee.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.toString().length() != 0){
+                    userPutSomethingInNomIdee = true;
+                }
+
+                if (s.toString().length() == 0){
+                    userPutSomethingInNomIdee = false;
+                }
+
+                if(userPutSomethingInNomIdee && userPutSomethingInPassword){
+                    creerNouvelleIdeePerso.setEnabled(true);
+                    creerNouvelleIdeePersoState = true;
+                }
+
+                else{
+                    creerNouvelleIdeePerso.setEnabled(false);
+                    creerNouvelleIdeePersoState = false;
+                }
+
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         editerIdee.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         spinnerTempsDispo.setAdapter(adapter);
         spinnerTempsDispo.setOnItemSelectedListener(this);
 
+
+
         //Création de la BDD
         databaseManager = new DatabaseManager(this);
         databaseManager.insertIdee("manger des pates",20,"cuisine"); //ajout des données
