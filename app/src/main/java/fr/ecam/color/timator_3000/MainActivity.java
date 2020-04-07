@@ -49,10 +49,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         //Création de la BDD
         databaseManager = new DatabaseManager(this);
-        databaseManager.insertIdee(1,"faire des pates",20,"cuisine"); //ajout des données
-        databaseManager.insertIdee(2,"lire un livre",60,"culture");
-        databaseManager.insertIdee(3,"faire des squats",30,"sport");
-        databaseManager.insertIdee(4,"faire le rapport java",60,"études");
+        databaseManager.insertIdee(1,"faire des pates","20 minutes","cuisine"); //ajout des données
+        databaseManager.insertIdee(2,"lire un livre","1 heure","culture");
+        databaseManager.insertIdee(3,"faire des squats","30 minutes","sport");
+        databaseManager.insertIdee(4,"faire le rapport java","1 heure","études");
         databaseManager.close();
 
     }

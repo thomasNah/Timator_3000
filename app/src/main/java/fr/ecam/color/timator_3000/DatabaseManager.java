@@ -25,7 +25,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
         String strSql = "create table IDEE ( idIdee integer primary key not null,"
                 +"contenu text not null,"
-                +" duree interger not null,"
+                +" duree text not null,"
                 + "type text not null )";
         db.execSQL(strSql);
         Log.i("DATABASE","onCreate invoked");
@@ -35,7 +35,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
-    public void insertIdee (int idIdee, String contenu, int duree, String type) {
+    public void insertIdee (int idIdee, String contenu, String duree, String type) {
         boolean flag = true;
         List<IdeeData> idees = new ArrayList<>();
         String strSql1 = "select * from IDEE ";
@@ -60,7 +60,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
                 contenu = contenu.replace("'", "''");
             type = type.replace("'", "''");
             String strSql = "insert into IDEE (idIdee,contenu,duree,type) values(" + idIdee + ",'"
-                    + contenu + "'," + duree + ",'" + type + "')";
+                    + contenu + "','" + duree + "','" + type + "')";
             this.getWritableDatabase().execSQL(strSql);
             Log.i("DATABASE", "insertIdee invoked");
 
@@ -80,5 +80,17 @@ public class DatabaseManager extends SQLiteOpenHelper {
         cursor.close();
         return idees;
     }
-
+    public List<IdeeData> lireTableTemps(String temps){
+        List<IdeeData> idees = new ArrayList<>();
+        String strSql = "select * from IDEE where duree = temps ";
+        Cursor cursor = this.getReadableDatabase().rawQuery(strSql,null);
+        cursor.moveToFirst();
+        while(! cursor.isAfterLast()){
+            IdeeData idee = new IdeeData(cursor.getInt(0),cursor.getString(1),cursor.getInt(2),cursor.getString(3));
+            idees.add(idee);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return idees;
+    }
 }
