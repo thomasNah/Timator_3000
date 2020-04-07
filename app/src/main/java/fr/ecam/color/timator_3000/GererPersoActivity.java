@@ -18,6 +18,7 @@ public class GererPersoActivity extends AppCompatActivity implements AdapterView
     private Spinner spinnerIdeeDejaExistantes;
     private Button editerIdee;
     private Button creerNouvelleIdeePerso;
+    private Button supprIdeePerso;
     private EditText inputNomIdee;
     private Spinner spinnerChoixTempsActivity;
     private EditText inputDescription;
@@ -25,7 +26,9 @@ public class GererPersoActivity extends AppCompatActivity implements AdapterView
 
     private boolean userPutSomethingInNomIdee;
     private boolean userPutSomethingInDescription;
+
     private boolean creerNouvelleIdeePersoState;
+    private boolean supprIdeePersoState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,7 @@ public class GererPersoActivity extends AppCompatActivity implements AdapterView
         spinnerIdeeDejaExistantes = findViewById(R.id.spinnerIdeeDejaExistantes);
         editerIdee = findViewById(R.id.editerIdee);
         creerNouvelleIdeePerso = findViewById(R.id.creerNouvelleIdeePerso);
+        supprIdeePerso = findViewById(R.id.supprIdeePerso);
         inputNomIdee = findViewById(R.id.inputNomIdee);
         spinnerChoixTempsActivity = findViewById(R.id.spinnerChoixTempsActivity);
         inputDescription = findViewById(R.id.inputDescription);
@@ -42,7 +46,9 @@ public class GererPersoActivity extends AppCompatActivity implements AdapterView
 
         //GERER ACTIVATION BOUTON creerNouvelleIdeePerso
         userPutSomethingInNomIdee = false;
+
         creerNouvelleIdeePersoState = false;
+        supprIdeePersoState = false;
 
 
         //SPINNER spinnerIdeeDejaExistantes
@@ -68,6 +74,7 @@ public class GererPersoActivity extends AppCompatActivity implements AdapterView
         super.onResume();
 
         creerNouvelleIdeePerso.setEnabled(creerNouvelleIdeePersoState);
+        supprIdeePerso.setEnabled(supprIdeePersoState);
 
         inputNomIdee.addTextChangedListener(new TextWatcher() {
             @Override
@@ -88,6 +95,8 @@ public class GererPersoActivity extends AppCompatActivity implements AdapterView
                 if(userPutSomethingInNomIdee){
                     creerNouvelleIdeePerso.setEnabled(true);
                     creerNouvelleIdeePersoState = true;
+                    supprIdeePerso.setEnabled(true);
+                    supprIdeePersoState = true;
                 }
 
                 else{

@@ -15,13 +15,17 @@ import java.util.List;
 
 public class IdeeActivity extends AppCompatActivity {
 
-    TextView affichageTempsIdee;
-    TextView ideeText;
-    Button autreIdeeButton;
-    Button likeButton;
-    Button noLikeButton;
+    //COEUR PROGRAMME
+    private TextView affichageTempsIdee;
+    private TextView ideeText;
+    private TextView descriptionIdee;
+    private Button autreIdeeButton;
+    private Button likeButton;
+    private Button noLikeButton;
+    private String inputTempsDispo;
+
+    //BDD
     private DatabaseManager databaseManager;
-    String inputTempsDispo;
     int compteur =0;
 
     @Override
@@ -32,6 +36,7 @@ public class IdeeActivity extends AppCompatActivity {
         //LIEN VARIABLE AVEC LAYOUT
         affichageTempsIdee = findViewById(R.id.affichageTempsIdee);
         ideeText = findViewById(R.id.ideeText);
+        descriptionIdee = findViewById(R.id.descriptionIdee);
         autreIdeeButton = findViewById(R.id.autreIdeeButton);
         likeButton = findViewById(R.id.likeButton);
         noLikeButton = findViewById(R.id.noLikeButton);
