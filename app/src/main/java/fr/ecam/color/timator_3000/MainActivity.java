@@ -85,16 +85,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         });
 
-        preferencesButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                //PASSAGE A L'ACTIVITE "PREFERENCES"
-                Intent preferencesActivity = new Intent(MainActivity.this, Preferences.class);
-                startActivity(preferencesActivity);
-
-            }
-        });
 
 
     }
