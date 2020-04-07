@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.List;
+
+
 public class IdeeActivity extends AppCompatActivity {
 
     TextView affichageTempsIdee;
@@ -17,14 +20,14 @@ public class IdeeActivity extends AppCompatActivity {
     Button autreIdeeButton;
     Button likeButton;
     Button noLikeButton;
-
+    private DatabaseManager databaseManager;
     String inputTempsDispo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_idee);
-
+        databaseManager = new DatabaseManager(this);
         //LIEN VARIABLE AVEC LAYOUT
         affichageTempsIdee = findViewById(R.id.affichageTempsIdee);
         ideeText = findViewById(R.id.ideeText);
@@ -36,12 +39,18 @@ public class IdeeActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        List<IdeeData> idees = databaseManager.lireTable();
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-
+        List<IdeeData> idees = databaseManager.lireTable();
+        ideeText.setText("");
+        for (int i = 0;i<idees.size();i++){
+            ideeText.append(idees.get(i).toString()+"\n");
+        }
         //RECUPERATION DE LA VARIABLE inputTempsDispo
         Intent intent = getIntent();
         inputTempsDispo = "";
@@ -83,3 +92,9 @@ public class IdeeActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 }
+/*
+List<IdeeData> idees = databaseManager.lireTable();
+        for (int i = 0;i<idees.size();i++){
+            ideesView.append(idees.get(i).toString()+"\n");
+        }
+ */
