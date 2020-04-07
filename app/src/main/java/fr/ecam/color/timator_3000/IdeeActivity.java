@@ -22,6 +22,7 @@ public class IdeeActivity extends AppCompatActivity {
     Button noLikeButton;
     private DatabaseManager databaseManager;
     String inputTempsDispo;
+    int compteur =0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,19 +47,16 @@ public class IdeeActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        List<IdeeData> idees = databaseManager.lireTable();
-        ideeText.setText("");
-        for (int i = 0;i<idees.size();i++){
-            ideeText.append(idees.get(i).toString()+"\n");
-        }
+        final List<IdeeData> idees = databaseManager.lireTable();
+        ideeText.setText(idees.get(compteur).getContenu());
         //RECUPERATION DE LA VARIABLE inputTempsDispo
-        Intent intent = getIntent();
-        inputTempsDispo = "";
+        /*Intent intent = getIntent();
+        inputTempsDispo = "";idees.get(compteur).getContenu());
         if(intent != null){
             if(intent.hasExtra("inputTempsDispo")){
                 inputTempsDispo = intent.getStringExtra("inputTempsDispo");
             }
-        }
+        }*/
 
         affichageTempsIdee.setText("Temps de votre idée : " + inputTempsDispo);
 
@@ -66,10 +64,12 @@ public class IdeeActivity extends AppCompatActivity {
         autreIdeeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+            compteur+=1;
+            if (compteur>=idees.size()){
+                compteur = 0;
+            }
+            ideeText.setText(idees.get(compteur).getContenu());
 
-                Intent ideeActivity = new Intent(IdeeActivity.this, IdeeActivity.class);
-                ideeActivity.putExtra("inputTempsDispo",inputTempsDispo);
-                startActivity(ideeActivity);
 
             }
         });
