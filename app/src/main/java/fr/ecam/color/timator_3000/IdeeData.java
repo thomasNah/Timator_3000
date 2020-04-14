@@ -5,10 +5,10 @@ import androidx.annotation.NonNull;
 public class IdeeData {
     private int idIdee;
     private String contenu;
-    private int duree;
+    private String duree;
     private String type;
 
-    public IdeeData(int idIdee, String contenu, int duree, String type) {
+    public IdeeData(int idIdee, String contenu, String duree, String type) {
         this.idIdee = idIdee;
         this.contenu = contenu;
         this.duree = duree;
@@ -31,11 +31,11 @@ public class IdeeData {
         this.contenu = contenu;
     }
 
-    public int getDuree() {
+    public String getDuree() {
         return duree;
     }
 
-    public void setDuree(int duree) {
+    public void setDuree(String duree) {
         this.duree = duree;
     }
 

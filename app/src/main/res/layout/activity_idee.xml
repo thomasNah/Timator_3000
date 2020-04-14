@@ -26,21 +26,9 @@
         android:text="Si vous voyez ce texte, c'est que l'idée n'a pas de : Nom"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.114" />
-
-    <TextView
-        android:id="@+id/descriptionIdee"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="Si vous voyez ce texte, c'est que l'idée n'a pas de : Description"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.226"
-        tools:layout_editor_absoluteX="3dp" />
+        app:layout_constraintVertical_bias="0.164" />
 
     <Button
         android:id="@+id/autreIdeeButton"

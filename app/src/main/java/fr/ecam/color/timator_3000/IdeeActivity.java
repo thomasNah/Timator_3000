@@ -36,7 +36,6 @@ public class IdeeActivity extends AppCompatActivity {
         //LIEN VARIABLE AVEC LAYOUT
         affichageTempsIdee = findViewById(R.id.affichageTempsIdee);
         ideeText = findViewById(R.id.ideeText);
-        descriptionIdee = findViewById(R.id.descriptionIdee);
         autreIdeeButton = findViewById(R.id.autreIdeeButton);
         likeButton = findViewById(R.id.likeButton);
         noLikeButton = findViewById(R.id.noLikeButton);
@@ -45,7 +44,7 @@ public class IdeeActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        List<IdeeData> idees = databaseManager.lireTable();
+        //List<IdeeData> idees = databaseManager.lireTable();
 
     }
 

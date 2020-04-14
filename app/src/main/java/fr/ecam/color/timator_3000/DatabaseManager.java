@@ -28,13 +28,15 @@ public class DatabaseManager extends SQLiteOpenHelper {
                 +" duree text not null,"
                 + "type text not null )";
         db.execSQL(strSql);
-        Log.i("DATABASE","onCreate invoked");
+        Log.i("DATABASE","zob");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
+
+
     public void insertIdee (int idIdee, String contenu, String duree, String type) {
         boolean flag = true;
         List<IdeeData> idees = new ArrayList<>();
@@ -42,18 +44,16 @@ public class DatabaseManager extends SQLiteOpenHelper {
         Cursor cursor = this.getReadableDatabase().rawQuery(strSql1,null);
         cursor.moveToFirst();
         while(! cursor.isAfterLast()){
-            IdeeData idee = new IdeeData(cursor.getInt(0),cursor.getString(1),cursor.getInt(2),cursor.getString(3));
+            IdeeData idee = new IdeeData(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getString(3));
             idees.add(idee);
             cursor.moveToNext();
         }
         cursor.close();
         for (int i = 0; i < idees.size(); i++) {
             if ((idees.get(i).getIdIdee() == idIdee) & (idees.get(i).getContenu().equals(contenu) == true)) {
-                Log.i("DATABASE", "c'est pas bon");
                 flag = false;
             }
             else{
-                Log.i("DATABASE", "c'est bon");
             }
         }
             if (flag == true){
@@ -73,7 +73,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         Cursor cursor = this.getReadableDatabase().rawQuery(strSql,null);
         cursor.moveToFirst();
         while(! cursor.isAfterLast()){
-            IdeeData idee = new IdeeData(cursor.getInt(0),cursor.getString(1),cursor.getInt(2),cursor.getString(3));
+            IdeeData idee = new IdeeData(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getString(3));
             idees.add(idee);
             cursor.moveToNext();
         }
@@ -86,7 +86,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         Cursor cursor = this.getReadableDatabase().rawQuery(strSql,null);
         cursor.moveToFirst();
         while(! cursor.isAfterLast()){
-            IdeeData idee = new IdeeData(cursor.getInt(0),cursor.getString(1),cursor.getInt(2),cursor.getString(3));
+            IdeeData idee = new IdeeData(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getString(3));
             idees.add(idee);
             cursor.moveToNext();
         }
