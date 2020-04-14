@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         } else setTheme(R.style.AppTheme);
 
         Boolean darkTheme = getPreferences(MODE_PRIVATE).getBoolean("Dark_Theme",false);
+
         if (darkTheme = true) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
             recreate();

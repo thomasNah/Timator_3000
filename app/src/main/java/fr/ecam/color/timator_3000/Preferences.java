@@ -32,7 +32,6 @@ public class Preferences extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 SharedPreferences preferences = getSharedPreferences("com.example.app",MODE_PRIVATE);
-                preferences.edit().putBoolean("Dark_Theme",false).apply();
                 if (isChecked) {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                     preferences.edit().putBoolean("Dark_Theme",true).apply();
