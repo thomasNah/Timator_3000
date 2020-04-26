@@ -1,6 +1,7 @@
 package fr.ecam.color.timator_3000;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.CompoundButton;
@@ -21,9 +22,7 @@ public class Preferences extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
-            setTheme(R.style.DarkTheme);
-        } else setTheme(R.style.AppTheme);
+        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preferences);
         modeSombre = findViewById(R.id.modeSombre);
@@ -33,11 +32,14 @@ public class Preferences extends AppCompatActivity {
         modeSombre.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SharedPreferences preferences = getSharedPreferences("fr.ecam.color.timator_3000",MODE_PRIVATE);
                 if (isChecked) {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    preferences.edit().putBoolean("Dark_Theme",true).apply();
                     recreate();
                 } else {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    preferences.edit().putBoolean("Dark_Theme",false).apply();
                     recreate();
                 }
             }
@@ -46,6 +48,7 @@ public class Preferences extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+<<<<<<< HEAD
         /*databaseManager = new DatabaseManager(this);
         String str = "";
         final List<IdeeData> idees = databaseManager.lireTable();
@@ -54,15 +57,18 @@ public class Preferences extends AppCompatActivity {
             str = str + idees.get(i).toString()+"\n";
         }
         ideeView.setText(str);*/
+=======
+>>>>>>> 2a9ba89ec3c28a06f9125a714b3c39b4bbe0ae36
     }
-    @Override
-    public boolean onOptionsItemSelected (@NonNull MenuItem item){
-        int id = item.getItemId();
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
         if (id == android.R.id.home) {
             Intent mainActivity = new Intent(Preferences.this, MainActivity.class);
             startActivity(mainActivity);
         }
         return super.onOptionsItemSelected(item);
     }
+
 }
