@@ -52,7 +52,7 @@ public class IdeeActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         final List<IdeeData> idees = databaseManager.lireTable();
-        ideeText.setText(idees.get(compteur).getContenu());
+        ideeText.setText(idees.get(compteur).afficher());
         //RECUPERATION DE LA VARIABLE inputTempsDispo
         /*Intent intent = getIntent();
         inputTempsDispo = "";idees.get(compteur).getContenu());
@@ -72,7 +72,7 @@ public class IdeeActivity extends AppCompatActivity {
             if (compteur>=idees.size()){
                 compteur = 0;
             }
-            ideeText.setText(idees.get(compteur).getContenu());
+            ideeText.setText(idees.get(compteur).afficher());
 
 
             }

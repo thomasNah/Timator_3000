@@ -23,7 +23,6 @@
         android:layout_width="323dp"
         android:layout_height="49dp"
         android:gravity="center_horizontal|center_vertical"
-        android:text="Si vous voyez ce texte, c'est que l'idée n'a pas de : Nom"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
