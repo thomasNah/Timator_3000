@@ -1,8 +1,8 @@
 package fr.ecam.color.timator_3000;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,11 +10,15 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+
+    public Context context;
+
 
     private TextView tempsDispo;
     private Spinner spinnerTempsDispo;
@@ -24,9 +28,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private Button preferencesButton;
     private DatabaseManager databaseManager;
     String inputTempsDispo;
+    private boolean darkTheme;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SharedPreferences preferences = getSharedPreferences("fr.ecam.color.timator_3000",MODE_PRIVATE);
+        darkTheme = preferences.getBoolean("Dark_Theme",false);
+        if (darkTheme) AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            else AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -44,8 +55,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerTempsDispo.setAdapter(adapter);
         spinnerTempsDispo.setOnItemSelectedListener(this);
-
-
 
         //Création de la BDD
         databaseManager = new DatabaseManager(this);
@@ -67,7 +76,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     protected void onResume() {
         super.onResume();
 
-
+        SharedPreferences preferences = getSharedPreferences("fr.ecam.color.timator_3000",MODE_PRIVATE);
+        boolean darkThemeResumed = preferences.getBoolean("Dark_Theme",false);
+        if (darkTheme!=darkThemeResumed) {
+            recreate();
+        }
 
         giveAnIdeaButton.setOnClickListener(new View.OnClickListener() {
             @Override
