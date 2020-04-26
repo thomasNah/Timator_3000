@@ -16,8 +16,8 @@ import java.util.List;
 public class Preferences extends AppCompatActivity {
 
     private Switch modeSombre;
-    private DatabaseManager databaseManager;
-    private TextView ideeView;
+    //private DatabaseManager databaseManager;
+    //private TextView ideeView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,14 +46,14 @@ public class Preferences extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        databaseManager = new DatabaseManager(this);
+        /*databaseManager = new DatabaseManager(this);
         String str = "";
         final List<IdeeData> idees = databaseManager.lireTable();
         ideeView = findViewById(R.id.textView4);
         for (int i = 0;i<idees.size();i++){
             str = str + idees.get(i).toString()+"\n";
         }
-        ideeView.setText(str);
+        ideeView.setText(str);*/
     }
     @Override
     public boolean onOptionsItemSelected (@NonNull MenuItem item){
