@@ -73,13 +73,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             databaseManager.insertIdee(3, "la description", "30 minutes", "faire du sport", 5);
             databaseManager.insertIdee(4, "", "1 heure", "faire le rapport java", 5);
         }
-        /*String contenu = "contenuuuuu";
+        String contenu = "contenuuuuu";
         String duree = "dureeeeee";
         int note = 1;
         int id = 2;
         String str = "update IDEE set contenu = '"+contenu+"' , duree = '"+duree+"', note =" +note+" where idIdee = "+id;
         //String str = "update IDEE set contenu = 'la bite' , duree = 'ouiiiiii', note = 0 where idIdee = 1";
-        databaseManager.getWritableDatabase().execSQL(str);*/
+        databaseManager.getWritableDatabase().execSQL(str);
         databaseManager.close();
 
     }
