@@ -6,13 +6,17 @@ public class IdeeData {
     private int idIdee;
     private String contenu;
     private String duree;
-    private String type;
+    private String nom;
+    private int note;
 
-    public IdeeData(int idIdee, String contenu, String duree, String type) {
-        this.idIdee = idIdee;
-        this.contenu = contenu;
-        this.duree = duree;
-        this.type = type;
+
+
+    public IdeeData(int idIdeeP, String contenuP, String dureeP, String nomP, int noteP) {
+        this.idIdee = idIdeeP;
+        this.contenu = contenuP;
+        this.duree = dureeP;
+        this.nom = nomP;
+        this.note = noteP;
     }
 
     public int getIdIdee() {
@@ -39,17 +43,34 @@ public class IdeeData {
         this.duree = duree;
     }
 
-    public String getType() {
-        return type;
+    public String getNom() {
+        return nom;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setNom(String type) {
+        this.nom = nom;
+    }
+
+    public int getNote() {
+        return note;
+    }
+
+    public void setNote(int note) {
+        this.note = note;
     }
 
     @NonNull
     @Override
     public String toString() {
-        return idIdee + " : "+contenu+" , " + duree+" , "+type;
+        return idIdee + " : "+nom+" , " + duree+" , "+contenu+" , "+note;
+    }
+
+    public String afficher() {
+        if (contenu.equals("")==true ) {
+            return nom;
+        }
+        else{
+           return nom + " : " + "\n"+contenu;
+        }
     }
 }

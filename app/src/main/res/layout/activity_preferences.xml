@@ -71,5 +71,11 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
 </LinearLayout>
 

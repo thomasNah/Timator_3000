@@ -13,6 +13,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class GererPersoActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private Spinner spinnerIdeeDejaExistantes;
@@ -23,7 +26,7 @@ public class GererPersoActivity extends AppCompatActivity implements AdapterView
     private Spinner spinnerChoixTempsActivity;
     private EditText inputDescription;
     private EditText inputNoteIdee;
-
+    private DatabaseManager databaseManager;
     private boolean userPutSomethingInNomIdee;
     private boolean userPutSomethingInDescription;
 
@@ -34,7 +37,7 @@ public class GererPersoActivity extends AppCompatActivity implements AdapterView
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gerer_perso);
-
+        databaseManager = new DatabaseManager(this); // je sais pas pourquoi il faut mettre ca mais sinon ca marche pas (je chercherai plus tard )
         spinnerIdeeDejaExistantes = findViewById(R.id.spinnerIdeeDejaExistantes);
         editerIdee = findViewById(R.id.editerIdee);
         creerNouvelleIdeePerso = findViewById(R.id.creerNouvelleIdeePerso);
@@ -50,21 +53,13 @@ public class GererPersoActivity extends AppCompatActivity implements AdapterView
         creerNouvelleIdeePersoState = false;
         supprIdeePersoState = false;
 
-
-        //SPINNER spinnerIdeeDejaExistantes
-        ArrayAdapter<CharSequence> adapterSpinnerIdeeDejaExistantes = ArrayAdapter.createFromResource(this,
-                R.array.arrayActiviteExistantes, android.R.layout.simple_spinner_item);
-        adapterSpinnerIdeeDejaExistantes.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerIdeeDejaExistantes.setAdapter(adapterSpinnerIdeeDejaExistantes);
-        spinnerIdeeDejaExistantes.setOnItemSelectedListener(this);
-
-
-        //SPINNER spinnerChoixTempsActivity
-        ArrayAdapter<CharSequence> adapterSpinnerChoixTempsActivity = ArrayAdapter.createFromResource(this,
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.arrayTempsDispo, android.R.layout.simple_spinner_item);
-        adapterSpinnerChoixTempsActivity.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerChoixTempsActivity.setAdapter(adapterSpinnerChoixTempsActivity);
-        spinnerChoixTempsActivity.setOnItemSelectedListener(this);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerChoixTempsActivity.setAdapter(adapter);
+
+
+
 
     }
 
@@ -72,6 +67,16 @@ public class GererPersoActivity extends AppCompatActivity implements AdapterView
     @Override
     protected void onResume() {
         super.onResume();
+
+        //SPINNER spinnerIdeeDejaExistantes
+        final List<IdeeData> idees = databaseManager.lireTable();
+        ArrayList<String> spinnerItems= new ArrayList<String>();
+        for (int i = 0; i<idees.size(); i++){
+            spinnerItems.add(idees.get(i).getNom());
+        }
+
+        spinnerIdeeDejaExistantes.setAdapter(new ArrayAdapter<String>(this
+                , android.R.layout.simple_spinner_item, spinnerItems));
 
         creerNouvelleIdeePerso.setEnabled(creerNouvelleIdeePersoState);
         supprIdeePerso.setEnabled(supprIdeePersoState);
@@ -118,12 +123,31 @@ public class GererPersoActivity extends AppCompatActivity implements AdapterView
         editerIdee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent ActivityConnect = new Intent(GererPersoActivity.this,EditerIdeeActivity.class);
+                ActivityConnect.putExtra("nomIdee",String.valueOf(spinnerIdeeDejaExistantes.getSelectedItem()));
+                startActivity(ActivityConnect);
             //RECUPERER LES INFORMATIONS DE L'IDEE !
 
             }
         });
-
+        creerNouvelleIdeePerso.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String nom = String.valueOf(inputNomIdee.getText());
+                String duree = spinnerChoixTempsActivity.getSelectedItem().toString();
+                String description = String.valueOf(inputDescription.getText());
+                if (description==null){
+                    description = "";
+                }
+                int note = Integer.valueOf(String.valueOf(inputNoteIdee.getText())); //cette ligne fait planter le setText je sais pas pk
+                int id = databaseManager.getIdMax()+ 1;
+                databaseManager.insertIdee(id,description,duree,nom,note);
+                inputNomIdee.setText("");
+                spinnerChoixTempsActivity.setSelection(0);
+                inputDescription.setText("");
+                inputNoteIdee.setText("");
+            }
+        });
 
     }
 

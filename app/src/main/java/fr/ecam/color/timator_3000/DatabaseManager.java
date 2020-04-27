@@ -24,9 +24,10 @@ public class DatabaseManager extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         String strSql = "create table IDEE ( idIdee integer primary key not null,"
-                +"contenu text not null,"
+                +"contenu text,"
                 +" duree text not null,"
-                + "type text not null )";
+                + "nom text not null,"
+                + "note integer not null)";
         db.execSQL(strSql);
         Log.i("DATABASE","zob");
     }
@@ -37,14 +38,14 @@ public class DatabaseManager extends SQLiteOpenHelper {
     }
 
 
-    public void insertIdee (int idIdee, String contenu, String duree, String type) {
+    public void insertIdee (int idIdee, String contenu, String duree, String nom, int note) {
         boolean flag = true;
         List<IdeeData> idees = new ArrayList<>();
         String strSql1 = "select * from IDEE ";
         Cursor cursor = this.getReadableDatabase().rawQuery(strSql1,null);
         cursor.moveToFirst();
         while(! cursor.isAfterLast()){
-            IdeeData idee = new IdeeData(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getString(3));
+            IdeeData idee = new IdeeData(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getInt(4));
             idees.add(idee);
             cursor.moveToNext();
         }
@@ -58,14 +59,19 @@ public class DatabaseManager extends SQLiteOpenHelper {
         }
             if (flag == true){
                 contenu = contenu.replace("'", "''");
-            type = type.replace("'", "''");
-            String strSql = "insert into IDEE (idIdee,contenu,duree,type) values(" + idIdee + ",'"
-                    + contenu + "','" + duree + "','" + type + "')";
+            nom = nom.replace("'", "''");
+            String strSql = "insert into IDEE (idIdee,contenu,duree,nom,note) values(" + idIdee + ",'"
+                    + contenu + "','" + duree + "','" +nom + "',"+note+")";
             this.getWritableDatabase().execSQL(strSql);
             Log.i("DATABASE", "insertIdee invoked");
 
         }
     }
+
+    public void insertIdee2(int idIdee, String contenu, String duree, String nom, int note){
+
+    }
+
     public List<IdeeData> lireTable(){
 
         List<IdeeData> idees = new ArrayList<>();
@@ -73,7 +79,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         Cursor cursor = this.getReadableDatabase().rawQuery(strSql,null);
         cursor.moveToFirst();
         while(! cursor.isAfterLast()){
-            IdeeData idee = new IdeeData(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getString(3));
+            IdeeData idee = new IdeeData(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getString(3), cursor.getInt(4));
             idees.add(idee);
             cursor.moveToNext();
         }
@@ -86,11 +92,22 @@ public class DatabaseManager extends SQLiteOpenHelper {
         Cursor cursor = this.getReadableDatabase().rawQuery(strSql,null);
         cursor.moveToFirst();
         while(! cursor.isAfterLast()){
-            IdeeData idee = new IdeeData(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getString(3));
+            IdeeData idee = new IdeeData(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getInt(4));
             idees.add(idee);
             cursor.moveToNext();
         }
         cursor.close();
         return idees;
+    }
+
+    public int getIdMax(){
+        List<IdeeData> idees = this.lireTable();
+        int max =0;
+        for (int i =0;i<idees.size();i++){
+            if (max<idees.get(i).getIdIdee()){
+                max = idees.get(i).getIdIdee();
+            }
+        }
+        return max;
     }
 }
