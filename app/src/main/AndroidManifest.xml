@@ -9,8 +9,10 @@
         android:roundIcon="@mipmap/icone_style_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ActiviteLongTermeChoisieActivity"></activity>
+        <activity android:name=".ChoixIdeeLongTermeActivity" />
         <activity android:name=".DatabaseManager" />
-        <activity android:name=".GererPersoActivity"/>
+        <activity android:name=".GererPersoActivity" />
         <activity android:name=".IdeeActivity" />
         <activity android:name=".Preferences" />
         <activity android:name=".MainActivity">

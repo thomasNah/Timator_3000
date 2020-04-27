@@ -22,4 +22,15 @@
         <item>Dormir</item>
     </string-array>
 
+    //RECYCLERVIEW ECHEANCES ACTIVITES
+    <string-array name="echeancesActivite">
+        <item>Se lever</item>
+        <item>Manger</item>
+    </string-array>
+
+    <string-array name="descriptionEcheances">
+        <item>Il faut sortir de son lit</item>
+        <item>Il faut ouvrir le placard</item>
+    </string-array>
+
 </resources>
