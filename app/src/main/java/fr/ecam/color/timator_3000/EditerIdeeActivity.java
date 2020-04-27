@@ -63,10 +63,12 @@ public class EditerIdeeActivity extends AppCompatActivity {
                         String nouvellDesc = String.valueOf(editIdee.getText());
                         String nouvelleDuree = String.valueOf(spinnerTempsDispo.getSelectedItem());
                         int nouvelleNote = Integer.valueOf(String.valueOf(spinnerNote.getSelectedItem()));
+                        String str = "update IDEE set contenu = '"+nouvellDesc+"' , duree = '"+nouvelleDuree+"', note =" +nouvelleNote+" where idIdee = "+idIdee;
                         //String strSql = "update IDEE set contenu = '"+ nouvellDesc +"', duree ='"+ nouvelleDuree+"', note = "+nouvelleNote +"where nom = '"+nomIdeeFinal+"'";
-                        //databaseManager.getWritableDatabase().execSQL(strSql);
-                        ideeEditee.setText("id : "+idIdee +", nom : "+nomIdeeFinal+", desc : "+nouvellDesc+", duree : "+nouvelleDuree+", note :"+nouvelleNote);
-                        ideeData[0] = idees.get(i);
+                        databaseManager.getWritableDatabase().execSQL(str);
+                        List<IdeeData> idees1  = databaseManager.lireTable();
+                        ideeEditee.setText(idees1.get(i).toString());
+
                     }
                 }
             }

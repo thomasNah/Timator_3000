@@ -67,6 +67,11 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
         }
     }
+
+    public void insertIdee2(int idIdee, String contenu, String duree, String nom, int note){
+
+    }
+
     public List<IdeeData> lireTable(){
 
         List<IdeeData> idees = new ArrayList<>();
@@ -93,5 +98,16 @@ public class DatabaseManager extends SQLiteOpenHelper {
         }
         cursor.close();
         return idees;
+    }
+
+    public int getIdMax(){
+        List<IdeeData> idees = this.lireTable();
+        int max =0;
+        for (int i =0;i<idees.size();i++){
+            if (max<idees.get(i).getIdIdee()){
+                max = idees.get(i).getIdIdee();
+            }
+        }
+        return max;
     }
 }

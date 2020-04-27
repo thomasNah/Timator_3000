@@ -53,6 +53,20 @@ public class GererPersoActivity extends AppCompatActivity implements AdapterView
         creerNouvelleIdeePersoState = false;
         supprIdeePersoState = false;
 
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.arrayTempsDispo, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerChoixTempsActivity.setAdapter(adapter);
+
+
+
+
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
 
         //SPINNER spinnerIdeeDejaExistantes
         final List<IdeeData> idees = databaseManager.lireTable();
@@ -63,14 +77,6 @@ public class GererPersoActivity extends AppCompatActivity implements AdapterView
 
         spinnerIdeeDejaExistantes.setAdapter(new ArrayAdapter<String>(this
                 , android.R.layout.simple_spinner_item, spinnerItems));
-
-
-    }
-
-
-    @Override
-    protected void onResume() {
-        super.onResume();
 
         creerNouvelleIdeePerso.setEnabled(creerNouvelleIdeePersoState);
         supprIdeePerso.setEnabled(supprIdeePersoState);
@@ -133,11 +139,10 @@ public class GererPersoActivity extends AppCompatActivity implements AdapterView
                 if (description==null){
                     description = "";
                 }
-                int note = Integer.valueOf(String.valueOf(inputNoteIdee.getText()));
-                //databaseManager.insertIdee(1,description,duree,nom,note);
-                //////////////////////////////////////////////////////
-                // ATTENTION JE SAIS PAS SI ON MET L'ID de la BDD en autoincrémentation ou manuellement (je pense c'est mieux en autoincrement
-                /////////////////////////////////////////////////////
+                //int note = Integer.valueOf(String.valueOf(inputNoteIdee.getText())); cette ligne fait planter le setText je sais pas pk
+                int id = databaseManager.getIdMax()+ 1;
+                //databaseManager.insertIdee(id,description,duree,nom,note);
+                inputNomIdee.setText("");
             }
         });
 

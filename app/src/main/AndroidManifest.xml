@@ -9,14 +9,8 @@
         android:roundIcon="@mipmap/icone_style_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< HEAD
-        <activity android:name=".EditerIdeeActivity"></activity>
-        <activity android:name=".DatabaseManager" />
-        <activity android:name=".GererPersoActivity" />
-        <activity android:name=".IdeeActivity" />
-        <activity android:name=".Preferences" />
-        <activity android:name=".MainActivity">
-=======
+        <activity android:name=".EditerIdeeActivity"
+            android:configChanges="uiMode"/>
         <activity android:name=".DatabaseManager"
             android:configChanges="uiMode" />
         <activity android:name=".GererPersoActivity"
@@ -27,7 +21,6 @@
             android:configChanges="uiMode" />
         <activity android:name=".MainActivity"
             android:configChanges="uiMode" >
->>>>>>> 2a9ba89ec3c28a06f9125a714b3c39b4bbe0ae36
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
