@@ -17,8 +17,8 @@ import java.util.List;
 public class Preferences extends AppCompatActivity {
 
     private Switch modeSombre;
-    //private DatabaseManager databaseManager;
-    //private TextView ideeView;
+    private DatabaseManager databaseManager;
+    private TextView ideeView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +26,7 @@ public class Preferences extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preferences);
         modeSombre = findViewById(R.id.modeSombre);
+        ideeView = findViewById(R.id.textView4);
         if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
             modeSombre.setChecked(true);
         }
@@ -47,7 +48,13 @@ public class Preferences extends AppCompatActivity {
         //ADD BACK BUTTON POUR RETOURNER SUR MAIN ACTIVITY
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        DatabaseManager databaseManager = new DatabaseManager(this);
+        List<IdeeData> idees = databaseManager.lireTable();
+        String str = "";
+        for (int i = 0;i <idees.size();i++){
+            str = str + idees.get(i).toString()+"\n";
+        }
+        ideeView.setText(str);
     }
 
     @Override
