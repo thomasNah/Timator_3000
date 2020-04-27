@@ -12,6 +12,8 @@
 
         <activity android:name=".DatabaseManager"
             android:configChanges="uiMode" />
+        <activity android:name=".EditerIdeeActivity"
+            android:configChanges="uiMode"/>
         <activity android:name=".GererPersoActivity"
             android:configChanges="uiMode" />
         <activity android:name=".IdeeActivity"

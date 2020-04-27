@@ -37,7 +37,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     }
 
-
+///////////////////////////////////
     public void insertIdee (int idIdee, String contenu, String duree, String nom, int note) {
         boolean flag = true;
         List<IdeeData> idees = new ArrayList<>();
@@ -67,10 +67,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
         }
     }
-
-    public void insertIdee2(int idIdee, String contenu, String duree, String nom, int note){
-
-    }
+////////////////////////////////////////
 
     public List<IdeeData> lireTable(){
 
@@ -86,9 +83,12 @@ public class DatabaseManager extends SQLiteOpenHelper {
         cursor.close();
         return idees;
     }
+
+    ////////////////////////////////////
+
     public List<IdeeData> lireTableTemps(String temps){
         List<IdeeData> idees = new ArrayList<>();
-        String strSql = "select * from IDEE where duree = temps ";
+        String strSql = "select * from IDEE where duree = '"+ temps+ "'";
         Cursor cursor = this.getReadableDatabase().rawQuery(strSql,null);
         cursor.moveToFirst();
         while(! cursor.isAfterLast()){
@@ -100,6 +100,24 @@ public class DatabaseManager extends SQLiteOpenHelper {
         return idees;
     }
 
+    ////////////////////////////////////////
+
+    public List<IdeeData> lireTableTempsTri(String temps){
+        List<IdeeData> idees = new ArrayList<>();
+        String strSql = "select * from IDEE where duree = '"+ temps+ "' order by note desc";
+        Cursor cursor = this.getReadableDatabase().rawQuery(strSql,null);
+        cursor.moveToFirst();
+        while(! cursor.isAfterLast()){
+            IdeeData idee = new IdeeData(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getInt(4));
+            idees.add(idee);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return idees;
+    }
+
+    ////////////////////////////////////
+
     public int getIdMax(){
         List<IdeeData> idees = this.lireTable();
         int max =0;
@@ -109,5 +127,12 @@ public class DatabaseManager extends SQLiteOpenHelper {
             }
         }
         return max;
+    }
+
+    ///////////////////////////////
+
+    public void setNote (int nNote, int idIdee){
+        String str = "update IDEE set note =" +nNote+" where idIdee = "+idIdee;
+        this.getWritableDatabase().execSQL(str);
     }
 }

@@ -68,18 +68,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Log.i("DATABASE", String.valueOf(idees.size()));
         if (idees.size() ==0) {
 
-            databaseManager.insertIdee(1, "la description", "20 minutes", "faire des pates", 5); //ajout des données
-            databaseManager.insertIdee(2, "la description", "1 heure", "lire un livre", 5);
-            databaseManager.insertIdee(3, "la description", "30 minutes", "faire du sport", 5);
-            databaseManager.insertIdee(4, "", "1 heure", "faire le rapport java", 5);
+            databaseManager.insertIdee(1, "la description", "20 minutes", "faire des pates", 3); //ajout des données
+            databaseManager.insertIdee(2, "la description", "1 heure", "lire un livre", 3);
+            databaseManager.insertIdee(3, "la description", "30 minutes", "faire du sport", 3);
+            databaseManager.insertIdee(4, "", "1 heure", "faire le rapport java", 3);
+            databaseManager.insertIdee(5,"","20 minutes","faire des nuggets pour ce soir", 5);
+            databaseManager.insertIdee(6,"ouiiiiii","20 minutes","j'ai pas d'imagination",1);
         }
-        String contenu = "contenuuuuu";
-        String duree = "dureeeeee";
-        int note = 1;
-        int id = 2;
-        String str = "update IDEE set contenu = '"+contenu+"' , duree = '"+duree+"', note =" +note+" where idIdee = "+id;
-        //String str = "update IDEE set contenu = 'la bite' , duree = 'ouiiiiii', note = 0 where idIdee = 1";
-        databaseManager.getWritableDatabase().execSQL(str);
+        //databaseManager.setNote(5,3);
         databaseManager.close();
 
     }

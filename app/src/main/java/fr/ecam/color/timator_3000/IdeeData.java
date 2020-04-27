@@ -23,41 +23,22 @@ public class IdeeData {
         return idIdee;
     }
 
-    public void setIdIdee(int idIdee) {
-        this.idIdee = idIdee;
-    }
-
     public String getContenu() {
         return contenu;
-    }
-
-    public void setContenu(String contenu) {
-        this.contenu = contenu;
     }
 
     public String getDuree() {
         return duree;
     }
 
-    public void setDuree(String duree) {
-        this.duree = duree;
-    }
-
     public String getNom() {
         return nom;
-    }
-
-    public void setNom(String type) {
-        this.nom = nom;
     }
 
     public int getNote() {
         return note;
     }
 
-    public void setNote(int note) {
-        this.note = note;
-    }
 
     @NonNull
     @Override
