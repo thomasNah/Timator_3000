@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+<<<<<<< HEAD
         <activity android:name=".DatabaseManager"
             android:configChanges="uiMode" />
         <activity android:name=".EditerIdeeActivity"
@@ -22,6 +23,16 @@
             android:configChanges="uiMode" />
         <activity android:name=".MainActivity"
             android:configChanges="uiMode" >
+=======
+     
+
+        <activity android:name=".DatabaseManager" android:configChanges="uiMode" />
+        <activity android:name=".GererPersoActivity" android:configChanges="uiMode" />
+        <activity android:name=".IdeeActivity" android:configChanges="uiMode" />
+        <activity android:name=".Preferences" android:configChanges="uiMode" />
+        <activity android:name=".MainActivity" android:configChanges="uiMode" >
+
+>>>>>>> cd56d08ec0fa5231011d294e08c71fa110784bdc
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
