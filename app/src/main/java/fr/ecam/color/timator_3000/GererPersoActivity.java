@@ -139,10 +139,13 @@ public class GererPersoActivity extends AppCompatActivity implements AdapterView
                 if (description==null){
                     description = "";
                 }
-                //int note = Integer.valueOf(String.valueOf(inputNoteIdee.getText())); cette ligne fait planter le setText je sais pas pk
+                int note = Integer.valueOf(String.valueOf(inputNoteIdee.getText())); //cette ligne fait planter le setText je sais pas pk
                 int id = databaseManager.getIdMax()+ 1;
-                //databaseManager.insertIdee(id,description,duree,nom,note);
+                databaseManager.insertIdee(id,description,duree,nom,note);
                 inputNomIdee.setText("");
+                spinnerChoixTempsActivity.setSelection(0);
+                inputDescription.setText("");
+                inputNoteIdee.setText("");
             }
         });
 
