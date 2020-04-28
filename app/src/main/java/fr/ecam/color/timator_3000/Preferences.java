@@ -54,7 +54,12 @@ public class Preferences extends AppCompatActivity {
 
         databaseManager = new DatabaseManager(this);
 
-        List<IdeeData> idees = databaseManager.lireTable();
+        /*List<IdeeData> idees = databaseManager.lireTable();
+        String str = "";
+        for (int i = 0;i <idees.size();i++){
+            str = str + idees.get(i).toString()+"\n";
+        }*/
+        List<IdeeData> idees = databaseManager.lireTableChallenge();
         String str = "";
         for (int i = 0;i <idees.size();i++){
             str = str + idees.get(i).toString()+"\n";

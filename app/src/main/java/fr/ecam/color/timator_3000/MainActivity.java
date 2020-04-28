@@ -79,24 +79,23 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             databaseManager.insertIdee(6,"ouiiiiii","20 minutes","j'ai pas d'imagination",1);
         }
         //databaseManager.setNote(5,3);
-        databaseManager.close();
 
 
 
 
         //Création de la BDD CHALLENGE
-        databaseManagerChallenge = new DatabaseManager(this);
-        List<IdeeData> ideesChallenge = databaseManagerChallenge.lireTableChallenge();
+        //databaseManagerChallenge = new DatabaseManager(this);
+        List<IdeeData> ideesChallenge = databaseManager.lireTableChallenge();
         Log.i("DATABASE", String.valueOf(ideesChallenge.size()));
         if (ideesChallenge.size() ==0) {
 
-            databaseManagerChallenge.insertIdeeChallenge(1, "Lien vers le site du zero", "24h", "Apprendre le JAVA", 3); //ajout des données
+            databaseManager.insertIdeeChallenge(1, "Lien vers le site du zero", "24h", "Apprendre le JAVA", 3); //ajout des données
         }
         String contenuChallenge = "contenuChallenge";
         String dureeChallenge = "dureeChallenge";
         int noteChallenge = 1;
-        int idChallenge = 2;
-        String strChallenge = "update CHALLENGE set contenu = '"+contenuChallenge+"' , duree = '"+dureeChallenge+"', noteChallenge =" +note+" where idIdee = "+idChallenge;
+        int idChallenge = 1;
+        String strChallenge = "update CHALLENGE set contenu = '"+contenuChallenge+"' , duree = '"+dureeChallenge+"', note =" +noteChallenge+" where idIdee = "+idChallenge;
         databaseManager.getWritableDatabase().execSQL(strChallenge);
         databaseManager.close();
 

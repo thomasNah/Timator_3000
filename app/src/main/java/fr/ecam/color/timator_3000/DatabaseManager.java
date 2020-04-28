@@ -34,7 +34,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         String strSqlChallenge = "create table CHALLENGE ( idIdee integer primary key not null,"
                 +"contenu text,"
                 +" duree text not null,"
-                + "nomChallenge text not null,"
+                + "nom text not null,"
                 + "note integer not null)";
         db.execSQL(strSqlChallenge);
     }
@@ -211,7 +211,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
     }
     public List<IdeeData> lireTableTempsChallenge(String temps){
         List<IdeeData> idees = new ArrayList<>();
-        String strSql = "select * from CHALLENGE where duree = temps ";
+        String strSql = "select * from CHALLENGE where duree ='" +temps +"'";
         Cursor cursor = this.getReadableDatabase().rawQuery(strSql,null);
         cursor.moveToFirst();
         while(! cursor.isAfterLast()){
