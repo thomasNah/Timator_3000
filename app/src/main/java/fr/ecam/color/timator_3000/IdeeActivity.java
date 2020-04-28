@@ -22,7 +22,9 @@ public class IdeeActivity extends AppCompatActivity {
     private Button autreIdeeButton;
     private Button likeButton;
     private Button noLikeButton;
+    private Button deleteButton;
     private String inputTempsDispo;
+    private IdeeData ideeEnCours;
 
     //BDD
     private DatabaseManager databaseManager;
@@ -39,11 +41,10 @@ public class IdeeActivity extends AppCompatActivity {
         autreIdeeButton = findViewById(R.id.autreIdeeButton);
         likeButton = findViewById(R.id.likeButton);
         noLikeButton = findViewById(R.id.noLikeButton);
-
+        deleteButton = findViewById(R.id.deleteButton);
         //ADD BACK BUTTON POUR RETOURNER SUR MAIN ACTIVITY
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         //List<IdeeData> idees = databaseManager.lireTable();
 
     }
@@ -51,30 +52,70 @@ public class IdeeActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        final List<IdeeData> idees = databaseManager.lireTable();
-        ideeText.setText(idees.get(compteur).afficher());
+
         //RECUPERATION DE LA VARIABLE inputTempsDispo
-        /*Intent intent = getIntent();
-        inputTempsDispo = "";idees.get(compteur).getContenu());
+        Intent intent = getIntent();
+        inputTempsDispo = "";
         if(intent != null){
             if(intent.hasExtra("inputTempsDispo")){
                 inputTempsDispo = intent.getStringExtra("inputTempsDispo");
             }
-        }*/
+        }
 
+        List<IdeeData> idees = databaseManager.lireTableTempsTri(inputTempsDispo);
+        ideeText.setText(idees.get(compteur).afficher());
+        idees.get(compteur).getContenu();
+        ideeEnCours = idees.get(compteur);
         affichageTempsIdee.setText("Temps de votre idée : " + inputTempsDispo);
 
         //APPUI BOUTON autreIdeeButton
         autreIdeeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            compteur+=1;
-            if (compteur>=idees.size()){
-                compteur = 0;
+                List<IdeeData> idees = databaseManager.lireTableTempsTri(inputTempsDispo);
+                compteur+=1;
+                if (compteur>=idees.size()){
+                    compteur = 0;
+                }
+                ideeText.setText(idees.get(compteur).afficher());
+                ideeEnCours = idees.get(compteur);
+
             }
-            ideeText.setText(idees.get(compteur).afficher());
+        });
+        likeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int id = ideeEnCours.getIdIdee();
+                int note = ideeEnCours.getNote();
+                if (note < 5) {
+                    databaseManager.setNote(note+1, id);
+                }
+            }
+        });
 
+        noLikeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int id = ideeEnCours.getIdIdee();
+                int note = ideeEnCours.getNote();
+                if (note > 0) {
+                    databaseManager.setNote(note-1, id); // on peut peut etre mettre - 2 je sais pas trop
+                }
+            }
+        });
 
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int id = ideeEnCours.getIdIdee();
+                String str = "delete from IDEE where idIdee ="+id;
+                databaseManager.getWritableDatabase().execSQL(str);
+                List<IdeeData> idees = databaseManager.lireTableTempsTri(inputTempsDispo);
+                if (compteur>=idees.size()){
+                    compteur = 0;
+                }
+                ideeText.setText(idees.get(compteur).afficher());
+                ideeEnCours = idees.get(compteur);
             }
         });
     }

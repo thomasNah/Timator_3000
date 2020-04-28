@@ -10,6 +10,7 @@
     tools:context=".IdeeActivity">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="?attr/cardbackground"
@@ -30,14 +31,14 @@
                 android:layout_height="wrap_content"
                 android:foregroundGravity="center_vertical|center|center_horizontal"
                 android:gravity="center_horizontal"
-                android:padding="20dp"/>
+                android:padding="20dp" />
 
             <TextView
                 android:id="@+id/ideeText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal|center_vertical"
-                android:paddingBottom="20dp"/>
+                android:paddingBottom="20dp" />
 
         </LinearLayout>
 
@@ -59,23 +60,34 @@
         android:id="@+id/noLikeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ne plus me proposer cette idée"
+        android:text="Je n'aime pas cette idée"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/likeButton"
-        app:layout_constraintVertical_bias="0.6" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.846" />
 
     <Button
         android:id="@+id/likeButton"
-        android:layout_width="253dp"
-        android:layout_height="wrap_content"
+        android:layout_width="199dp"
+        android:layout_height="53dp"
         android:text="J'aime cette idée !"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.778" />
+        app:layout_constraintVertical_bias="0.738" />
+
+    <Button
+        android:id="@+id/deleteButton"
+        android:layout_width="195dp"
+        android:layout_height="52dp"
+        android:text="Supprimer cette idée"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.96" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
