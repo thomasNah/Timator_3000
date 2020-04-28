@@ -14,6 +14,8 @@ public class ChoixIdeeLongTermeActivity extends AppCompatActivity {
     private TextView descriptionIdee;
     private TextView listeEcheance;
 
+    private DatabaseManager databaseManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

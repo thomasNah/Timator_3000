@@ -30,7 +30,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private Button challengeLongTerme;
     private Button activitePersoButton;
     private Button preferencesButton;
+
     private DatabaseManager databaseManager;
+    private DatabaseManager databaseManagerChallenge;
+
     String inputTempsDispo;
     private boolean darkTheme;
     private boolean flag = false;
@@ -62,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         spinnerTempsDispo.setAdapter(adapter);
         spinnerTempsDispo.setOnItemSelectedListener(this);
 
-        //Création de la BDD
+        //Création de la BDD IDEE
         databaseManager = new DatabaseManager(this);
         List<IdeeData> idees = databaseManager.lireTable();
         Log.i("DATABASE", String.valueOf(idees.size()));
@@ -80,6 +83,25 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         String str = "update IDEE set contenu = '"+contenu+"' , duree = '"+duree+"', note =" +note+" where idIdee = "+id;
         //String str = "update IDEE set contenu = 'la bite' , duree = 'ouiiiiii', note = 0 where idIdee = 1";
         databaseManager.getWritableDatabase().execSQL(str);
+        databaseManager.close();
+
+
+
+
+        //Création de la BDD CHALLENGE
+        databaseManagerChallenge = new DatabaseManager(this);
+        List<IdeeData> ideesChallenge = databaseManagerChallenge.lireTableChallenge();
+        Log.i("DATABASE", String.valueOf(ideesChallenge.size()));
+        if (ideesChallenge.size() ==0) {
+
+            databaseManagerChallenge.insertIdeeChallenge(1, "Lien vers le site du zero", "24h", "Apprendre le JAVA", 3); //ajout des données
+        }
+        String contenuChallenge = "contenuChallenge";
+        String dureeChallenge = "dureeChallenge";
+        int noteChallenge = 1;
+        int idChallenge = 2;
+        String strChallenge = "update CHALLENGE set contenu = '"+contenuChallenge+"' , duree = '"+dureeChallenge+"', noteChallenge =" +note+" where idIdee = "+idChallenge;
+        databaseManager.getWritableDatabase().execSQL(strChallenge);
         databaseManager.close();
 
     }

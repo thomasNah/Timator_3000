@@ -19,11 +19,9 @@ public class ActiviteLongTermeChoisieActivity extends AppCompatActivity {
         setContentView(R.layout.activity_activite_long_terme_choisie);
 
         nomActivite = findViewById(R.id.nomActivite);
-        RecyclerView = findViewById(R.id.recyclerViewEcheances);
         s1 = getResources().getStringArray(R.array.echeancesActivite);
         s2 = getResources().getStringArray(R.array.descriptionEcheances);
 
-        AdapterRecyclerView adapterRecyclerView = new AdapterRecyclerView(this,s1,s2);
 
 
 

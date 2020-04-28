@@ -48,6 +48,8 @@ public class Preferences extends AppCompatActivity {
         //ADD BACK BUTTON POUR RETOURNER SUR MAIN ACTIVITY
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        //DATABASE IDEE
         DatabaseManager databaseManager = new DatabaseManager(this);
         List<IdeeData> idees = databaseManager.lireTable();
         String str = "";
