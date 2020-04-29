@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="fr.ecam.color.timator_3000">
 
+    <uses-permission android:name="android.permission.INTERNET" > </uses-permission>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/icone_style"
@@ -9,21 +11,25 @@
         android:roundIcon="@mipmap/icone_style_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-
-        <activity android:name=".DatabaseManager"
+        <activity android:name=".WeatherActivity"></activity>
+        <activity
+            android:name=".DatabaseManager"
             android:configChanges="uiMode" />
-        <activity android:name=".EditerIdeeActivity"
-            android:configChanges="uiMode"/>
-        <activity android:name=".GererPersoActivity"
+        <activity
+            android:name=".EditerIdeeActivity"
             android:configChanges="uiMode" />
-        <activity android:name=".IdeeActivity"
+        <activity
+            android:name=".GererPersoActivity"
             android:configChanges="uiMode" />
-        <activity android:name=".Preferences"
+        <activity
+            android:name=".IdeeActivity"
             android:configChanges="uiMode" />
-        <activity android:name=".MainActivity"
-            android:configChanges="uiMode" >
-
+        <activity
+            android:name=".Preferences"
+            android:configChanges="uiMode" />
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="uiMode">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

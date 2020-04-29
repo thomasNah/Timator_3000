@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -115,11 +116,20 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             public void onClick(View v) {
 
                 //PASSAGE A L'ACTIVITE "IDEE"
-                Intent ideeActivity = new Intent(MainActivity.this, IdeeActivity.class);
-                ideeActivity.putExtra("inputTempsDispo",inputTempsDispo);
-                startActivity(ideeActivity);
-
-
+                if (inputTempsDispo.equals("1 minute")){
+                    Intent WeatherActivityInt = new Intent(MainActivity.this, WeatherActivity.class);
+                    startActivity(WeatherActivityInt);
+                }
+                else {
+                    List<IdeeData> idees = databaseManager.lireTableTemps(inputTempsDispo);
+                    if (idees.size() > 0) {
+                        Intent ideeActivity = new Intent(MainActivity.this, IdeeActivity.class);
+                        ideeActivity.putExtra("inputTempsDispo", inputTempsDispo);
+                        startActivity(ideeActivity);
+                    } else {
+                        Toast.makeText(getApplicationContext(), "il n'y a pas d'idée de cette durée pour l'instant", Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         });
 
