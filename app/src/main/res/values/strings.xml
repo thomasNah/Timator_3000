@@ -3,6 +3,7 @@
     <string name="pr_f_rences">Préférences</string>
     <string name="pr_f_rer_les_activit_s_personnelles">Préférer les activités personnelles</string>
     <string name="mode_sombre">Mode Sombre</string>
+    <string name="feu">Feu</string>
 
     <string-array name="arrayTempsDispo">
         <item>1 minute</item>

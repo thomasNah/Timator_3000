@@ -19,6 +19,11 @@ import androidx.appcompat.app.AppCompatDelegate;
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.http.GET;
+
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -119,8 +124,29 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 if (inputTempsDispo.equals("1 minute")){
                     Intent WeatherActivityInt = new Intent(MainActivity.this, WeatherActivity.class);
                     startActivity(WeatherActivityInt);
-                }
-                else {
+                } else if (inputTempsDispo.equals("2 minutes")) {
+                    GetActuService ws = RetrofitBuilder.getSimpleClient();
+                    ws.getArticle().enqueue(new Callback<ActuResult>() {
+                        @Override
+                        public void onResponse(Call<ActuResult> call, Response<ActuResult> response) {
+                            if (response.code()==200) {
+                                System.out.println("onResponse " + response.body().getName());
+                                System.out.println("onResponse " + response.body().getTitle());
+                                System.out.println("onResponse " + response.body().getDescription());
+                                System.out.println("onResponse " + response.body().getHtmlUrl());
+                                System.out.println("onResponse " + response.body().getPublishedAt());
+                            } else {
+                                System.out.println("Une erreur est survenue " + response.code());
+                            }
+                            System.out.println(response.body().toString());
+                        }
+                        @Override
+                        public void onFailure(Call<ActuResult> call, Throwable t) { System.out.println("onFailure " + t.getMessage());
+                        }
+                    });
+                    /*Intent GetActuServiceActivity = new Intent(MainActivity.this, GetActuService.class);
+                    startActivity(GetActuServiceActivity);*/
+                } else {
                     List<IdeeData> idees = databaseManager.lireTableTemps(inputTempsDispo);
                     if (idees.size() > 0) {
                         Intent ideeActivity = new Intent(MainActivity.this, IdeeActivity.class);
