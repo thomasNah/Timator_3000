@@ -66,25 +66,35 @@ public class WeatherActivity extends AppCompatActivity {
         texte = findViewById(R.id.textView5);
         // key: d31be973eb0149218e716d52a361d0da
         String content;
+        String content1;
         Weather weather  = new Weather();
         try {
-            content = weather.execute("https://api.weatherbit.io/v2.0/current?city=Lyon&lang=fr&key=d31be973eb0149218e716d52a361d0da").get();
+            //content = weather.execute("https://api.weatherbit.io/v2.0/current?city=Lyon&lang=fr&key=d31be973eb0149218e716d52a361d0da").get();
+            content1 = weather.execute("https://api.weatherbit.io/v2.0/forecast/hourly?city=Lyon&lang=fr&key=d31be973eb0149218e716d52a361d0da&hours=48").get();
             //verifier si les données sont récupérées
-            Log.i("contentData", content);
+            Log.i("contentData", content1);
+            JSONObject jsonObject = new JSONObject(content1);
+            String data = jsonObject.getString("data");
+            JSONArray array = new JSONArray((data));
+            String time = "";
+            String temps = "";
+            String fin = "";
+            for (int i = 0;i<array.length();i++){
+                time = array.getJSONObject(i).getString("timestamp_utc");
+                temps = array.getJSONObject(i).getString("weather");
+                fin = fin + time + temps.split(":")[3].substring(1,temps.split(":")[3].length()-2) + "\n";
+            }
+            texte.setText(fin);
             //JSON
-            JSONObject jsonObject = new JSONObject(content);
+            /*JSONObject jsonObject = new JSONObject(content);
             String weatherData = jsonObject.getString("data");
-            //JSONArray array = new JSONArray(weatherData);
-            texte.setText(weatherData);
-            /*String main;
-            String description;
-            for (int i=0;i<array.length();i++){
-                JSONObject weatherPart = array.getJSONObject(i);
-                main = weatherPart.getString("main");
-                description = weatherPart.getString("description");
+            JSONArray array = new JSONArray(weatherData);
+            String main =  "";
+            for (int i = 0;i<array.length();i++){
+                main = array.getJSONObject(i).getString("weather");
+            }
 
-            }*/
-
+            texte.setText(main.split(":")[3].substring(1,main.split(":")[3].length()-2));*/
         } catch (Exception e) {
             e.printStackTrace();
         }
