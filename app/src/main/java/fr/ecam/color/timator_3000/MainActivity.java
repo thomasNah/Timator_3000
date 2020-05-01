@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     startActivity(WeatherActivityInt);
                 } else if (inputTempsDispo.equals("2 minutes")) {
                     GetActuService ws = RetrofitBuilder.getSimpleClient();
-                    ws.getArticle("fr","e5b6ccfeee244e3fa804e4fc2809ff58").enqueue(new Callback<Actu>() {
+                    ws.getArticle().enqueue(new Callback<Actu>() {
                         @Override
                         public void onResponse(Call<Actu> call, Response<Actu> response) {
                             if (response.code()==200) {
