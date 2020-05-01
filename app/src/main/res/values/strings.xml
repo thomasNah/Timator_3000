@@ -16,6 +16,18 @@
         <item>1h30</item>
     </string-array>
 
+    <integer-array name = "arrayTempsDispoConvertToMinutesInInteger">
+        <item>1</item>
+        <item>2</item>
+        <item>5</item>
+        <item>10</item>
+        <item>20</item>
+        <item>30</item>
+        <item>45</item>
+        <item>60</item>
+        <item>90</item>
+    </integer-array>
+
     <string-array name="arrayNote">
         <item>0</item>
         <item>1</item>
@@ -25,21 +37,6 @@
         <item>5</item>
     </string-array>
 
-    //CECI EST UN TEST
-    <string-array name="arrayActiviteExistantes">
-        <item>Regarder les Simpsons</item>
-        <item>Dormir</item>
-    </string-array>
 
-    //RECYCLERVIEW ECHEANCES ACTIVITES
-    <string-array name="echeancesActivite">
-        <item>Se lever</item>
-        <item>Manger</item>
-    </string-array>
-
-    <string-array name="descriptionEcheances">
-        <item>Il faut sortir de son lit</item>
-        <item>Il faut ouvrir le placard</item>
-    </string-array>
 
 </resources>

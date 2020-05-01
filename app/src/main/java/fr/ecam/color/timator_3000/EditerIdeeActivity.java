@@ -42,7 +42,9 @@ public class EditerIdeeActivity extends AppCompatActivity {
                 nomIdee = intent.getStringExtra("nomIdee");
             }
         }
+
         final String nomIdeeFinal = nomIdee; // je sais pas trop pourquoi mais sinon il veut pas
+
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.arrayTempsDispo, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

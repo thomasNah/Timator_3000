@@ -3,6 +3,7 @@ package fr.ecam.color.timator_3000;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -72,15 +73,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         if (idees.size() ==0) {
 
             databaseManager.insertIdee(1, "la description", "20 minutes", "faire des pates", 3); //ajout des données
-            databaseManager.insertIdee(2, "la description", "1 heure", "lire un livre", 3);
+            databaseManager.insertIdee(2, "la description", "1h", "lire un livre", 3);
             databaseManager.insertIdee(3, "la description", "30 minutes", "faire du sport", 3);
-            databaseManager.insertIdee(4, "", "1 heure", "faire le rapport java", 3);
+            databaseManager.insertIdee(4, "", "1h", "faire le rapport java", 3);
             databaseManager.insertIdee(5,"","20 minutes","faire des nuggets pour ce soir", 5);
             databaseManager.insertIdee(6,"ouiiiiii","20 minutes","j'ai pas d'imagination",1);
         }
-        //databaseManager.setNote(5,3);
-
-
 
 
         //Création de la BDD CHALLENGE
@@ -89,17 +87,29 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Log.i("DATABASE", String.valueOf(ideesChallenge.size()));
         if (ideesChallenge.size() ==0) {
 
-            databaseManager.insertIdeeChallenge(1, "Lien vers le site du zero", "24h", "Apprendre le JAVA", 3); //ajout des données
+            //ID 0 A 10 - Touchez votre audience sur mobile - https://learndigital.withgoogle.com/ateliersnumeriques/course/connect-with-mobile
+            databaseManager.insertIdeeChallenge(00, "https://learndigital.withgoogle.com/ateliersnumeriques/course/connect-with-mobile", "none", "Touchez votre audience sur mobile", 3);
+            databaseManager.insertIdeeChallenge(01, "https://learndigital.withgoogle.com/ateliersnumeriques/course/connect-with-mobile/module/17", "30 minutes", "Tirez profit des opportunités qu'offre le mobile", 3);
+            databaseManager.insertIdeeChallenge(02, "https://learndigital.withgoogle.com/ateliersnumeriques/course/connect-with-mobile/module/16", "20 minutes", "Découvrez les possibilités offertes par le mobile", 3);
+
+
+            //ID 10 A 20 - Test
+
+            databaseManager.insertIdeeChallenge(10,"","none","Test",3);
+            databaseManager.insertIdeeChallenge(11,"","45 minutes","Sousa",3);
+            databaseManager.insertIdeeChallenge(12,"","1h","Sousa deux",3);
+
+
+
         }
-        String contenuChallenge = "contenuChallenge";
-        String dureeChallenge = "dureeChallenge";
-        int noteChallenge = 1;
-        int idChallenge = 1;
-        String strChallenge = "update CHALLENGE set contenu = '"+contenuChallenge+"' , duree = '"+dureeChallenge+"', note =" +noteChallenge+" where idIdee = "+idChallenge;
-        databaseManager.getWritableDatabase().execSQL(strChallenge);
+
+        // POUR MODIFIER IDEE
+        databaseManager.setTempsTotalTousLesChallenges();
         databaseManager.close();
 
     }
+
+
 
     protected void onResume() {
         super.onResume();
@@ -122,6 +132,18 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
             }
         });
+
+
+        challengeLongTerme.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent choixIdeeLongTermeActivity = new Intent(MainActivity.this, ChoixIdeeLongTermeActivity.class);
+                startActivity(choixIdeeLongTermeActivity);
+
+            }
+        });
+
 
         activitePersoButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -156,6 +178,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         //RECUPERATION DE L'INTERIEUR DU SPINNER
         inputTempsDispo = parent.getItemAtPosition(position).toString();
+        System.out.println("inputTempsDispo : " + inputTempsDispo);
 
         //PERMET D'AFFICHER LE TEMPS DISPO EN PETITE CASE QUI DISPARAIT RAPIDEMENT
         //Toast.makeText(parent.getContext(),text,Toast.LENGTH_SHORT).show();

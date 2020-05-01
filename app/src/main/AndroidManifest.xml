@@ -21,8 +21,13 @@
             android:configChanges="uiMode" />
         <activity android:name=".Preferences"
             android:configChanges="uiMode" />
+        <activity android:name=".ChoixIdeeLongTermeActivity"
+            android:configChanges="uiMode"/>
+        <activity android:name=".ActiviteLongTermeChoisieActivity"
+            android:configChanges="uiMode" />
         <activity android:name=".MainActivity"
             android:configChanges="uiMode" >
+
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
