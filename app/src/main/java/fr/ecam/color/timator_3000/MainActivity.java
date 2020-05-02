@@ -3,7 +3,6 @@ package fr.ecam.color.timator_3000;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,15 +16,16 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import fr.ecam.color.timator_3000.model.Actu;
-import fr.ecam.color.timator_3000.model.Article;
+import fr.ecam.color.timator_3000.pack_actu.Actu;
+import fr.ecam.color.timator_3000.pack_actu.ActualiteActivity;
+import fr.ecam.color.timator_3000.pack_actu.Article;
+import fr.ecam.color.timator_3000.pack_actu.GetActuService;
+import fr.ecam.color.timator_3000.pack_actu.RetrofitBuilder;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.http.GET;
 
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -158,8 +158,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                             System.out.println("onFailure " + t.getMessage());
                         }
                     });
-                    /*Intent GetActuServiceActivity = new Intent(MainActivity.this, GetActuService.class);
-                    startActivity(GetActuServiceActivity);*/
+                    Intent ActuActivity = new Intent(MainActivity.this, ActualiteActivity.class);
+                    startActivity(ActuActivity);
                 } else {
                     List<IdeeData> idees = databaseManager.lireTableTemps(inputTempsDispo);
                     if (idees.size() > 0) {

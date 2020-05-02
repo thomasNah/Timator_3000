@@ -1,5 +1,5 @@
 
-package fr.ecam.color.timator_3000.model;
+package fr.ecam.color.timator_3000.pack_actu;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;

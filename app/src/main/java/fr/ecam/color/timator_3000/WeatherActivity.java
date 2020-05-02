@@ -72,7 +72,7 @@ public class WeatherActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_weather);
+        setContentView(R.layout.activity_weather1);
         //texte = findViewById(R.id.textView5);
         //image = findViewById(R.id.imageView);
         lay = findViewById(R.id.lay);
@@ -84,6 +84,10 @@ public class WeatherActivity extends AppCompatActivity {
             //content = weather.execute("https://api.weatherbit.io/v2.0/current?city=Lyon&lang=fr&key=d31be973eb0149218e716d52a361d0da").get();
 
             content1 = weather.execute("https://api.weatherbit.io/v2.0/forecast/hourly?city=Lyon&lang=fr&key=d31be973eb0149218e716d52a361d0da&hours=12").get();
+<<<<<<< HEAD
+=======
+
+>>>>>>> 31c3245a396b43472d9759ec06c794df101fb5f0
             //verifier si les données sont récupérées
             Log.i("contentData", content1);
             JSONObject jsonObject = new JSONObject(content1);
