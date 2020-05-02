@@ -14,6 +14,8 @@
 
         <activity android:name=".WeatherActivity"
             android:configChanges="uiMode" />
+        <activity android:name=".pack_actu.ActualiteActivity"
+            android:configChanges="uiMode" />
         <activity android:name=".DatabaseManager"
             android:configChanges="uiMode" />
         <activity android:name=".EditerIdeeActivity"
@@ -32,11 +34,8 @@
             android:configChanges="uiMode" />
         <activity android:name=".MainActivity"
             android:configChanges="uiMode" >
-
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
