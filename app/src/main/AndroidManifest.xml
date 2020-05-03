@@ -6,14 +6,22 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/icone_style"
+        android:icon="@mipmap/icone_final"
         android:label="Timator 3000"
-        android:roundIcon="@mipmap/icone_style_round"
+        android:roundIcon="@mipmap/icone_final_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
         <activity android:name=".WeatherActivity"
             android:configChanges="uiMode" />
+        <activity android:name="SplashScreen"
+            android:configChanges="uiMode"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".pack_actu.ActualiteActivity"
             android:configChanges="uiMode" />
         <activity android:name=".DatabaseManager"
@@ -36,7 +44,6 @@
             android:configChanges="uiMode" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
