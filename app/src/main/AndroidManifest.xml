@@ -24,6 +24,8 @@
         </activity>
         <activity android:name=".pack_actu.ActualiteActivity"
             android:configChanges="uiMode" />
+        <activity android:name=".pack_actu.ActualiteActivity2"
+            android:configChanges="uiMode" />
         <activity android:name=".DatabaseManager"
             android:configChanges="uiMode" />
         <activity android:name=".EditerIdeeActivity"

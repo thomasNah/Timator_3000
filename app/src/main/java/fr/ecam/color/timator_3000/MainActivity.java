@@ -141,27 +141,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     Intent WeatherActivityInt = new Intent(MainActivity.this, WeatherActivity.class);
                     startActivity(WeatherActivityInt);
                 } else if (inputTempsDispo.equals("2 minutes")) {
-                    GetActuService ws = RetrofitBuilder.getSimpleClient();
-                    ws.getArticle().enqueue(new Callback<Actu>() {
-                        @Override
-                        public void onResponse(Call<Actu> call, Response<Actu> response) {
-                            if (response.code()==200) {
-                                System.out.println(response.body().getArticles().size());
-                                //Récupération du 1er article
-                                Article article = response.body().getArticles().get(0);
-                                System.out.println("onResponse " + article.getTitle());
-                                System.out.println("onResponse " + article.getDescription());
-                                System.out.println("onResponse " + article.getPublishedAt());
-                            } else {
-                                System.out.println("Une erreur est survenue " + response.code());
-                            }
-                            System.out.println(response.body().toString());
-                        }
-                        @Override
-                        public void onFailure(Call<Actu> call, Throwable t) {
-                            System.out.println("onFailure " + t.getMessage());
-                        }
-                    });
                     Intent ActuActivity = new Intent(MainActivity.this, ActualiteActivity.class);
                     startActivity(ActuActivity);
                 } else {
