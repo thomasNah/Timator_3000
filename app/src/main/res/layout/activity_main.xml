@@ -37,6 +37,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                android:textIsSelectable="true"
                 app:layout_constraintVertical_bias="0.038" />
 
             <Spinner

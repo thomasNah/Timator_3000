@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -34,6 +36,7 @@ public class ChoixIdeeLongTermeActivity extends AppCompatActivity implements Ada
     private ArrayList<String> savedDataList = new ArrayList<>();
     ActiviteLongTermeChoisieActivity longTerme = new ActiviteLongTermeChoisieActivity();
 
+
     private DatabaseManager databaseManager;
 
     private String activiteChoisie;
@@ -61,6 +64,7 @@ public class ChoixIdeeLongTermeActivity extends AppCompatActivity implements Ada
         databaseManager = new DatabaseManager(this);
 
         progressBar.setMax(100);
+
 
 
     }
