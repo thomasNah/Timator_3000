@@ -20,7 +20,6 @@
             android:layout_height="wrap_content"
             android:text="Actualités"
             android:textStyle="bold"
-            android:textIsSelectable="true"
             android:textColor="?attr/textcolor"/>
 
         <androidx.cardview.widget.CardView
@@ -40,7 +39,6 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
                     android:textStyle="bold"
-                    android:textIsSelectable="true"
                     android:textColor="?attr/textcolor"/>
                 <TextView
                     android:id="@+id/description1"
@@ -49,7 +47,6 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="15dp"
-                    android:textIsSelectable="true"
                     android:textColor="?attr/textcolor"/>
                 <ImageView
                     android:id="@+id/image1"
@@ -64,7 +61,6 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="15dp"
-                    android:textIsSelectable="true"
                     android:textColor="?attr/textcolor"/>
             </LinearLayout>
 
@@ -85,7 +81,6 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
                     android:textStyle="bold"
-                    android:textIsSelectable="true"
                     android:textColor="?attr/textcolor"/>
                 <TextView
                     android:id="@+id/description2"
@@ -94,7 +89,6 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="15dp"
-                    android:textIsSelectable="true"
                     android:textColor="?attr/textcolor"/>
                 <ImageView
                     android:id="@+id/image2"
@@ -109,7 +103,6 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="15dp"
-                    android:textIsSelectable="true"
                     android:textColor="?attr/textcolor"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -129,7 +122,6 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
                     android:textStyle="bold"
-                    android:textIsSelectable="true"
                     android:textColor="?attr/textcolor"/>
                 <TextView
                     android:id="@+id/description3"
@@ -138,7 +130,6 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="15dp"
-                    android:textIsSelectable="true"
                     android:textColor="?attr/textcolor"/>
                 <ImageView
                     android:id="@+id/image3"
@@ -153,7 +144,6 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="15dp"
-                    android:textIsSelectable="true"
                     android:textColor="?attr/textcolor"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -173,7 +163,6 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
                     android:textStyle="bold"
-                    android:textIsSelectable="true"
                     android:textColor="?attr/textcolor"/>
                 <TextView
                     android:id="@+id/description4"
@@ -182,7 +171,6 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="15dp"
-                    android:textIsSelectable="true"
                     android:textColor="?attr/textcolor"/>
                 <ImageView
                     android:id="@+id/image4"
@@ -197,7 +185,6 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="15dp"
-                    android:textIsSelectable="true"
                     android:textColor="?attr/textcolor"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
