@@ -83,11 +83,8 @@ public class WeatherActivity extends AppCompatActivity {
         try {
             //content = weather.execute("https://api.weatherbit.io/v2.0/current?city=Lyon&lang=fr&key=d31be973eb0149218e716d52a361d0da").get();
 
-<<<<<<< HEAD
             content1 = weather.execute("https://api.weatherbit.io/v2.0/forecast/hourly?city=Lyon&lang=fr&key=d31be973eb0149218e716d52a361d0da&hours=12").get();
-=======
-            content1 = weather.execute("https://api.weatherbit.io/v2.0/forecast/hourly?city=Lyon&lang=fr&key=d31be973eb0149218e716d52a361d0da&hours=7").get();
->>>>>>> 2b9c062454d5823aaf39d805dc3c8f364e002494
+
 
             //verifier si les données sont récupérées
             Log.i("contentData", content1);

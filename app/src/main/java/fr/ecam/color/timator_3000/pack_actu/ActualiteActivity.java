@@ -70,7 +70,10 @@ public class ActualiteActivity extends AppCompatActivity {
                     description3 = findViewById(R.id.description3);
                     description3.setText(article3.getDescription().toString());
                     image3 = findViewById(R.id.image3);
-                    new DownloadImageTask(image3).execute(article3.getUrlToImage().toString());
+                    String image = article3.getUrlToImage().toString();
+                    if (image != null){
+                        new DownloadImageTask(image3).execute(article3.getUrlToImage().toString());
+                    }
                     date3 = findViewById(R.id.date3);
                     date3.setText(article3.getPublishedAt());
                     //Récupération du 4eme article
