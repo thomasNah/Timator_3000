@@ -65,6 +65,16 @@ public class ChoixIdeeLongTermeActivity extends AppCompatActivity implements Ada
 
         progressBar.setMax(100);
 
+        //ETRE AU LANCEMENT A L'ETAPE 1
+        /*
+        final List<IdeeData> listeChallenge = databaseManager.lireTableChallenge();
+        activiteChoisie = listeChallenge.get(0).getNom();
+        savedDataList.add(activiteChoisie);
+        savedDataList.add(Integer.toString(1));
+        saveList(savedDataList,"savedDataList");
+
+         */
+
 
 
     }
@@ -146,23 +156,34 @@ public class ChoixIdeeLongTermeActivity extends AppCompatActivity implements Ada
 
                 System.out.println("listeIdChallenge max : " + Collections.max(listeIdChallenge));
 
+                ArrayList<Integer> trouverMaxId = new ArrayList<>();
+                for(int iTrouverIdMax=0;iTrouverIdMax<10;iTrouverIdMax++){
+                    if(databaseManager.lireIdSpecifique(iTrouverIdMax+listeIdChallenge.get(i)).getNote() != 666){
+                        trouverMaxId.add(databaseManager.lireIdSpecifique(iTrouverIdMax+listeIdChallenge.get(i)).getIdIdee());
+                    }
+                }
+                int maxId = Collections.max(trouverMaxId);
+
+                System.out.println("maxId de trouverMaxId (ChoixIdee) : " + maxId);
+
+
 
 
 
                 int j = listeIdChallenge.get(i)+1;
 
                     if(listeIdChallenge.get(i) != 0) {
-                        while (j <= Collections.max(listeIdChallenge) % 10 + listeIdChallenge.get(i)) {
+                        while (j <= maxId) {
 
                             sousIdees.add(databaseManager.lireIdSpecifique(j));
-                            System.out.println("sousIdees %10 : " + sousIdees.get(0).getNom());
+                            System.out.println("sousIdees  %10: " + sousIdees.get(0).getNom());
                             j++;
 
                         }
                     }
 
                     if(listeIdChallenge.get(i) == 0) {
-                        while (j <= Collections.max(listeIdChallenge) % 10) {
+                        while (j <= maxId) {
                             sousIdees.add(databaseManager.lireIdSpecifique(j));
                             //System.out.println("sousIdees : " + sousIdees.get(0).getNom());
                             j++;
@@ -322,6 +343,16 @@ public class ChoixIdeeLongTermeActivity extends AppCompatActivity implements Ada
         int resultatFinal =  Integer.parseInt(strumon);
 
         return resultatFinal;
+    }
+
+
+    public boolean saveList(ArrayList<String> list, String listName) {
+        SharedPreferences prefs = getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt(listName +"_size", list.size());
+        for(int i=0;i<list.size();i++)
+            editor.putString(listName + "_" + i, list.get(i));
+        return editor.commit();
     }
 
 

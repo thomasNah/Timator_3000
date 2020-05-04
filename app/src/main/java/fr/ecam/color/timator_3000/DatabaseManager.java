@@ -10,6 +10,7 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -350,10 +351,23 @@ public class DatabaseManager extends SQLiteOpenHelper {
         System.out.println("max : " + max);
         System.out.println("max%10 : " + max%10);
 
-        int i = idChallenge+1;
 
+        ArrayList<Integer> trouverMaxId = new ArrayList<>();
+        for(int j=0;j<10;j++){
+            if(lireIdSpecifique(idChallenge+j).getNote() != 666){
+                trouverMaxId.add(lireIdSpecifique(idChallenge+j).getIdIdee());
+                //System.out.println("trouverMaxId (DataBaseManager) : " + trouverMaxId.get(j));
+            }
+
+
+        }
+        max = Collections.max(trouverMaxId);
+        System.out.println("max de trouverMaxId (DatabaseManager : " + max);
+
+
+        int i = idChallenge+1;
         if(idChallenge != 0){
-            while (i <= max%10 + idChallenge ) {
+            while (i <= max ) {
                 /*
                 System.out.println("Je rentre dans la boucle");
                 System.out.println("i : " + i + "et max : " + max);
@@ -367,7 +381,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         }
 
         if(idChallenge == 0){
-            while (i <= max%10 ) {
+            while (i <= max ) {
                 /*
                 dureeTotalMinutes = dureeTotalMinutes + this.convertisseurDuree(i);
                 System.out.println("dureeTotalMinutes in boucle : " + dureeTotalMinutes);
