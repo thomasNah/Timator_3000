@@ -22,6 +22,7 @@ public class EditerIdeeActivity extends AppCompatActivity {
         private Button boutonEdit;
         private EditText editIdee;
         private TextView ideeEditee;
+        private Button deleteBouton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,8 @@ public class EditerIdeeActivity extends AppCompatActivity {
         boutonEdit = findViewById(R.id.button);
         editIdee = findViewById(R.id.editText);
         ideeEditee = findViewById(R.id.textView3);
+        editIdee.setHint("Description Idee");
+        deleteBouton = findViewById(R.id.button2);
 
         Intent intent = getIntent();
          String nomIdee = "";
@@ -73,6 +76,21 @@ public class EditerIdeeActivity extends AppCompatActivity {
                     }
                 }
             }
+        });
+        deleteBouton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for  (int i=0;i<idees.size();i++){
+                    if (idees.get(i).getNom().equals(nomIdeeFinal)){
+                        int idIdee = idees.get(i).getIdIdee();
+                        String str = "delete from IDEE where idIdee ="+idIdee;
+                        databaseManager.getWritableDatabase().execSQL(str);
+                        Intent RetourGererPerso = new Intent(EditerIdeeActivity.this,GererPersoActivity.class);
+                        startActivity(RetourGererPerso);
+                    }
+                }
+            }
+
         });
         //ideeEditee.setText(ideeData[0].toString());
         idee.setText(nomIdee);
