@@ -214,35 +214,48 @@ public class DatabaseManager extends SQLiteOpenHelper {
     }
 
     public IdeeData lireIdSpecifique(int id){
+        //System.out.println("lireIdSpecifique(i) avec i :" + id);
         List<IdeeData> idees = new ArrayList<>();
         String strSql = "select * from CHALLENGE ";
         Cursor cursor = this.getReadableDatabase().rawQuery(strSql,null);
         //cursor.moveToPosition(id);
         cursor.moveToFirst();
         IdeeData idee = new IdeeData(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getString(3), cursor.getInt(4));
-        while(idee.getIdIdee() != id){
+        boolean flag = false;
+        while(idee.getIdIdee() != id || flag == false){
 
-            cursor.moveToNext();
+
             idee = new IdeeData(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getString(3), cursor.getInt(4));
             //System.out.println("BAAZIINGA");
             //System.out.println(cursor.getPosition());
-            //System.out.println(idee.getNom());
+            //  System.out.println(idee.getNom());
 
             //System.out.println("this.getIdMaxChallenge() : " + this.getIdMaxChallenge());
             //System.out.println("idee.getIdIdee() : " + idee.getIdIdee());
 
+            if(idee.getIdIdee() == id){
+                //System.out.println("JE RETOURNE MON IDEE");
+                return idee;
+            }
+
+            if(idee.getIdIdee() == this.getIdMaxChallenge()){
+                flag = true;
+                idee = new IdeeData(id,"none","none","none",666);
+                return idee;
+            }
+            else{
+                cursor.moveToNext();
+            }
+
+
+
 
         }
 
-        if(idee.getIdIdee() == id){
-            return idee;
-        }
-        else{
-            idee = new IdeeData(id,"none","none","none",666);
-            return idee;
-        }
 
 
+        idee = new IdeeData(id,"none","none","none",666);
+        return idee;
 
 
 
@@ -302,6 +315,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         System.out.println("Bazinga");
         String duree = this.lireIdSpecifique(idIdee).getDuree();
         System.out.println(duree);
+        /*
 
         int indice = 0;
 
@@ -314,6 +328,9 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
 
         int dureeConvert = arrayTempsDispoConvertToMinutesInInteger[indice];
+
+         */
+        int dureeConvert = getIntegers(duree);
         System.out.println("dureeConvert : " + dureeConvert);
         return dureeConvert;
 
@@ -337,18 +354,28 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
         if(idChallenge != 0){
             while (i <= max%10 + idChallenge ) {
+                /*
                 System.out.println("Je rentre dans la boucle");
                 System.out.println("i : " + i + "et max : " + max);
                 dureeTotalMinutes = dureeTotalMinutes + this.convertisseurDuree(i);
                 System.out.println("dureeTotalMinutes in boucle : " + dureeTotalMinutes);
+                 */
+
+                dureeTotalMinutes = dureeTotalMinutes + getIntegers(lireIdSpecifique(i).getDuree());
                 i++;
             }
         }
 
         if(idChallenge == 0){
             while (i <= max%10 ) {
+                /*
                 dureeTotalMinutes = dureeTotalMinutes + this.convertisseurDuree(i);
                 System.out.println("dureeTotalMinutes in boucle : " + dureeTotalMinutes);
+                 */
+                if(getIntegers(lireIdSpecifique(i).getDuree()) > 0){
+                    dureeTotalMinutes = dureeTotalMinutes + getIntegers(lireIdSpecifique(i).getDuree());
+                }
+                //System.out.println(getIntegers(lireIdSpecifique(i).getDuree()));
                 i++;
             }
         }
@@ -374,5 +401,47 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     }
 
+    public static int getIntegers(String str) {
+
+        ArrayList<Integer> list = new ArrayList<Integer>();
+
+        //découper la phrase en mots
+        String[] splited = str.split(" ");
+
+        //parcourir les mots
+        for (String current : splited) {
+            try {
+                //tenter de convertir le mot en int
+                int parsedInt = Integer.parseInt (current);
+                //ajouter l Integer à la list
+                list.add(parsedInt);                    //un "auto boxing", une instance de Integer est créée à partir d'un int
+            } catch (NumberFormatException e) {
+                //c est pas un int
+            }
+        }
+
+        //construire le résultat
+        int[] result = new int[list.size()];
+        for (int i = 0 ; i < list.size() ; i++) {
+            //parcourir la list de Integer créée
+            result[i] = list.get(i);
+        }
+
+        //Lire le resultat (String)
+        String strumon = "-1";
+        for(int i = 0;i<result.length;i++){
+            strumon = Integer.toString(result[i]);
+        }
+
+        //Convertir en INT
+        int resultatFinal =  Integer.parseInt(strumon);
+
+        return resultatFinal;
+    }
+
+
+
+
 
 }
+

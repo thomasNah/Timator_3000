@@ -94,18 +94,22 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         List<IdeeData> ideesChallenge = databaseManager.lireTableChallenge();
         Log.i("DATABASE", String.valueOf(ideesChallenge.size()));
         if (ideesChallenge.size() ==0) {
+            //ATTENTION : NE PAS METTRE DE DUREE EN H ! QUE EN MINUTES POUR LES CHALLENGE (sinon pb l.215 - Choix)
 
             //ID 0 A 10 - Touchez votre audience sur mobile - https://learndigital.withgoogle.com/ateliersnumeriques/course/connect-with-mobile
             databaseManager.insertIdeeChallenge(00, "https://learndigital.withgoogle.com/ateliersnumeriques/course/connect-with-mobile", "none", "Touchez votre audience sur mobile", 3);
             databaseManager.insertIdeeChallenge(01, "https://learndigital.withgoogle.com/ateliersnumeriques/course/connect-with-mobile/module/17", "30 minutes", "Tirez profit des opportunités qu'offre le mobile", 3);
             databaseManager.insertIdeeChallenge(02, "https://learndigital.withgoogle.com/ateliersnumeriques/course/connect-with-mobile/module/16", "20 minutes", "Découvrez les possibilités offertes par le mobile", 3);
 
+            databaseManager.insertIdeeChallenge(10,"https://learndigital.withgoogle.com/ateliersnumeriques/course/business-online","none","Lancez une activité en ligne",3);
+            databaseManager.insertIdeeChallenge(11,"","100 minutes","Les opportunités qu'offre Internet",3);
+            databaseManager.insertIdeeChallenge(12,"","15 minutes","Vos premiers pas vers le succès sur Internet",3);
+            databaseManager.insertIdeeChallenge(13,"","30 minutes","Planifiez votre stratégie commerciale sur le Web",3);
 
-            //ID 10 A 20 - Test
+            databaseManager.insertIdeeChallenge(20,"https://learndigital.withgoogle.com/ateliersnumeriques/course/business-online","none","Ta maman",3);
+            databaseManager.insertIdeeChallenge(21,"","100 minutes","Les opportunités qu'offre Internet",3);
+            databaseManager.insertIdeeChallenge(22,"","15 minutes","Vos premiers pas vers le succès sur Internet",3);
 
-            databaseManager.insertIdeeChallenge(10,"","none","Test",3);
-            databaseManager.insertIdeeChallenge(11,"","45 minutes","Sousa",3);
-            databaseManager.insertIdeeChallenge(12,"","1h","Sousa deux",3);
 
 
 

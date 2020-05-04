@@ -155,7 +155,7 @@ public class ChoixIdeeLongTermeActivity extends AppCompatActivity implements Ada
                         while (j <= Collections.max(listeIdChallenge) % 10 + listeIdChallenge.get(i)) {
 
                             sousIdees.add(databaseManager.lireIdSpecifique(j));
-                            //System.out.println("sousIdees : " + sousIdees.get(0).getNom());
+                            System.out.println("sousIdees %10 : " + sousIdees.get(0).getNom());
                             j++;
 
                         }
@@ -212,6 +212,7 @@ public class ChoixIdeeLongTermeActivity extends AppCompatActivity implements Ada
                                     //Choper la durée totale faite
                                     int dureeDone = 0;
                                     for (int iDuree = 0; iDuree < etapeInt - 1; iDuree++) {
+                                        //System.out.println("dureee ta maman : " +  getIntegers(sousIdees.get(iDuree).getDuree()));
                                         dureeDone = dureeDone + getIntegers(sousIdees.get(iDuree).getDuree());
                                     }
                                     System.out.println("dureeDone :" + dureeDone);
