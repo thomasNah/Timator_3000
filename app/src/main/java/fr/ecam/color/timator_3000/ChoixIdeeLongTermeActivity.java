@@ -66,14 +66,28 @@ public class ChoixIdeeLongTermeActivity extends AppCompatActivity implements Ada
         progressBar.setMax(100);
 
         //ETRE AU LANCEMENT A L'ETAPE 1
-        /*
-        final List<IdeeData> listeChallenge = databaseManager.lireTableChallenge();
-        activiteChoisie = listeChallenge.get(0).getNom();
-        savedDataList.add(activiteChoisie);
-        savedDataList.add(Integer.toString(1));
-        saveList(savedDataList,"savedDataList");
 
-         */
+        final List<Integer> listeIdChallenge = new ArrayList<>();
+        for(int i = 0; i<databaseManager.getIdMaxChallenge();i = i + 10){
+            if(databaseManager.lireIdSpecifique(i).getNote() != 666){
+                listeIdChallenge.add(databaseManager.lireIdSpecifique(i).getIdIdee());
+            }
+
+            //System.out.println("listeIdChallenge : " + listeIdChallenge.get(i));
+        }
+        for(int j = 0; j<listeIdChallenge.size();j++){
+            activiteChoisie = databaseManager.lireIdSpecifique(listeIdChallenge.get(j)).getNom();
+            //System.out.println(activiteChoisie);
+            savedDataList.add(activiteChoisie);
+            savedDataList.add(Integer.toString(1));
+        }
+        //System.out.println("ONCREATE SAVED DATA LIST : ");
+        //readList(savedDataList);
+        //saveList(savedDataList,"savedDataList");
+
+
+
+
 
 
 
@@ -291,7 +305,7 @@ public class ChoixIdeeLongTermeActivity extends AppCompatActivity implements Ada
         }
         else{
             for(int i = 0;i<list.size();i++){
-                System.out.println(list.get(i));
+                System.out.println("Liste lue : " + list.get(i));
             }
 
         }
@@ -354,6 +368,8 @@ public class ChoixIdeeLongTermeActivity extends AppCompatActivity implements Ada
             editor.putString(listName + "_" + i, list.get(i));
         return editor.commit();
     }
+
+
 
 
 
