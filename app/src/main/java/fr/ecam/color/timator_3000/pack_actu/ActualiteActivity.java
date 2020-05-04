@@ -1,5 +1,6 @@
 package fr.ecam.color.timator_3000.pack_actu;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -50,7 +51,11 @@ public class ActualiteActivity extends AppCompatActivity {
                     description1 = findViewById(R.id.description1);
                     description1.setText(article1.getDescription().toString());
                     image1 = findViewById(R.id.image1);
-                    new DownloadImageTask(image1).execute(article1.getUrlToImage().toString());
+                    if(article1.getUrlToImage() == null) {
+                        image1.setImageDrawable(getResources().getDrawable(R.drawable.image_pbactu));
+                    } else {
+                        new DownloadImageTask(image1).execute(article1.getUrlToImage().toString());
+                    }
                     date1 = findViewById(R.id.date1);
                     date1.setText(article1.getPublishedAt());
                     //Récupération du 2eme article
@@ -60,7 +65,11 @@ public class ActualiteActivity extends AppCompatActivity {
                     description2 = findViewById(R.id.description2);
                     description2.setText(article2.getDescription().toString());
                     image2 = findViewById(R.id.image2);
-                    new DownloadImageTask(image2).execute(article2.getUrlToImage().toString());
+                    if(article2.getUrlToImage() == null) {
+                        image2.setImageDrawable(getResources().getDrawable(R.drawable.image_pbactu));
+                    } else {
+                        new DownloadImageTask(image2).execute(article2.getUrlToImage().toString());
+                    }
                     date2 = findViewById(R.id.date2);
                     date2.setText(article2.getPublishedAt());
                     //Récupération du 3eme article
@@ -70,8 +79,9 @@ public class ActualiteActivity extends AppCompatActivity {
                     description3 = findViewById(R.id.description3);
                     description3.setText(article3.getDescription().toString());
                     image3 = findViewById(R.id.image3);
-                    String image = article3.getUrlToImage().toString();
-                    if (image != null){
+                    if(article3.getUrlToImage() == null) {
+                        image3.setImageDrawable(getResources().getDrawable(R.drawable.image_pbactu));
+                    } else {
                         new DownloadImageTask(image3).execute(article3.getUrlToImage().toString());
                     }
                     date3 = findViewById(R.id.date3);
@@ -83,7 +93,11 @@ public class ActualiteActivity extends AppCompatActivity {
                     description4 = findViewById(R.id.description4);
                     description4.setText(article4.getDescription().toString());
                     image4 = findViewById(R.id.image4);
-                    new DownloadImageTask(image4).execute(article4.getUrlToImage().toString());
+                    if(article4.getUrlToImage() == null) {
+                        image4.setImageDrawable(getResources().getDrawable(R.drawable.image_pbactu));
+                    } else {
+                        new DownloadImageTask(image4).execute(article4.getUrlToImage().toString());
+                    }
                     date4 = findViewById(R.id.date4);
                     date4.setText(article4.getPublishedAt());
 
