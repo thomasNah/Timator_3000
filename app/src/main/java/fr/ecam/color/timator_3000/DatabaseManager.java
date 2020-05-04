@@ -25,7 +25,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
+        // création de la table IDEE
         String strSql = "create table IDEE ( idIdee integer primary key not null,"
                 +"contenu text,"
                 +" duree text not null,"
@@ -65,24 +65,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     public void insertIdee (int idIdee, String contenu, String duree, String nom, int note) {
         boolean flag = true;
-        List<IdeeData> idees = new ArrayList<>();
-        String strSql1 = "select * from IDEE ";
-        Cursor cursor = this.getReadableDatabase().rawQuery(strSql1,null);
-        cursor.moveToFirst();
-        while(! cursor.isAfterLast()){
-            IdeeData idee = new IdeeData(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getInt(4));
-            idees.add(idee);
-            cursor.moveToNext();
-        }
-        cursor.close();
-        for (int i = 0; i < idees.size(); i++) {
-            if ((idees.get(i).getIdIdee() == idIdee) & (idees.get(i).getContenu().equals(contenu) == true)) {
-                flag = false;
-            }
-            else{
-            }
-        }
-            if (flag == true){
+        List<IdeeData> idees =this.lireTable();
                 contenu = contenu.replace("'", "''");
             nom = nom.replace("'", "''");
             String strSql = "insert into IDEE (idIdee,contenu,duree,nom,note) values(" + idIdee + ",'"
@@ -90,7 +73,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
             this.getWritableDatabase().execSQL(strSql);
             Log.i("DATABASE", "insertIdee invoked");
 
-        }
+        //}
     }
 ////////////////////////////////////////
 

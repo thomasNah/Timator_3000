@@ -62,11 +62,10 @@ public class EditerIdeeActivity extends AppCompatActivity {
                     if (idees.get(i).getNom().equals(nomIdeeFinal)){
                         //c'est ici qu'on update l'idee dans la base de données
                         int idIdee = idees.get(i).getIdIdee();
-                        String nouvellDesc = String.valueOf(editIdee.getText());
+                        String nouvelleDesc = String.valueOf(editIdee.getText());
                         String nouvelleDuree = String.valueOf(spinnerTempsDispo.getSelectedItem());
                         int nouvelleNote = Integer.valueOf(String.valueOf(spinnerNote.getSelectedItem()));
-                        String str = "update IDEE set contenu = '"+nouvellDesc+"' , duree = '"+nouvelleDuree+"', note =" +nouvelleNote+" where idIdee = "+idIdee;
-                        //String strSql = "update IDEE set contenu = '"+ nouvellDesc +"', duree ='"+ nouvelleDuree+"', note = "+nouvelleNote +"where nom = '"+nomIdeeFinal+"'";
+                        String str = "update IDEE set contenu = '"+nouvelleDesc+"' , duree = '"+nouvelleDuree+"', note =" +nouvelleNote+" where idIdee = "+idIdee;
                         databaseManager.getWritableDatabase().execSQL(str);
                         List<IdeeData> idees1  = databaseManager.lireTable();
                         ideeEditee.setText(idees1.get(i).toString());
