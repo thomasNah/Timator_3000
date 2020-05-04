@@ -16,6 +16,7 @@
         app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:textIsSelectable="true"
         app:layout_constraintVertical_bias="0.031" />
 
     <TextView
@@ -28,6 +29,7 @@
         app:layout_constraintHorizontal_bias="0.53"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:textIsSelectable="true"
         app:layout_constraintVertical_bias="0.434" />
 
     <Button
@@ -64,6 +66,7 @@
         app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:textIsSelectable="true"
         app:layout_constraintVertical_bias="0.179" />
 
     <TextView
@@ -76,6 +79,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.556"
         app:layout_constraintStart_toStartOf="parent"
+        android:textIsSelectable="true"
         app:layout_constraintTop_toBottomOf="@+id/echeancesText" />
 
     <TextView
@@ -88,6 +92,7 @@
         app:layout_constraintHorizontal_bias="0.089"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:textIsSelectable="true"
         app:layout_constraintVertical_bias="0.282" />
 
     <TextView
@@ -100,6 +105,7 @@
         app:layout_constraintHorizontal_bias="0.089"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:textIsSelectable="true"
         app:layout_constraintVertical_bias="0.346" />
 
     <TextView
@@ -112,6 +118,7 @@
         app:layout_constraintHorizontal_bias="0.839"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:textIsSelectable="true"
         app:layout_constraintVertical_bias="0.282" />
 
     <TextView
@@ -124,6 +131,7 @@
         app:layout_constraintHorizontal_bias="0.839"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:textIsSelectable="true"
         app:layout_constraintVertical_bias="0.345" />
 
     <TextView
@@ -136,6 +144,7 @@
         app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:textIsSelectable="true"
         app:layout_constraintVertical_bias="0.719" />
 
     <TextView
@@ -149,6 +158,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:textIsSelectable="true"
         app:layout_constraintVertical_bias="0.777" />
 
     <ProgressBar
