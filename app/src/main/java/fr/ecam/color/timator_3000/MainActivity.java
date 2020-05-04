@@ -102,9 +102,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             databaseManager.insertIdeeChallenge(02, "https://learndigital.withgoogle.com/ateliersnumeriques/course/connect-with-mobile/module/16", "20 minutes", "Découvrez les possibilités offertes par le mobile", 3);
 
             databaseManager.insertIdeeChallenge(10,"https://learndigital.withgoogle.com/ateliersnumeriques/course/business-online","none","Lancez une activité en ligne",3);
-            databaseManager.insertIdeeChallenge(11,"","100 minutes","Les opportunités qu'offre Internet",3);
-            databaseManager.insertIdeeChallenge(12,"","15 minutes","Vos premiers pas vers le succès sur Internet",3);
-            databaseManager.insertIdeeChallenge(13,"","30 minutes","Planifiez votre stratégie commerciale sur le Web",3);
+            databaseManager.insertIdeeChallenge(11,"https://learndigital.withgoogle.com/ateliersnumeriques/course/business-online/module/1","100 minutes","Les opportunités qu'offre Internet",3);
+            databaseManager.insertIdeeChallenge(12,"https://learndigital.withgoogle.com/ateliersnumeriques/course/business-online/module/2","15 minutes","Vos premiers pas vers le succès sur Internet",3);
+            databaseManager.insertIdeeChallenge(13,"https://learndigital.withgoogle.com/ateliersnumeriques/course/business-online/module/137","30 minutes","Planifiez votre stratégie commerciale sur le Web",3);
 
             databaseManager.insertIdeeChallenge(20,"https://learndigital.withgoogle.com/ateliersnumeriques/course/business-online","none","Ta maman",3);
             databaseManager.insertIdeeChallenge(21,"","100 minutes","Les opportunités qu'offre Internet",3);
