@@ -102,13 +102,24 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             databaseManager.insertIdeeChallenge(02, "https://learndigital.withgoogle.com/ateliersnumeriques/course/connect-with-mobile/module/16", "20 minutes", "Découvrez les possibilités offertes par le mobile", 3);
 
             databaseManager.insertIdeeChallenge(10,"https://learndigital.withgoogle.com/ateliersnumeriques/course/business-online","none","Lancez une activité en ligne",3);
-            databaseManager.insertIdeeChallenge(11,"https://learndigital.withgoogle.com/ateliersnumeriques/course/business-online/module/1","100 minutes","Les opportunités qu'offre Internet",3);
-            databaseManager.insertIdeeChallenge(12,"https://learndigital.withgoogle.com/ateliersnumeriques/course/business-online/module/2","15 minutes","Vos premiers pas vers le succès sur Internet",3);
+            databaseManager.insertIdeeChallenge(11,"https://learndigital.withgoogle.com/ateliersnumeriques/course/business-online/module/1","15 minutes","Les opportunités qu'offre Internet",3);
+            databaseManager.insertIdeeChallenge(12,"https://learndigital.withgoogle.com/ateliersnumeriques/course/business-online/module/2","30 minutes","Vos premiers pas vers le succès sur Internet",3);
             databaseManager.insertIdeeChallenge(13,"https://learndigital.withgoogle.com/ateliersnumeriques/course/business-online/module/137","30 minutes","Planifiez votre stratégie commerciale sur le Web",3);
+            databaseManager.insertIdeeChallenge(14,"https://learndigital.withgoogle.com/ateliersnumeriques/course/business-online/module/22","25 minutes","Créez votre boutique en ligne",3);
+            databaseManager.insertIdeeChallenge(15,"https://learndigital.withgoogle.com/ateliersnumeriques/course/business-online/module/23","35 minutes","Augmentez vos ventes en ligne",3);
+            databaseManager.insertIdeeChallenge(16,"https://learndigital.withgoogle.com/ateliersnumeriques/course/business-online/module/3","40 minutes","Développez votre présence en ligne",3);
+            databaseManager.insertIdeeChallenge(17,"https://learndigital.withgoogle.com/ateliersnumeriques/course/business-online/module/12","20 minutes","Faites-vous connaître localement",3);
 
-            databaseManager.insertIdeeChallenge(20,"https://learndigital.withgoogle.com/ateliersnumeriques/course/business-online","none","Ta maman",3);
-            databaseManager.insertIdeeChallenge(21,"","100 minutes","Les opportunités qu'offre Internet",3);
-            databaseManager.insertIdeeChallenge(22,"","15 minutes","Vos premiers pas vers le succès sur Internet",3);
+            databaseManager.insertIdeeChallenge(20,"https://openclassrooms.com/fr/courses/4312781-apprenez-a-apprendre","none","Apprenez à apprendre",3);
+            databaseManager.insertIdeeChallenge(21,"https://openclassrooms.com/fr/courses/4312781-apprenez-a-apprendre/4789781-tirez-un-maximum-de-ce-cours","80 minutes","Préparez-vous à apprendre",3);
+            databaseManager.insertIdeeChallenge(22,"https://openclassrooms.com/fr/courses/4312781-apprenez-a-apprendre/4789866-definissez-votre-objectif-strategique","80 minutes","Définissez votre objectif stratégique",3);
+            databaseManager.insertIdeeChallenge(23,"https://openclassrooms.com/fr/courses/4312781-apprenez-a-apprendre/4790551-visez-le-bon-niveau","80 minutes","Visez le bon niveau",3);
+            databaseManager.insertIdeeChallenge(24,"https://openclassrooms.com/fr/courses/4312781-apprenez-a-apprendre/4790751-mettez-en-place-votre-environnement-dapprentissage","120 minutes","Mettez en place votre environnement d'apprentissage",3);
+
+
+            //IDEE CHALLENGE VIERGE
+            //databaseManager.insertIdeeChallenge(00,"","","",3);
+
 
 
 

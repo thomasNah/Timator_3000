@@ -390,6 +390,7 @@ public class ChoixIdeeLongTermeActivity extends AppCompatActivity implements Ada
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
        editor.putBoolean("flagDejaRentre",flagDejaRentre);
+       editor.putString("activiteSpinner",activiteChoisie);
 
         editor.apply();
 
