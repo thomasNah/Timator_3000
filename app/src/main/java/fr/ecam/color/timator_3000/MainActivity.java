@@ -94,18 +94,33 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         List<IdeeData> ideesChallenge = databaseManager.lireTableChallenge();
         Log.i("DATABASE", String.valueOf(ideesChallenge.size()));
         if (ideesChallenge.size() ==0) {
+            //ATTENTION : NE PAS METTRE DE DUREE EN H ! QUE EN MINUTES POUR LES CHALLENGE (sinon pb l.215 - Choix)
 
             //ID 0 A 10 - Touchez votre audience sur mobile - https://learndigital.withgoogle.com/ateliersnumeriques/course/connect-with-mobile
             databaseManager.insertIdeeChallenge(00, "https://learndigital.withgoogle.com/ateliersnumeriques/course/connect-with-mobile", "none", "Touchez votre audience sur mobile", 3);
             databaseManager.insertIdeeChallenge(01, "https://learndigital.withgoogle.com/ateliersnumeriques/course/connect-with-mobile/module/17", "30 minutes", "Tirez profit des opportunités qu'offre le mobile", 3);
             databaseManager.insertIdeeChallenge(02, "https://learndigital.withgoogle.com/ateliersnumeriques/course/connect-with-mobile/module/16", "20 minutes", "Découvrez les possibilités offertes par le mobile", 3);
 
+            databaseManager.insertIdeeChallenge(10,"https://learndigital.withgoogle.com/ateliersnumeriques/course/business-online","none","Lancez une activité en ligne",3);
+            databaseManager.insertIdeeChallenge(11,"https://learndigital.withgoogle.com/ateliersnumeriques/course/business-online/module/1","15 minutes","Les opportunités qu'offre Internet",3);
+            databaseManager.insertIdeeChallenge(12,"https://learndigital.withgoogle.com/ateliersnumeriques/course/business-online/module/2","30 minutes","Vos premiers pas vers le succès sur Internet",3);
+            databaseManager.insertIdeeChallenge(13,"https://learndigital.withgoogle.com/ateliersnumeriques/course/business-online/module/137","30 minutes","Planifiez votre stratégie commerciale sur le Web",3);
+            databaseManager.insertIdeeChallenge(14,"https://learndigital.withgoogle.com/ateliersnumeriques/course/business-online/module/22","25 minutes","Créez votre boutique en ligne",3);
+            databaseManager.insertIdeeChallenge(15,"https://learndigital.withgoogle.com/ateliersnumeriques/course/business-online/module/23","35 minutes","Augmentez vos ventes en ligne",3);
+            databaseManager.insertIdeeChallenge(16,"https://learndigital.withgoogle.com/ateliersnumeriques/course/business-online/module/3","40 minutes","Développez votre présence en ligne",3);
+            databaseManager.insertIdeeChallenge(17,"https://learndigital.withgoogle.com/ateliersnumeriques/course/business-online/module/12","20 minutes","Faites-vous connaître localement",3);
 
-            //ID 10 A 20 - Test
+            databaseManager.insertIdeeChallenge(20,"https://openclassrooms.com/fr/courses/4312781-apprenez-a-apprendre","none","Apprenez à apprendre",3);
+            databaseManager.insertIdeeChallenge(21,"https://openclassrooms.com/fr/courses/4312781-apprenez-a-apprendre/4789781-tirez-un-maximum-de-ce-cours","80 minutes","Préparez-vous à apprendre",3);
+            databaseManager.insertIdeeChallenge(22,"https://openclassrooms.com/fr/courses/4312781-apprenez-a-apprendre/4789866-definissez-votre-objectif-strategique","80 minutes","Définissez votre objectif stratégique",3);
+            databaseManager.insertIdeeChallenge(23,"https://openclassrooms.com/fr/courses/4312781-apprenez-a-apprendre/4790551-visez-le-bon-niveau","80 minutes","Visez le bon niveau",3);
+            databaseManager.insertIdeeChallenge(24,"https://openclassrooms.com/fr/courses/4312781-apprenez-a-apprendre/4790751-mettez-en-place-votre-environnement-dapprentissage","120 minutes","Mettez en place votre environnement d'apprentissage",3);
 
-            databaseManager.insertIdeeChallenge(10,"","none","Test",3);
-            databaseManager.insertIdeeChallenge(11,"","45 minutes","Sousa",3);
-            databaseManager.insertIdeeChallenge(12,"","1h","Sousa deux",3);
+
+            //IDEE CHALLENGE VIERGE
+            //databaseManager.insertIdeeChallenge(00,"","","",3);
+
+
 
 
 
@@ -137,27 +152,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     Intent WeatherActivityInt = new Intent(MainActivity.this, WeatherActivity.class);
                     startActivity(WeatherActivityInt);
                 } else if (inputTempsDispo.equals("2 minutes")) {
-                    GetActuService ws = RetrofitBuilder.getSimpleClient();
-                    ws.getArticle().enqueue(new Callback<Actu>() {
-                        @Override
-                        public void onResponse(Call<Actu> call, Response<Actu> response) {
-                            if (response.code()==200) {
-                                System.out.println(response.body().getArticles().size());
-                                //Récupération du 1er article
-                                Article article = response.body().getArticles().get(0);
-                                System.out.println("onResponse " + article.getTitle());
-                                System.out.println("onResponse " + article.getDescription());
-                                System.out.println("onResponse " + article.getPublishedAt());
-                            } else {
-                                System.out.println("Une erreur est survenue " + response.code());
-                            }
-                            System.out.println(response.body().toString());
-                        }
-                        @Override
-                        public void onFailure(Call<Actu> call, Throwable t) {
-                            System.out.println("onFailure " + t.getMessage());
-                        }
-                    });
                     Intent ActuActivity = new Intent(MainActivity.this, ActualiteActivity.class);
                     startActivity(ActuActivity);
                 } else {

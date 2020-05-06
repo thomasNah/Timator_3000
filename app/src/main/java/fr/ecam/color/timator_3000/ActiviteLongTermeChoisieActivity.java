@@ -145,6 +145,7 @@ public class ActiviteLongTermeChoisieActivity extends AppCompatActivity {
 
                 if(savedDataList.contains(activiteChoisie)){
                     int index = savedDataList.indexOf(activiteChoisie);
+                    System.out.println("index add :" + index);
                     savedDataList.set(index+1,Integer.toString(etapeActuelle));
                 }
                 else{

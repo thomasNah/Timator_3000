@@ -25,6 +25,8 @@ import java.util.List;
 public class ChoixIdeeLongTermeActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     public static final String SHARED_PREFS = "sharedPrefs";
 
+    private boolean flagDejaRentre;
+
     private Button voirEcheances;
     private Spinner spinnerIdeeLongTerme;
     private TextView descriptionIdee;
@@ -64,6 +66,42 @@ public class ChoixIdeeLongTermeActivity extends AppCompatActivity implements Ada
         databaseManager = new DatabaseManager(this);
 
         progressBar.setMax(100);
+
+        //System.out.println("flagDejaRentre 1 :" + flagDejaRentre);
+
+        loadData();
+
+        //System.out.println("flagDejaRentre 2 :" + flagDejaRentre);
+        if( flagDejaRentre == false){
+            //ETRE AU LANCEMENT A L'ETAPE 1
+            final List<Integer> listeIdChallenge = new ArrayList<>();
+            for(int i = 0; i<databaseManager.getIdMaxChallenge();i = i + 10){
+                if(databaseManager.lireIdSpecifique(i).getNote() != 666){
+                    listeIdChallenge.add(databaseManager.lireIdSpecifique(i).getIdIdee());
+                }
+
+                //System.out.println("listeIdChallenge : " + listeIdChallenge.get(i));
+            }
+            for(int j = 0; j<listeIdChallenge.size();j++){
+                activiteChoisie = databaseManager.lireIdSpecifique(listeIdChallenge.get(j)).getNom();
+                //System.out.println(activiteChoisie);
+                savedDataList.add(activiteChoisie);
+                savedDataList.add(Integer.toString(1));
+            }
+            //System.out.println("ONCREATE SAVED DATA LIST : ");
+            //readList(savedDataList);
+            saveList(savedDataList,"savedDataList");
+            flagDejaRentre = true;
+            saveData();
+        }
+
+        //System.out.println("flagDejaRentre 3 :" + flagDejaRentre);
+
+
+
+
+
+
 
 
 
@@ -146,23 +184,34 @@ public class ChoixIdeeLongTermeActivity extends AppCompatActivity implements Ada
 
                 System.out.println("listeIdChallenge max : " + Collections.max(listeIdChallenge));
 
+                ArrayList<Integer> trouverMaxId = new ArrayList<>();
+                for(int iTrouverIdMax=0;iTrouverIdMax<10;iTrouverIdMax++){
+                    if(databaseManager.lireIdSpecifique(iTrouverIdMax+listeIdChallenge.get(i)).getNote() != 666){
+                        trouverMaxId.add(databaseManager.lireIdSpecifique(iTrouverIdMax+listeIdChallenge.get(i)).getIdIdee());
+                    }
+                }
+                int maxId = Collections.max(trouverMaxId);
+
+                System.out.println("maxId de trouverMaxId (ChoixIdee) : " + maxId);
+
+
 
 
 
                 int j = listeIdChallenge.get(i)+1;
 
                     if(listeIdChallenge.get(i) != 0) {
-                        while (j <= Collections.max(listeIdChallenge) % 10 + listeIdChallenge.get(i)) {
+                        while (j <= maxId) {
 
                             sousIdees.add(databaseManager.lireIdSpecifique(j));
-                            //System.out.println("sousIdees : " + sousIdees.get(0).getNom());
+                            System.out.println("sousIdees  %10: " + sousIdees.get(0).getNom());
                             j++;
 
                         }
                     }
 
                     if(listeIdChallenge.get(i) == 0) {
-                        while (j <= Collections.max(listeIdChallenge) % 10) {
+                        while (j <= maxId) {
                             sousIdees.add(databaseManager.lireIdSpecifique(j));
                             //System.out.println("sousIdees : " + sousIdees.get(0).getNom());
                             j++;
@@ -212,6 +261,7 @@ public class ChoixIdeeLongTermeActivity extends AppCompatActivity implements Ada
                                     //Choper la durée totale faite
                                     int dureeDone = 0;
                                     for (int iDuree = 0; iDuree < etapeInt - 1; iDuree++) {
+                                        //System.out.println("dureee ta maman : " +  getIntegers(sousIdees.get(iDuree).getDuree()));
                                         dureeDone = dureeDone + getIntegers(sousIdees.get(iDuree).getDuree());
                                     }
                                     System.out.println("dureeDone :" + dureeDone);
@@ -269,7 +319,7 @@ public class ChoixIdeeLongTermeActivity extends AppCompatActivity implements Ada
         }
         else{
             for(int i = 0;i<list.size();i++){
-                System.out.println(list.get(i));
+                System.out.println("Liste lue : " + list.get(i));
             }
 
         }
@@ -322,6 +372,37 @@ public class ChoixIdeeLongTermeActivity extends AppCompatActivity implements Ada
 
         return resultatFinal;
     }
+
+
+    public boolean saveList(ArrayList<String> list, String listName) {
+        SharedPreferences prefs = getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt(listName +"_size", list.size());
+        for(int i=0;i<list.size();i++)
+            editor.putString(listName + "_" + i, list.get(i));
+        return editor.commit();
+    }
+
+
+
+    public void saveData() {
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+       editor.putBoolean("flagDejaRentre",flagDejaRentre);
+       editor.putString("activiteSpinner",activiteChoisie);
+
+        editor.apply();
+
+        //Toast.makeText(this, "Data saved", Toast.LENGTH_SHORT).show();
+    }
+
+    public void loadData() {
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        flagDejaRentre = sharedPreferences.getBoolean("flagDejaRentre",false);
+    }
+
+
 
 
 

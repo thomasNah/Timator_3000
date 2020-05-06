@@ -59,14 +59,15 @@
         android:id="@+id/descriptionIdee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:autoLink="all"
         android:gravity="center_horizontal"
         android:hint="Aucune activité choisie ; description impossible"
+        android:textIsSelectable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:textIsSelectable="true"
         app:layout_constraintVertical_bias="0.179" />
 
     <TextView
@@ -74,12 +75,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:autoLink="web"
         android:gravity="center_horizontal"
         android:hint="Aucune prochaine échéance"
+        android:textIsSelectable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.556"
         app:layout_constraintStart_toStartOf="parent"
-        android:textIsSelectable="true"
         app:layout_constraintTop_toBottomOf="@+id/echeancesText" />
 
     <TextView

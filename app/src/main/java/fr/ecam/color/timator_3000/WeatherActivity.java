@@ -121,6 +121,7 @@ public class WeatherActivity extends AppCompatActivity {
         Weather weather  = new Weather();
         try {
             content1 = weather.execute("https://api.weatherbit.io/v2.0/forecast/hourly?city=Lyon&lang=fr&key=d31be973eb0149218e716d52a361d0da&hours=10").get();
+
             //verifier si les données sont récupérées
             Log.i("contentData", content1);
             System.out.println(content1);

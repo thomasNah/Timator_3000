@@ -20,7 +20,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ActualiteActivity extends AppCompatActivity {
+public class ActualiteActivity2 extends AppCompatActivity {
 
     private TextView title1;
     private TextView title2;
@@ -67,8 +67,8 @@ public class ActualiteActivity extends AppCompatActivity {
             public void onResponse(Call<Actu> call, Response<Actu> response) {
                 if (response.code()==200) {
                     int tot = response.body().getArticles().size();
-                    //Récupération du 1er article
-                    Article article1 = response.body().getArticles().get(0);
+                    //Récupération du 6er article
+                    Article article1 = response.body().getArticles().get(5);
                     TextView title1 = findViewById(R.id.titre1);
                     title1.setText(article1.getTitle());
                     description1 = findViewById(R.id.description1);
@@ -83,8 +83,8 @@ public class ActualiteActivity extends AppCompatActivity {
                     url1.setText("Lien vers l'article complet : " + article1.getUrl());
                     date1 = findViewById(R.id.date1);
                     date1.setText(article1.getPublishedAt());
-                    //Récupération du 2eme article
-                    Article article2 = response.body().getArticles().get(1);
+                    //Récupération du 7eme article
+                    Article article2 = response.body().getArticles().get(6);
                     title2 = findViewById(R.id.titre2);
                     title2.setText(article2.getTitle());
                     description2 = findViewById(R.id.description2);
@@ -99,8 +99,8 @@ public class ActualiteActivity extends AppCompatActivity {
                     url2.setText("Lien vers l'article complet : " + article2.getUrl());
                     date2 = findViewById(R.id.date2);
                     date2.setText(article2.getPublishedAt());
-                    //Récupération du 3eme article
-                    Article article3 = response.body().getArticles().get(2);
+                    //Récupération du 8eme article
+                    Article article3 = response.body().getArticles().get(7);
                     title3 = findViewById(R.id.titre3);
                     title3.setText(article3.getTitle());
                     description3 = findViewById(R.id.description3);
@@ -115,8 +115,8 @@ public class ActualiteActivity extends AppCompatActivity {
                     url3.setText("Lien vers l'article complet : " + article3.getUrl());
                     date3 = findViewById(R.id.date3);
                     date3.setText(article3.getPublishedAt());
-                    //Récupération du 4eme article
-                    Article article4 = response.body().getArticles().get(3);
+                    //Récupération du 9eme article
+                    Article article4 = response.body().getArticles().get(8);
                     title4 = findViewById(R.id.titre4);
                     title4.setText(article4.getTitle());
                     description4 = findViewById(R.id.description4);
@@ -131,8 +131,8 @@ public class ActualiteActivity extends AppCompatActivity {
                     url4.setText("Lien vers l'article complet : " + article4.getUrl());
                     date4 = findViewById(R.id.date4);
                     date4.setText(article4.getPublishedAt());
-                    //Récupération du 5eme et dernier article
-                    Article article5 = response.body().getArticles().get(4);
+                    //Récupération du 10eme et dernier article
+                    Article article5 = response.body().getArticles().get(9);
                     title5 = findViewById(R.id.titre5);
                     title5.setText(article5.getTitle());
                     description5 = findViewById(R.id.description5);
@@ -170,8 +170,8 @@ public class ActualiteActivity extends AppCompatActivity {
         refresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ActuActivity_page2 = new Intent(ActualiteActivity.this, ActualiteActivity2.class);
-                startActivity(ActuActivity_page2);
+                Intent ActuActivity_page1 = new Intent(ActualiteActivity2.this, ActualiteActivity.class);
+                startActivity(ActuActivity_page1);
             }
         });
     }
@@ -180,7 +180,7 @@ public class ActualiteActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         if (id == android.R.id.home) {
-            Intent mainActivity = new Intent(ActualiteActivity.this, MainActivity.class);
+            Intent mainActivity = new Intent(ActualiteActivity2.this, MainActivity.class);
             startActivity(mainActivity);
         }
         return super.onOptionsItemSelected(item);
