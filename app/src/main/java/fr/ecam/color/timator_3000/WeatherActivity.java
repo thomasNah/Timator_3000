@@ -25,13 +25,32 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class WeatherActivity extends AppCompatActivity {
 
-    private TextView texte;
-    private ImageView image;
-    private GridLayout lay;
+    private TextView texte0;
+    private ImageView image0;
+    private TextView texte1;
+    private ImageView image1;
+    private TextView texte2;
+    private ImageView image2;
+    private TextView texte3;
+    private ImageView image3;
+    private TextView texte4;
+    private ImageView image4;
+    private TextView texte5;
+    private ImageView image5;
+    private TextView texte6;
+    private ImageView image6;
+    private TextView texte7;
+    private ImageView image7;
+    private TextView texte8;
+    private ImageView image8;
+    private TextView texte9;
+    private ImageView image9;
 
 
     class Weather extends AsyncTask<String, Void, String>{ // 1er string c'est la forme que prend l'url et le 2eme string c'est la forme que prend le retour
@@ -73,116 +92,60 @@ public class WeatherActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
-        //texte = findViewById(R.id.textView5);
-        //image = findViewById(R.id.imageView);
-        lay = findViewById(R.id.lay);
+        texte0 = findViewById(R.id.Texte0);
+        image0 = findViewById(R.id.Image0);
+        texte1 = findViewById(R.id.Texte1);
+        image1 = findViewById(R.id.Image1);
+        texte2 = findViewById(R.id.Texte2);
+        image2 = findViewById(R.id.Image2);
+        texte3 = findViewById(R.id.Texte3);
+        image3 = findViewById(R.id.Image3);
+        texte4 = findViewById(R.id.Texte4);
+        image4 = findViewById(R.id.Image4);
+        texte5 = findViewById(R.id.Texte5);
+        image5 = findViewById(R.id.Image5);
+        texte6 = findViewById(R.id.Texte6);
+        image6 = findViewById(R.id.Image6);
+        texte7 = findViewById(R.id.Texte7);
+        image7 = findViewById(R.id.Image7);
+        texte8 = findViewById(R.id.Texte8);
+        image8 = findViewById(R.id.Image8);
+        texte9 = findViewById(R.id.Texte9);
+        image9 = findViewById(R.id.Image9);
+
+        ImageView[] images = {image0,image1,image2,image3,image4,image5,image6,image7,image8,image9};
+        TextView[] textes = {texte0,texte1,texte2,texte3,texte4,texte5,texte6,texte7,texte8,texte9};
         // key: d31be973eb0149218e716d52a361d0da
         String content;
         String content1;
         Weather weather  = new Weather();
         try {
-            //content = weather.execute("https://api.weatherbit.io/v2.0/current?city=Lyon&lang=fr&key=d31be973eb0149218e716d52a361d0da").get();
-
-
-            content1 = weather.execute("https://api.weatherbit.io/v2.0/forecast/hourly?city=Lyon&lang=fr&key=d31be973eb0149218e716d52a361d0da&hours=12").get();
-
-
-
+            content1 = weather.execute("https://api.weatherbit.io/v2.0/forecast/hourly?city=Lyon&lang=fr&key=d31be973eb0149218e716d52a361d0da&hours=10").get();
             //verifier si les données sont récupérées
             Log.i("contentData", content1);
+            System.out.println(content1);
             JSONObject jsonObject = new JSONObject(content1);
             String data = jsonObject.getString("data");
             JSONArray array = new JSONArray((data));
-            String time = "";
-            String temps = "";
-            String fin = "";
-            String iconCode;
-            /*for (int i = 0;i<array.length();i++){
-                time = array.getJSONObject(i).getString("timestamp_utc");
+            System.out.println("zob");
+            for (int i =0;i<array.length();i++) {
+
+                String time = array.getJSONObject(i).getString("timestamp_utc");
                 String[] times = time.split("T");
-                temps = array.getJSONObject(i).getString("weather");
-                iconCode = temps.split(":")[1].substring(1,5);
-                fin = fin + times[0]+" " +times[1].substring(0,times[1].length()-3)+ " "+ temps.split(":")[3].substring(1,temps.split(":")[3].length()-2) + " "+iconCode+"\n\n";
-
-            }
-
-            texte.setText(fin);*/
-
-
-            for (int i = 0;i<array.length();i++){
-                time = array.getJSONObject(i).getString("timestamp_utc");
-                String[] times = time.split("T");
-                temps = array.getJSONObject(i).getString("weather");
-                iconCode = temps.split(":")[1].substring(1,5);
-                fin = times[0]+" " +times[1].substring(0,times[1].length()-3)+ " "+ temps.split(":")[3].substring(1,temps.split(":")[3].length()-2);
-                TextView affichHeure = new TextView(WeatherActivity.this);
-                affichHeure.setText(fin);
-                lay.setColumnCount(2);
-                //lay.setRowCount(5);
-
-                //affichHeure.setLayoutParams(new GridLayout.LayoutParams(GridLayout.LayoutParams.WRAP_CONTENT,GridLayout.LayoutParams.WRAP_CONTENT));
-                lay.addView(affichHeure);
-                affichHeure.setTextSize(12);
-                int imageResource = getResources().getIdentifier( "drawable/"+iconCode, null, getPackageName());
+                String temps = array.getJSONObject(i).getString("weather");
+                String temp = array.getJSONObject(i).getString("temp");
+                String iconCode = temps.split(":")[1].substring(1, 5);
+                if (iconCode.substring(3).equals("n")){
+                    iconCode = iconCode.substring(0,3) + "d";
+                }
+                String textFin = times[1].substring(0, times[1].length() - 3) + " " + temps.split(":")[3].substring(1, temps.split(":")[3].length() - 2) + " T = "+temp+"°";
+                int imageResource = getResources().getIdentifier("drawable/" + iconCode, null, getPackageName());
                 Drawable res = getResources().getDrawable(imageResource);
-                ImageView image = new ImageView(WeatherActivity.this);
-                image.setImageDrawable(res);
-                LinearLayout.LayoutParams param= new LinearLayout.LayoutParams(50,50);
-                param.gravity= Gravity.RIGHT;
-                image.setLayoutParams(param);
-                lay.addView(image);
-
+                images[i].setImageDrawable(res);
+                textes[i].setText(textFin);
             }
-            /*int imageResource = getResources().getIdentifier( "drawable/f01d", null, getPackageName());
-            Drawable res = getResources().getDrawable(imageResource);
-            image.setImageDrawable(res);*/
-            //JSON
-            /*JSONObject jsonObject = new JSONObject(content);
-            String weatherData = jsonObject.getString("data");
-            JSONArray array = new JSONArray(weatherData);
-            String main =  "";
-            for (int i = 0;i<array.length();i++){
-                main = array.getJSONObject(i).getString("weather");
-            }
-
-            texte.setText(main.split(":")[3].substring(1,main.split(":")[3].length()-2));*/
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 }
-/*
-<TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="38dp"
-            android:layout_gravity="center_vertical"
-            android:gravity="center_vertical"
-
-            android:text="ce texte sera quand meme assez long vyuhbhjjjjfkkf" />
-
-        <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="right"
-
-            app:srcCompat="@drawable/a01d" />
-
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="wrap_content"
-            android:layout_height="38dp"
-            android:layout_gravity="center_vertical"
-            android:gravity="center_vertical"
-
-            android:text="ce texte sera quand meme assez longbvfdnj" />
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="right"
-
-            app:srcCompat="@drawable/a01d" />
- */
