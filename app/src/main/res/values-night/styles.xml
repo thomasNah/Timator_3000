@@ -11,6 +11,12 @@
         <item name="textcolor">#000000</item>
         <item name="tintcolor">#ffffff</item>
         <item name="buttoncolor">#D9DBDC</item>
-
     </style>
+
+    <style name="AppTheme.NoActionBar" >
+        <item name="titleTextColor">#ffffff</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
 </resources>
