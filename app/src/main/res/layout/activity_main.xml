@@ -1,107 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraintLayout"
-    android:layout_width="match_parent"
+    android:id="@+id/activity_main_drawer_layout"
     android:layout_height="match_parent"
-    android:background="?attr/backgroundcolor"
-    tools:context=".MainActivity">
+    android:layout_width="match_parent"
+    tools:openDrawer="start"
+    tools:context=".MainActivity" >
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.05"
-        app:cardBackgroundColor="?attr/cardbackground">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/backgroundcolor">
 
-        <LinearLayout
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/activity_main_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" >
+
+            <ImageButton
+                android:id="@+id/preferencesButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/logo_param"
+                android:scaleType="fitCenter"
+                android:layout_gravity="right"
+                android:layout_marginRight="10dp"
+                android:backgroundTint="@android:color/transparent" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView2"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="10dp">
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="?attr/cardbackground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.2">
 
-            <TextView
-                android:id="@+id/tempsDispo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:padding="5dp"
-                android:text="Temps dispo :"
-                android:textColor="?attr/textcolor"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:textIsSelectable="true"
-                app:layout_constraintVertical_bias="0.038" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="10dp">
 
-            <Spinner
-                android:id="@+id/spinnerTempsDispo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:foregroundGravity="center_vertical|center_horizontal"
-                android:gravity="center_horizontal|center_vertical"
-                android:padding="5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/affichageTempsIdee"
-                app:layout_constraintVertical_bias="0.078" />
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/tempsDispo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
+                    android:text="Temps dispo :"
+                    android:textColor="?attr/textcolor"
+                    android:textIsSelectable="true"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.038" />
 
-    </androidx.cardview.widget.CardView>
+                <Spinner
+                    android:id="@+id/spinnerTempsDispo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:foregroundGravity="center_vertical|center_horizontal"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:padding="5dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/affichageTempsIdee"
+                    app:layout_constraintVertical_bias="0.078" />
+            </LinearLayout>
 
-    <Button
-        android:id="@+id/giveAnIdeaButton"
-        android:layout_width="211dp"
-        android:layout_height="82dp"
-        android:text="Donne moi une idée !"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.277"
-        android:backgroundTint="?attr/buttoncolor"/>
+        </androidx.cardview.widget.CardView>
 
-    <Button
-        android:id="@+id/challengeLongTermeButton"
+        <Button
+            android:id="@+id/giveAnIdeaButton"
+            android:layout_width="211dp"
+            android:layout_height="82dp"
+            android:backgroundTint="?attr/buttoncolor"
+            android:text="Donne moi une idée !"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.4" />
+
+        <Button
+            android:id="@+id/challengeLongTermeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="75dp"
+            android:backgroundTint="?attr/buttoncolor"
+            android:text="Mon challenge long-terme"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.6" />
+
+        <Button
+            android:id="@+id/activitePersoButton"
+            android:layout_width="wrap_content"
+            android:layout_height="73dp"
+            android:backgroundTint="?attr/buttoncolor"
+            android:text="Mes activités personnelles"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.8" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/activity_main_nav_view"
         android:layout_width="wrap_content"
-        android:layout_height="75dp"
-        android:text="Mon challenge long-terme"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.500"
-        android:backgroundTint="?attr/buttoncolor" />
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/activity_main_nav_header"
+        app:menu="@menu/activity_main_menu_drawer" >
+    </com.google.android.material.navigation.NavigationView>
 
-    <Button
-        android:id="@+id/activitePersoButton"
-        android:layout_width="wrap_content"
-        android:layout_height="73dp"
-        android:text="Mes activités personnelles"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.711"
-        android:backgroundTint="?attr/buttoncolor" />
-
-    <Button
-        android:id="@+id/preferencesButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Préférences"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.9"
-        android:backgroundTint="?attr/buttoncolor" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

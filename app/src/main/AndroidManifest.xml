@@ -43,7 +43,7 @@
         <activity android:name=".ActiviteLongTermeChoisieActivity"
             android:configChanges="uiMode" />
         <activity android:name=".MainActivity"
-            android:configChanges="uiMode" >
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>

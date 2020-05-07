@@ -149,12 +149,20 @@ public class GererPersoActivity extends AppCompatActivity implements AdapterView
             }
         });
 
+
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
     }
+
+    @Override
+    public void onBackPressed(){
+        Intent retourMain = new Intent(GererPersoActivity.this,MainActivity.class);
+        startActivity(retourMain);
+    }
+
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {

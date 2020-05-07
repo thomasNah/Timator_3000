@@ -72,7 +72,11 @@ public class ActualiteActivity2 extends AppCompatActivity {
                     TextView title1 = findViewById(R.id.titre1);
                     title1.setText(article1.getTitle());
                     description1 = findViewById(R.id.description1);
-                    description1.setText(article1.getDescription().toString());
+                    if (article1.getDescription() == null || article1.getDescription().toString().equals("") ) {
+                        description1.setText("Pas de description");
+                    } else {
+                        description1.setText(article1.getDescription().toString());
+                    }
                     image1 = findViewById(R.id.image1);
                     if(article1.getUrlToImage() == null) {
                         image1.setImageDrawable(getResources().getDrawable(R.drawable.image_pbactu));
@@ -88,7 +92,11 @@ public class ActualiteActivity2 extends AppCompatActivity {
                     title2 = findViewById(R.id.titre2);
                     title2.setText(article2.getTitle());
                     description2 = findViewById(R.id.description2);
-                    description2.setText(article2.getDescription().toString());
+                    if (article2.getDescription() == null || article2.getDescription().toString().equals("") ) {
+                        description2.setText("Pas de description");
+                    } else {
+                        description2.setText(article2.getDescription().toString());
+                    }
                     image2 = findViewById(R.id.image2);
                     if(article2.getUrlToImage() == null) {
                         image2.setImageDrawable(getResources().getDrawable(R.drawable.image_pbactu));
@@ -104,7 +112,11 @@ public class ActualiteActivity2 extends AppCompatActivity {
                     title3 = findViewById(R.id.titre3);
                     title3.setText(article3.getTitle());
                     description3 = findViewById(R.id.description3);
-                    description3.setText(article3.getDescription().toString());
+                    if (article3.getDescription() == null || article3.getDescription().toString().equals("") ) {
+                        description3.setText("Pas de description");
+                    } else {
+                        description3.setText(article3.getDescription().toString());
+                    }
                     image3 = findViewById(R.id.image3);
                     if(article3.getUrlToImage() == null) {
                         image3.setImageDrawable(getResources().getDrawable(R.drawable.image_pbactu));
@@ -120,7 +132,11 @@ public class ActualiteActivity2 extends AppCompatActivity {
                     title4 = findViewById(R.id.titre4);
                     title4.setText(article4.getTitle());
                     description4 = findViewById(R.id.description4);
-                    description4.setText(article4.getDescription().toString());
+                    if (article4.getDescription() == null || article4.getDescription().toString().equals("") ) {
+                        description4.setText("Pas de description");
+                    } else {
+                        description4.setText(article4.getDescription().toString());
+                    }
                     image4 = findViewById(R.id.image4);
                     if(article4.getUrlToImage() == null) {
                         image4.setImageDrawable(getResources().getDrawable(R.drawable.image_pbactu));
@@ -136,7 +152,11 @@ public class ActualiteActivity2 extends AppCompatActivity {
                     title5 = findViewById(R.id.titre5);
                     title5.setText(article5.getTitle());
                     description5 = findViewById(R.id.description5);
-                    description5.setText(article5.getDescription().toString());
+                    if (article5.getDescription() == null || article5.getDescription().toString().equals("") ) {
+                        description5.setText("Pas de description");
+                    } else {
+                        description5.setText(article5.getDescription().toString());
+                    }
                     image5 = findViewById(R.id.image5);
                     if(article5.getUrlToImage() == null) {
                         image5.setImageDrawable(getResources().getDrawable(R.drawable.image_pbactu));

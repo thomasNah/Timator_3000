@@ -1,34 +1,38 @@
 package fr.ecam.color.timator_3000;
 
+import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.ActionBarContainer;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.List;
 
-import fr.ecam.color.timator_3000.pack_actu.Actu;
 import fr.ecam.color.timator_3000.pack_actu.ActualiteActivity;
-import fr.ecam.color.timator_3000.pack_actu.Article;
-import fr.ecam.color.timator_3000.pack_actu.GetActuService;
-import fr.ecam.color.timator_3000.pack_actu.RetrofitBuilder;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,AdapterView.OnItemSelectedListener {
 
     public Context context;
 
@@ -38,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private Button giveAnIdeaButton;
     private Button challengeLongTerme;
     private Button activitePersoButton;
-    private Button preferencesButton;
+    private ImageButton preferencesButton;
 
     private DatabaseManager databaseManager;
     private DatabaseManager databaseManagerChallenge;
@@ -46,6 +50,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     String inputTempsDispo;
     private boolean darkTheme;
     private boolean flag = false;
+
+    private Toolbar toolbar;
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
 
 
 
@@ -55,9 +63,20 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         darkTheme = preferences.getBoolean("Dark_Theme",false);
         if (darkTheme) AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
             else AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //NavigationView
+        toolbar = findViewById(R.id.activity_main_toolbar);
+        setSupportActionBar(toolbar);
+        drawerLayout = findViewById(R.id.activity_main_drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.white));
+        toggle.syncState();
+        navigationView = findViewById(R.id.activity_main_nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
 
         //DECLARATION VARIABLE LAYOUT
         tempsDispo = findViewById(R.id.tempsDispo);
@@ -66,6 +85,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         challengeLongTerme = findViewById(R.id.challengeLongTermeButton);
         activitePersoButton = findViewById(R.id.activitePersoButton);
         preferencesButton = findViewById(R.id.preferencesButton);
+
 
         //PROPRE AU SPINNER (LISTE DEROULANTE POUR SELECTION DU TEMPS)
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -131,16 +151,51 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
             //IDEE CHALLENGE VIERGE
             //databaseManager.insertIdeeChallenge(00,"","","",3);
-
-
-
-
-
         }
 
         // POUR MODIFIER IDEE
         databaseManager.setTempsTotalTousLesChallenges();
         databaseManager.close();
+
+    }
+
+    //NavigationView
+    @Override
+    public void onBackPressed() {
+        // 5 - Handle back click to close menu
+        if (this.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            this.drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+
+        // 4 - Handle Navigation Item Click
+        int id = item.getItemId();
+
+        if (id == R.id.nav_meteo) {
+            Intent WeatherActivityInt = new Intent(MainActivity.this, WeatherActivity.class);
+            startActivity(WeatherActivityInt);
+        } else if (id == R.id.nav_actu) {
+            Intent ActuActivity = new Intent(MainActivity.this, ActualiteActivity.class);
+            startActivity(ActuActivity);
+        }
+
+        switch (id){
+            case R.id.nav_meteo:
+                break;
+            case R.id.nav_actu:
+                break;
+            default:
+                break;
+        }
+
+        this.drawerLayout.closeDrawer(GravityCompat.START);
+
+        return true;
 
     }
 
@@ -158,23 +213,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         giveAnIdeaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 //PASSAGE A L'ACTIVITE "IDEE"
-                if (inputTempsDispo.equals("1 minute")){
-                    Intent WeatherActivityInt = new Intent(MainActivity.this, WeatherActivity.class);
-                    startActivity(WeatherActivityInt);
-                } else if (inputTempsDispo.equals("2 minutes")) {
-                    Intent ActuActivity = new Intent(MainActivity.this, ActualiteActivity.class);
-                    startActivity(ActuActivity);
+                List<IdeeData> idees = databaseManager.lireTableTemps(inputTempsDispo);
+                if (idees.size() > 0) {
+                    Intent ideeActivity = new Intent(MainActivity.this, IdeeActivity.class);
+                    ideeActivity.putExtra("inputTempsDispo", inputTempsDispo);
+                    startActivity(ideeActivity);
                 } else {
-                    List<IdeeData> idees = databaseManager.lireTableTemps(inputTempsDispo);
-                    if (idees.size() > 0) {
-                        Intent ideeActivity = new Intent(MainActivity.this, IdeeActivity.class);
-                        ideeActivity.putExtra("inputTempsDispo", inputTempsDispo);
-                        startActivity(ideeActivity);
-                    } else {
-                        Toast.makeText(getApplicationContext(), "il n'y a pas d'idée de cette durée pour l'instant", Toast.LENGTH_SHORT).show();
-                    }
+                    Toast.makeText(getApplicationContext(), "il n'y a pas d'idée de cette durée pour l'instant", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -183,7 +229,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         challengeLongTerme.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent choixIdeeLongTermeActivity = new Intent(MainActivity.this, ChoixIdeeLongTermeActivity.class);
                 startActivity(choixIdeeLongTermeActivity);
 
@@ -214,9 +259,20 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
             }
         });
-
-
-
+        /*navigationView.getHeaderView(0).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent WeatherActivityInt = new Intent(MainActivity.this, WeatherActivity.class);
+                startActivity(WeatherActivityInt);
+            }
+        });
+        navigationView.getHeaderView(1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent ActuActivity = new Intent(MainActivity.this, ActualiteActivity.class);
+                startActivity(ActuActivity);
+            }
+        });*/
 
     }
 

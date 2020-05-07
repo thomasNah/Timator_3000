@@ -5,6 +5,10 @@
     <string name="mode_sombre">Mode Sombre</string>
     <string name="feu">Feu</string>
 
+    <!-- Used in NavigationDrawer -->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
     <string-array name="arrayTempsDispo">
         <item>1 minute</item>
         <item>2 minutes</item>
@@ -37,7 +41,5 @@
         <item>4</item>
         <item>5</item>
     </string-array>
-
-
 
 </resources>
