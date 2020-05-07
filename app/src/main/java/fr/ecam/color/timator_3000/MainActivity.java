@@ -16,6 +16,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -193,12 +194,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
         }
 
-        this.drawerLayout.closeDrawer(GravityCompat.START);
-
         return true;
 
     }
-
 
 
     protected void onResume() {
