@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -87,7 +88,6 @@ public class WeatherActivity extends AppCompatActivity {
             return null;
         }
     }
-// https://www.youtube.com/watch?v=zP41A8VSjB4
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -115,35 +115,34 @@ public class WeatherActivity extends AppCompatActivity {
 
         ImageView[] images = {image0,image1,image2,image3,image4,image5,image6,image7,image8,image9};
         TextView[] textes = {texte0,texte1,texte2,texte3,texte4,texte5,texte6,texte7,texte8,texte9};
-        // key: d31be973eb0149218e716d52a361d0da
-        String content;
+        // key: d31be973eb0149218e716d52a361d0da c'est la clé qu'on obtient en créant un compte gratuit, le nombre d'appel par heures est limité mais suffisant pour notre cas d'utilisation
         String content1;
         Weather weather  = new Weather();
         try {
-            content1 = weather.execute("https://api.weatherbit.io/v2.0/forecast/hourly?city=Lyon&lang=fr&key=d31be973eb0149218e716d52a361d0da&hours=10").get();
-
-            //verifier si les données sont récupérées
-            Log.i("contentData", content1);
-            System.out.println(content1);
-            JSONObject jsonObject = new JSONObject(content1);
-            String data = jsonObject.getString("data");
-            JSONArray array = new JSONArray((data));
-            System.out.println("zob");
-            for (int i =0;i<array.length();i++) {
-
-                String time = array.getJSONObject(i).getString("timestamp_utc");
-                String[] times = time.split("T");
-                String temps = array.getJSONObject(i).getString("weather");
-                String temp = array.getJSONObject(i).getString("temp");
-                String iconCode = temps.split(":")[1].substring(1, 5);
-                if (iconCode.substring(3).equals("n")){
-                    iconCode = iconCode.substring(0,3) + "d";
+            String ville = "LesEparres";
+            content1 = weather.execute("https://api.weatherbit.io/v2.0/forecast/hourly?city="+ville+"&lang=fr&key=d31be973eb0149218e716d52a361d0da&hours=10").get();
+            if (content1.equals("")){
+                Toast.makeText(getApplicationContext(), "La ville spécifiée n'est pas valide", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                JSONObject jsonObject = new JSONObject(content1); // l'url renvoi un objet JSON qui contient une array JSON
+                String data = jsonObject.getString("data");
+                JSONArray array = new JSONArray((data));
+                for (int i = 0; i < array.length(); i++) {
+                    String time = array.getJSONObject(i).getString("timestamp_utc");
+                    String[] times = time.split("T");
+                    String temps = array.getJSONObject(i).getString("weather");
+                    String temp = array.getJSONObject(i).getString("temp");
+                    String iconCode = temps.split(":")[1].substring(1, 5);
+                    if (iconCode.substring(3).equals("n")) { //il y'a aussi des icones pour la nuit mais on en a pas besoin, elles se ressemblent beaucoup
+                        iconCode = iconCode.substring(0, 3) + "d";
+                    }
+                    String textFin = times[1].substring(0, times[1].length() - 3) + " " + temps.split(":")[3].substring(1, temps.split(":")[3].length() - 2) + " (" + temp + "°) ";
+                    int imageResource = getResources().getIdentifier("drawable/" + iconCode, null, getPackageName());
+                    Drawable res = getResources().getDrawable(imageResource);
+                    images[i].setImageDrawable(res);
+                    textes[i].setText(textFin);
                 }
-                String textFin = times[1].substring(0, times[1].length() - 3) + " " + temps.split(":")[3].substring(1, temps.split(":")[3].length() - 2) + " T = "+temp+"°";
-                int imageResource = getResources().getIdentifier("drawable/" + iconCode, null, getPackageName());
-                Drawable res = getResources().getDrawable(imageResource);
-                images[i].setImageDrawable(res);
-                textes[i].setText(textFin);
             }
         } catch (Exception e) {
             e.printStackTrace();
