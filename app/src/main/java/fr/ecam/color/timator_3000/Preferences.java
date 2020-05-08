@@ -38,18 +38,29 @@ public class Preferences extends AppCompatActivity {
         validerVille.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                WeatherActivity.Weather weather  = new WeatherActivity.Weather();
+                String content1;
                 String laVille = ville.getText().toString();
-                final InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
-                Toast.makeText(getApplicationContext(),"La ville est définie sur "+laVille,Toast.LENGTH_SHORT).show();
-                ville.setText(null);
-                SharedPreferences preferences = getSharedPreferences("fr.ecam.color.timator_3000",MODE_PRIVATE);
-                preferences.edit().putString("ville",laVille).apply();
+                try {
+                    content1 = weather.execute("https://api.weatherbit.io/v2.0/forecast/hourly?city="+laVille+"&lang=fr&key=d31be973eb0149218e716d52a361d0da&hours=10").get();
+                    if (content1.equals("")){
+                        Toast.makeText(getApplicationContext(), "La ville spécifiée n'est pas valide", Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+
+                        final InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+                        Toast.makeText(getApplicationContext(),"La ville est définie sur "+laVille,Toast.LENGTH_SHORT).show();
+                        ville.setText(null);
+                        SharedPreferences preferences = getSharedPreferences("fr.ecam.color.timator_3000",MODE_PRIVATE);
+                        preferences.edit().putString("ville",laVille).apply();
+                    }
+                }catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
         modeSombre = findViewById(R.id.modeSombre);
-        villeMeteo = findViewById(R.id.editText);
-        villeMeteo.setHint("selectionner ville (météo)");
         ideeView = findViewById(R.id.textView4);
         if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
             modeSombre.setChecked(true);

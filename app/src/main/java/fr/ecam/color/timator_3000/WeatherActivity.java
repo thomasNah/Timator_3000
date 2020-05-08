@@ -60,7 +60,7 @@ public class WeatherActivity extends AppCompatActivity {
     private TextView meteoVille;
     private String ville;
 
-    class Weather extends AsyncTask<String, Void, String>{ // 1er string c'est la forme que prend l'url et le 2eme string c'est la forme que prend le retour
+    static class Weather extends AsyncTask<String, Void, String>{ // 1er string c'est la forme que prend l'url et le 2eme string c'est la forme que prend le retour
 
 
         @Override
