@@ -1,13 +1,18 @@
 package fr.ecam.color.timator_3000;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,13 +25,27 @@ public class Preferences extends AppCompatActivity {
     private Switch modeSombre;
     private DatabaseManager databaseManager;
     private TextView ideeView;
-    private EditText villeMeteo;
-    private String ville = "";
+    private EditText ville;
+    private ImageButton validerVille;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preferences);
+        ville = findViewById(R.id.ville);
+        validerVille = findViewById(R.id.validerVille);
+        validerVille.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String laVille = ville.getText().toString();
+                final InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+                Toast.makeText(getApplicationContext(),"La ville est définie sur "+laVille,Toast.LENGTH_SHORT).show();
+                ville.setText(null);
+                SharedPreferences preferences = getSharedPreferences("fr.ecam.color.timator_3000",MODE_PRIVATE);
+                preferences.edit().putString("ville",laVille).apply();
+            }
+        });
         modeSombre = findViewById(R.id.modeSombre);
         villeMeteo = findViewById(R.id.editText);
         villeMeteo.setHint("selectionner ville (météo)");

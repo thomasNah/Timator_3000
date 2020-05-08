@@ -15,12 +15,27 @@
         android:layout_marginRight="20dp"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/meteo_ville"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingVertical="15dp"
+            android:text="Météo à "
+            android:textStyle="bold"
+            android:textColor="?attr/textcolor" />
+
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:columnCount="2"
+            android:columnCount="3"
             android:layout_marginVertical="15dp">
 
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="left"
+                android:layout_marginTop="45dp"
+                android:src="@drawable/icon_thermometer"/>
 
             <TextView
                 android:id="@+id/Texte0"
@@ -30,6 +45,7 @@
                 android:text=""
                 android:textSize="14sp"></TextView>
 
+
             <ImageView
                 android:id="@+id/Image0"
                 android:layout_width="75dp"
@@ -37,14 +53,21 @@
                 android:layout_gravity="right"
                 app:srcCompat="@drawable/a01d"></ImageView>
 
+
         </GridLayout>
 
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:columnCount="2"
+            android:columnCount="3"
             android:layout_marginVertical="15dp">
 
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="left"
+                android:layout_marginTop="45dp"
+                android:src="@drawable/icon_thermometer"/>
 
             <TextView
                 android:id="@+id/Texte1"
@@ -66,9 +89,15 @@
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:columnCount="2"
+            android:columnCount="3"
             android:layout_marginVertical="15dp">
 
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="left"
+                android:layout_marginTop="45dp"
+                android:src="@drawable/icon_thermometer"/>
 
             <TextView
                 android:id="@+id/Texte2"
@@ -90,9 +119,15 @@
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:columnCount="2"
+            android:columnCount="3"
             android:layout_marginVertical="15dp">
 
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="left"
+                android:layout_marginTop="45dp"
+                android:src="@drawable/icon_thermometer"/>
 
             <TextView
                 android:id="@+id/Texte3"
@@ -114,9 +149,15 @@
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:columnCount="2"
+            android:columnCount="3"
             android:layout_marginVertical="15dp">
 
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="left"
+                android:layout_marginTop="45dp"
+                android:src="@drawable/icon_thermometer"/>
 
             <TextView
                 android:id="@+id/Texte4"
@@ -138,9 +179,15 @@
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:columnCount="2"
+            android:columnCount="3"
             android:layout_marginVertical="15dp">
 
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="left"
+                android:layout_marginTop="45dp"
+                android:src="@drawable/icon_thermometer"/>
 
             <TextView
                 android:id="@+id/Texte5"
@@ -162,9 +209,15 @@
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:columnCount="2"
+            android:columnCount="3"
             android:layout_marginVertical="15dp">
 
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="left"
+                android:layout_marginTop="45dp"
+                android:src="@drawable/icon_thermometer"/>
 
             <TextView
                 android:id="@+id/Texte6"
@@ -186,9 +239,15 @@
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:columnCount="2"
+            android:columnCount="3"
             android:layout_marginVertical="15dp">
 
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="left"
+                android:layout_marginTop="45dp"
+                android:src="@drawable/icon_thermometer"/>
 
             <TextView
                 android:id="@+id/Texte7"
@@ -210,9 +269,15 @@
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:columnCount="2"
+            android:columnCount="3"
             android:layout_marginVertical="15dp">
 
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="left"
+                android:layout_marginTop="45dp"
+                android:src="@drawable/icon_thermometer"/>
 
             <TextView
                 android:id="@+id/Texte8"
@@ -234,9 +299,15 @@
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:columnCount="2"
+            android:columnCount="3"
             android:layout_marginVertical="15dp">
 
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="left"
+                android:layout_marginTop="45dp"
+                android:src="@drawable/icon_thermometer"/>
 
             <TextView
                 android:id="@+id/Texte9"

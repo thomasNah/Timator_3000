@@ -1,14 +1,18 @@
 package fr.ecam.color.timator_3000;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.icu.lang.UCharacter;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
@@ -53,6 +57,7 @@ public class WeatherActivity extends AppCompatActivity {
     private ImageView image8;
     private TextView texte9;
     private ImageView image9;
+    private TextView meteoVille;
     private String ville;
 
     class Weather extends AsyncTask<String, Void, String>{ // 1er string c'est la forme que prend l'url et le 2eme string c'est la forme que prend le retour
@@ -113,6 +118,7 @@ public class WeatherActivity extends AppCompatActivity {
         image8 = findViewById(R.id.Image8);
         texte9 = findViewById(R.id.Texte9);
         image9 = findViewById(R.id.Image9);
+        meteoVille = findViewById(R.id.meteo_ville);
 
         ImageView[] images = {image0,image1,image2,image3,image4,image5,image6,image7,image8,image9};
         TextView[] textes = {texte0,texte1,texte2,texte3,texte4,texte5,texte6,texte7,texte8,texte9};
@@ -120,10 +126,15 @@ public class WeatherActivity extends AppCompatActivity {
         String content1;
         Weather weather  = new Weather();
         try {
-
+            SharedPreferences preferences = getSharedPreferences("fr.ecam.color.timator_3000",MODE_PRIVATE);
+            ville = preferences.getString("ville",ville);
+            if (ville == null) {
+                ville = "Lyon";
+            }
             content1 = weather.execute("https://api.weatherbit.io/v2.0/forecast/hourly?city="+ville+"&lang=fr&key=d31be973eb0149218e716d52a361d0da&hours=10").get();
+            meteoVille.setText("Météo à "+ville);
             if (content1.equals("")){
-                Toast.makeText(getApplicationContext(), "La ville spécifiée n'est pas valide", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "La ville spécifiée n'est pas valide", Toast.LENGTH_LONG).show();
             }
             else {
                 JSONObject jsonObject = new JSONObject(content1); // l'url renvoi un objet JSON qui contient une array JSON
@@ -141,7 +152,7 @@ public class WeatherActivity extends AppCompatActivity {
                     }
                     codes.add(iconCode);
                     System.out.println(iconCode);
-                    String textFin = times[1].substring(0, times[1].length() - 3) + " " + temps.split(":")[3].substring(1, temps.split(":")[3].length() - 2) + " (" + temp + "°) ";
+                    String textFin = times[1].substring(0, times[1].length() - 3) + " " + temps.split(":")[3].substring(1, temps.split(":")[3].length() - 2) + "\n\n " + temp + "° ";
                     int imageResource = getResources().getIdentifier("drawable/" + iconCode, null, getPackageName());
                     Drawable res = getResources().getDrawable(imageResource);
                     if (res.equals(null)){
@@ -155,5 +166,24 @@ public class WeatherActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        //ADD BACK BUTTON POUR RETOURNER SUR MAIN ACTIVITY
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences preferences = getSharedPreferences("fr.ecam.color.timator_3000",MODE_PRIVATE);
+        ville = preferences.getString("ville",ville);
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            Intent mainActivity = new Intent(WeatherActivity.this, MainActivity.class);
+            startActivity(mainActivity);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

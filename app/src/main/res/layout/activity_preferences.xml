@@ -46,7 +46,8 @@
                     android:id="@+id/prefererActPerso"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"/>
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true" />
 
             </RelativeLayout>
             <RelativeLayout
@@ -69,7 +70,44 @@
                     android:id="@+id/modeSombre"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"/>
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:text="Ville pour la météo"
+                    android:textIsSelectable="true"
+                    android:textColor="?attr/textcolor"/>
+
+                <EditText
+                    android:id="@+id/ville"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layout_alignEnd="@+id/validerVille"
+                    android:layout_alignRight="@+id/validerVille"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="50dp"
+                    android:background="@android:color/transparent"
+                    android:hint="Ville"
+                    android:textColor="?attr/textcolor"
+                    android:gravity="center_horizontal" />
+
+                <ImageButton
+                    android:id="@+id/validerVille"
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/logo_ok"/>
             </RelativeLayout>
 
             <RelativeLayout

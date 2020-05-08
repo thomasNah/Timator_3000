@@ -16,6 +16,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -115,12 +116,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Log.i("DATABASE", String.valueOf(ideesChallenge.size()));
         if (ideesChallenge.size() ==0) {
             //ATTENTION : NE PAS METTRE DE DUREE EN H ! QUE EN MINUTES POUR LES CHALLENGE (sinon pb l.215 - Choix)
+            // NOM DU CHALLENGE - ID FINIT EN 0
+            // SOUS ETAPES - ID FINIT DE 1 à 9
 
-            //ID 0 A 10 - Touchez votre audience sur mobile - https://learndigital.withgoogle.com/ateliersnumeriques/course/connect-with-mobile
+            //ID 0 - Touchez votre audience sur mobile (Learn Google)
             databaseManager.insertIdeeChallenge(00, "https://learndigital.withgoogle.com/ateliersnumeriques/course/connect-with-mobile", "none", "Touchez votre audience sur mobile", 3);
             databaseManager.insertIdeeChallenge(01, "https://learndigital.withgoogle.com/ateliersnumeriques/course/connect-with-mobile/module/17", "30 minutes", "Tirez profit des opportunités qu'offre le mobile", 3);
             databaseManager.insertIdeeChallenge(02, "https://learndigital.withgoogle.com/ateliersnumeriques/course/connect-with-mobile/module/16", "20 minutes", "Découvrez les possibilités offertes par le mobile", 3);
 
+            //ID 10 - Lancez une activité en ligne (Learn Google)
             databaseManager.insertIdeeChallenge(10,"https://learndigital.withgoogle.com/ateliersnumeriques/course/business-online","none","Lancez une activité en ligne",3);
             databaseManager.insertIdeeChallenge(11,"https://learndigital.withgoogle.com/ateliersnumeriques/course/business-online/module/1","15 minutes","Les opportunités qu'offre Internet",3);
             databaseManager.insertIdeeChallenge(12,"https://learndigital.withgoogle.com/ateliersnumeriques/course/business-online/module/2","30 minutes","Vos premiers pas vers le succès sur Internet",3);
@@ -130,11 +134,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             databaseManager.insertIdeeChallenge(16,"https://learndigital.withgoogle.com/ateliersnumeriques/course/business-online/module/3","40 minutes","Développez votre présence en ligne",3);
             databaseManager.insertIdeeChallenge(17,"https://learndigital.withgoogle.com/ateliersnumeriques/course/business-online/module/12","20 minutes","Faites-vous connaître localement",3);
 
+            //ID 20 - Apprenez à apprendre (Open Classroom)
             databaseManager.insertIdeeChallenge(20,"https://openclassrooms.com/fr/courses/4312781-apprenez-a-apprendre","none","Apprenez à apprendre",3);
             databaseManager.insertIdeeChallenge(21,"https://openclassrooms.com/fr/courses/4312781-apprenez-a-apprendre/4789781-tirez-un-maximum-de-ce-cours","80 minutes","Préparez-vous à apprendre",3);
             databaseManager.insertIdeeChallenge(22,"https://openclassrooms.com/fr/courses/4312781-apprenez-a-apprendre/4789866-definissez-votre-objectif-strategique","80 minutes","Définissez votre objectif stratégique",3);
             databaseManager.insertIdeeChallenge(23,"https://openclassrooms.com/fr/courses/4312781-apprenez-a-apprendre/4790551-visez-le-bon-niveau","80 minutes","Visez le bon niveau",3);
             databaseManager.insertIdeeChallenge(24,"https://openclassrooms.com/fr/courses/4312781-apprenez-a-apprendre/4790751-mettez-en-place-votre-environnement-dapprentissage","120 minutes","Mettez en place votre environnement d'apprentissage",3);
+
+            //ID 30 - Initiez-vous au Machine Learning (Open Classroom)
+            databaseManager.insertIdeeChallenge(30,"https://openclassrooms.com/fr/courses/4011851-initiez-vous-au-machine-learning","none","Initiez-vous au Machine Learning",3);
+            databaseManager.insertIdeeChallenge(31,"https://openclassrooms.com/fr/courses/4011851-initiez-vous-au-machine-learning/5869331-decouvrez-le-domaine-de-la-data-science","160 minutes","Identifiez les possibilités du Machine Learning",3);
+            databaseManager.insertIdeeChallenge(32,"https://openclassrooms.com/fr/courses/4011851-initiez-vous-au-machine-learning/5868296-transformez-des-besoins-metiers-en-problemes-de-machine-learning","80 minutes","Identifiez les techniques et outils du Machine Learning",3);
+            databaseManager.insertIdeeChallenge(33,"https://openclassrooms.com/fr/courses/4011851-initiez-vous-au-machine-learning/4120981-construisez-un-modele-statistique","200 minutes","Entraînez votre premier algorithme de Machine Learning",3);
+            databaseManager.insertIdeeChallenge(34,"https://openclassrooms.com/fr/courses/4011851-initiez-vous-au-machine-learning/4020641-familiarisez-vous-avec-les-limites-des-algorithmes","160 minutes","Appréhendez les limites du Machine Learning",3);
+
 
 
             //IDEE CHALLENGE VIERGE
@@ -195,12 +208,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
         }
 
-        this.drawerLayout.closeDrawer(GravityCompat.START);
-
         return true;
 
     }
-
 
 
     protected void onResume() {
