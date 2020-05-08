@@ -1,11 +1,13 @@
 package fr.ecam.color.timator_3000;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -56,9 +58,9 @@ public class ActiviteLongTermeChoisieActivity extends AppCompatActivity {
             echeances.append(System.getProperty ("line.separator"));
         }
 
-
-
-
+        //ADD BACK BUTTON POUR RETOURNER SUR CHOIX IDEE LONG TERME
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
 
@@ -226,5 +228,15 @@ public class ActiviteLongTermeChoisieActivity extends AppCompatActivity {
 
     public ArrayList<String> getSavedDataList() {
         return savedDataList;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            Intent mainActivity = new Intent(ActiviteLongTermeChoisieActivity.this, ChoixIdeeLongTermeActivity.class);
+            startActivity(mainActivity);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

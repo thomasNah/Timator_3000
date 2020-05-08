@@ -15,6 +15,7 @@
         <item name="textcolor">#808080</item>
         <item name="tintcolor">#ffffff</item>
         <item name="buttoncolor">#D9DBDC</item>
+        <item name="hintcolor">#801D9BA6</item>
         <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
     </style>
 

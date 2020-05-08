@@ -21,15 +21,12 @@ public class GererPersoActivity extends AppCompatActivity implements AdapterView
     private Spinner spinnerIdeeDejaExistantes;
     private Button editerIdee;
     private Button creerNouvelleIdeePerso;
-    private Button supprIdeePerso;
     private EditText inputNomIdee;
     private Spinner spinnerChoixTempsActivity;
     private EditText inputDescription;
-    private EditText inputNoteIdee;
     private DatabaseManager databaseManager;
     private boolean userPutSomethingInNomIdee;
-    private boolean userPutSomethingInDescription;
-
+    private Spinner spinnerChoixNote;
     private boolean creerNouvelleIdeePersoState;
     private boolean supprIdeePersoState;
 
@@ -41,12 +38,10 @@ public class GererPersoActivity extends AppCompatActivity implements AdapterView
         spinnerIdeeDejaExistantes = findViewById(R.id.spinnerIdeeDejaExistantes);
         editerIdee = findViewById(R.id.editerIdee);
         creerNouvelleIdeePerso = findViewById(R.id.creerNouvelleIdeePerso);
-        supprIdeePerso = findViewById(R.id.supprIdeePerso);
         inputNomIdee = findViewById(R.id.inputNomIdee);
         spinnerChoixTempsActivity = findViewById(R.id.spinnerChoixTempsActivity);
         inputDescription = findViewById(R.id.inputDescription);
-        inputNoteIdee = findViewById(R.id.inputNoteIdee);
-
+        spinnerChoixNote = findViewById(R.id.spinnerChoixNote);
         //GERER ACTIVATION BOUTON creerNouvelleIdeePerso
         userPutSomethingInNomIdee = false;
 
@@ -58,7 +53,10 @@ public class GererPersoActivity extends AppCompatActivity implements AdapterView
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerChoixTempsActivity.setAdapter(adapter);
 
-
+        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this,
+                R.array.arrayNote1, android.R.layout.simple_spinner_item);
+        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerChoixNote.setAdapter(adapter1);
 
 
     }
@@ -75,11 +73,8 @@ public class GererPersoActivity extends AppCompatActivity implements AdapterView
             spinnerItems.add(idees.get(i).getNom());
         }
 
-        spinnerIdeeDejaExistantes.setAdapter(new ArrayAdapter<String>(this
-                , android.R.layout.simple_spinner_item, spinnerItems));
-
         creerNouvelleIdeePerso.setEnabled(creerNouvelleIdeePersoState);
-        supprIdeePerso.setEnabled(supprIdeePersoState);
+        spinnerChoixNote.setSelection(2);
 
         inputNomIdee.addTextChangedListener(new TextWatcher() {
             @Override
@@ -100,7 +95,6 @@ public class GererPersoActivity extends AppCompatActivity implements AdapterView
                 if(userPutSomethingInNomIdee){
                     creerNouvelleIdeePerso.setEnabled(true);
                     creerNouvelleIdeePersoState = true;
-                    supprIdeePerso.setEnabled(true);
                     supprIdeePersoState = true;
                 }
 
@@ -139,13 +133,13 @@ public class GererPersoActivity extends AppCompatActivity implements AdapterView
                 if (description==null){
                     description = "";
                 }
-                int note = Integer.valueOf(String.valueOf(inputNoteIdee.getText())); //cette ligne fait planter le setText je sais pas pk
+                int note = Integer.valueOf(String.valueOf(spinnerChoixNote.getSelectedItem().toString())); //cette ligne fait planter le setText je sais pas pk
                 int id = databaseManager.getIdMax()+ 1;
                 databaseManager.insertIdee(id,description,duree,nom,note);
                 inputNomIdee.setText("");
                 spinnerChoixTempsActivity.setSelection(0);
+                spinnerChoixNote.setSelection(2);
                 inputDescription.setText("");
-                inputNoteIdee.setText("");
             }
         });
 

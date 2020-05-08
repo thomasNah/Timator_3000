@@ -49,6 +49,7 @@ public class ActualiteActivity2 extends AppCompatActivity {
     private TextView date5;
 
     private ImageButton refresh;
+    private TextView plusDActu;
 
 
 
@@ -60,6 +61,8 @@ public class ActualiteActivity2 extends AppCompatActivity {
         //ADD BACK BUTTON POUR RETOURNER SUR MAIN ACTIVITY
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        plusDActu = findViewById(R.id.plus_d_actu);
+        plusDActu.setText("Actu précédente");
 
         GetActuService ws = RetrofitBuilder.getSimpleClient();
         ws.getArticle().enqueue(new Callback<Actu>() {
