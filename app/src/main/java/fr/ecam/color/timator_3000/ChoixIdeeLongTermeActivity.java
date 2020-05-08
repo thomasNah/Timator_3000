@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,6 +16,7 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -52,6 +54,10 @@ public class ChoixIdeeLongTermeActivity extends AppCompatActivity implements Ada
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choix_idee_long_terme);
+
+        //ADD BACK BUTTON POUR RETOURNER SUR MAIN ACTIVITY
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         voirEcheances = findViewById(R.id.lancerLongTermeButton);
         spinnerIdeeLongTerme = findViewById(R.id.spinnerIdeeLongTerme);
@@ -379,11 +385,13 @@ public class ChoixIdeeLongTermeActivity extends AppCompatActivity implements Ada
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         flagDejaRentre = sharedPreferences.getBoolean("flagDejaRentre",false);
     }
-
-
-
-
-
-
-
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            Intent mainActivity = new Intent(ChoixIdeeLongTermeActivity.this, MainActivity.class);
+            startActivity(mainActivity);
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

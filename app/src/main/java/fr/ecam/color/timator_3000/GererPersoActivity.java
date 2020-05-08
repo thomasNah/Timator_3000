@@ -26,7 +26,6 @@ public class GererPersoActivity extends AppCompatActivity implements AdapterView
     private EditText inputDescription;
     private DatabaseManager databaseManager;
     private boolean userPutSomethingInNomIdee;
-    private boolean userPutSomethingInDescription;
     private Spinner spinnerChoixNote;
     private boolean creerNouvelleIdeePersoState;
     private boolean supprIdeePersoState;
@@ -73,9 +72,9 @@ public class GererPersoActivity extends AppCompatActivity implements AdapterView
         for (int i = 0; i<idees.size(); i++){
             spinnerItems.add(idees.get(i).getNom());
         }
+
         creerNouvelleIdeePerso.setEnabled(creerNouvelleIdeePersoState);
         spinnerChoixNote.setSelection(2);
-
 
         inputNomIdee.addTextChangedListener(new TextWatcher() {
             @Override
