@@ -27,6 +27,7 @@ public class Preferences extends AppCompatActivity {
     private TextView ideeView;
     private EditText ville;
     private ImageButton validerVille;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppTheme);
