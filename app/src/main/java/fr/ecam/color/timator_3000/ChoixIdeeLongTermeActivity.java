@@ -276,36 +276,14 @@ public class ChoixIdeeLongTermeActivity extends AppCompatActivity implements Ada
 
                                     progressBar.setProgress(pourcentageRestant);
 
-
-
-
                                 }
-
-
-
 
                                 }
 
                             iFoundSavedDataList++;
-
-
                         }
-
-
-
-
-
-
-
-
-
-
-
             }
-
-
         }
-
     }
 
     @Override

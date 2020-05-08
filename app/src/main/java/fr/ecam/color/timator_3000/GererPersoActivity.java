@@ -73,12 +73,8 @@ public class GererPersoActivity extends AppCompatActivity implements AdapterView
         for (int i = 0; i<idees.size(); i++){
             spinnerItems.add(idees.get(i).getNom());
         }
-
-        /*spinnerIdeeDejaExistantes.setAdapter(new ArrayAdapter<String>(this
-                , android.R.layout.simple_spinner_item, spinnerItems));
-        creerNouvelleIdeePerso.setEnabled(creerNouvelleIdeePersoState);*/
+        creerNouvelleIdeePerso.setEnabled(creerNouvelleIdeePersoState);
         spinnerChoixNote.setSelection(2);
-        supprIdeePerso.setEnabled(supprIdeePersoState);
 
 
         inputNomIdee.addTextChangedListener(new TextWatcher() {

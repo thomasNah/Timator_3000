@@ -42,17 +42,6 @@ public class DatabaseManager extends SQLiteOpenHelper {
                 + "note integer not null)";
         db.execSQL(strSqlChallenge);
 
-        /*
-        String strSqlNomChallenge = "create table NOMCHALLENGE ( idChallenge integer primary key not null,"
-                +"contenu text,"
-                +" duree text not null,"
-                + "nom text not null,"
-                + "listeIdeeChallenge List<IdeeData> not null)";
-        db.execSQL(strSqlNomChallenge);
-         */
-
-
-
     }
 
     @Override
