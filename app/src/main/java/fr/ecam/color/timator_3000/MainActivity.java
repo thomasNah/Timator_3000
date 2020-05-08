@@ -178,21 +178,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         if (id == R.id.nav_meteo) {
-            WeatherActivity.Weather weather  = new WeatherActivity.Weather();
-            String content1;
-            try {
-
-                content1 = weather.execute("https://api.weatherbit.io/v2.0/forecast/hourly?city="+ville+"&lang=fr&key=d31be973eb0149218e716d52a361d0da&hours=10").get();
-                if (content1.equals("")){
-                    Toast.makeText(getApplicationContext(), "La ville spécifiée n'est pas valide", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    Intent WeatherActivityInt = new Intent(MainActivity.this, WeatherActivity.class);
-                    startActivity(WeatherActivityInt);
-                }
-        }catch (Exception e) {
-                e.printStackTrace();
-            }
+            Intent WeatherActivityInt = new Intent(MainActivity.this, WeatherActivity.class);
+            startActivity(WeatherActivityInt);
         }
         else if (id == R.id.nav_actu) {
             Intent ActuActivity = new Intent(MainActivity.this, ActualiteActivity.class);
