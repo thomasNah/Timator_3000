@@ -27,6 +27,7 @@ public class Preferences extends AppCompatActivity {
     private TextView ideeView;
     private EditText ville;
     private ImageButton validerVille;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppTheme);
@@ -46,7 +47,6 @@ public class Preferences extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "La ville spécifiée n'est pas valide", Toast.LENGTH_SHORT).show();
                     }
                     else{
-
                         final InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
                         Toast.makeText(getApplicationContext(),"La ville est définie sur "+laVille,Toast.LENGTH_SHORT).show();
@@ -60,7 +60,6 @@ public class Preferences extends AppCompatActivity {
             }
         });
         modeSombre = findViewById(R.id.modeSombre);
-        ideeView = findViewById(R.id.textView4);
         if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
             modeSombre.setChecked(true);
         }
@@ -84,21 +83,22 @@ public class Preferences extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //DATABASE IDEE
-        DatabaseManager databaseManager = new DatabaseManager(this);
+        /*DatabaseManager databaseManager = new DatabaseManager(this);
 
         databaseManager = new DatabaseManager(this);
 
-        /*List<IdeeData> idees = databaseManager.lireTable();
+        List<IdeeData> idees = databaseManager.lireTable();
         String str = "";
         for (int i = 0;i <idees.size();i++){
             str = str + idees.get(i).toString()+"\n";
-        }*/
+        }
         List<IdeeData> idees = databaseManager.lireTableChallenge();
         String str = "";
         for (int i = 0;i <idees.size();i++){
             str = str + idees.get(i).toString()+"\n";
         }
         ideeView.setText(str);
+        */
     }
 
     @Override

@@ -11,6 +11,7 @@
         <item name="textcolor">#000000</item>
         <item name="tintcolor">#ffffff</item>
         <item name="buttoncolor">#D9DBDC</item>
+        <item name="hintcolor">#80E91E63</item>
     </style>
 
     <style name="AppTheme.NoActionBar" >
