@@ -6,9 +6,11 @@
 
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="false"
         android:icon="@mipmap/icone_final"
         android:label="Timator 3000"
         android:roundIcon="@mipmap/icone_final_round"
+        android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
