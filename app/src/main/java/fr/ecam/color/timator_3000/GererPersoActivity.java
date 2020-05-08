@@ -21,14 +21,12 @@ public class GererPersoActivity extends AppCompatActivity implements AdapterView
     private Spinner spinnerIdeeDejaExistantes;
     private Button editerIdee;
     private Button creerNouvelleIdeePerso;
-    private Button supprIdeePerso;
     private EditText inputNomIdee;
     private Spinner spinnerChoixTempsActivity;
     private EditText inputDescription;
     private EditText inputNoteIdee;
     private DatabaseManager databaseManager;
     private boolean userPutSomethingInNomIdee;
-    private boolean userPutSomethingInDescription;
 
     private boolean creerNouvelleIdeePersoState;
     private boolean supprIdeePersoState;
@@ -41,7 +39,6 @@ public class GererPersoActivity extends AppCompatActivity implements AdapterView
         spinnerIdeeDejaExistantes = findViewById(R.id.spinnerIdeeDejaExistantes);
         editerIdee = findViewById(R.id.editerIdee);
         creerNouvelleIdeePerso = findViewById(R.id.creerNouvelleIdeePerso);
-        supprIdeePerso = findViewById(R.id.supprIdeePerso);
         inputNomIdee = findViewById(R.id.inputNomIdee);
         spinnerChoixTempsActivity = findViewById(R.id.spinnerChoixTempsActivity);
         inputDescription = findViewById(R.id.inputDescription);
@@ -79,7 +76,6 @@ public class GererPersoActivity extends AppCompatActivity implements AdapterView
                 , android.R.layout.simple_spinner_item, spinnerItems));
 
         creerNouvelleIdeePerso.setEnabled(creerNouvelleIdeePersoState);
-        supprIdeePerso.setEnabled(supprIdeePersoState);
 
         inputNomIdee.addTextChangedListener(new TextWatcher() {
             @Override
@@ -100,7 +96,6 @@ public class GererPersoActivity extends AppCompatActivity implements AdapterView
                 if(userPutSomethingInNomIdee){
                     creerNouvelleIdeePerso.setEnabled(true);
                     creerNouvelleIdeePersoState = true;
-                    supprIdeePerso.setEnabled(true);
                     supprIdeePersoState = true;
                 }
 
