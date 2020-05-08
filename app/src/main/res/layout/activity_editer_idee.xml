@@ -6,35 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".EditerIdeeActivity">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="84dp"
-        android:layout_height="56dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textIsSelectable="true"
-        app:layout_constraintVertical_bias="0.121" />
-
     <Spinner
         android:id="@+id/spinnerTempsDispo"
-        android:layout_width="350dp"
-        android:layout_height="24dp"
+        android:layout_width="223dp"
+        android:layout_height="36dp"
         android:foregroundGravity="center_vertical|center_horizontal"
         android:gravity="center_horizontal|center_vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.391" />
+        app:layout_constraintVertical_bias="0.395" />
 
     <Spinner
         android:id="@+id/spinnerNote"
-        android:layout_width="227dp"
-        android:layout_height="48dp"
+        android:layout_width="224dp"
+        android:layout_height="38dp"
         android:foregroundGravity="center_vertical|center_horizontal"
         android:gravity="center_horizontal|center_vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -77,4 +64,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.834" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.171" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.085" />
 </androidx.constraintlayout.widget.ConstraintLayout>

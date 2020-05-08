@@ -16,13 +16,14 @@ import java.util.List;
 
 public class EditerIdeeActivity extends AppCompatActivity {
         private TextView idee;
+        private IdeeData ideeEnCours;
         private DatabaseManager databaseManager;
         private Spinner spinnerTempsDispo;
         private Spinner spinnerNote;
         private Button boutonEdit;
         private EditText editIdee;
-        private TextView ideeEditee;
         private Button deleteBouton;
+        private TextView stringIdee;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +35,9 @@ public class EditerIdeeActivity extends AppCompatActivity {
         spinnerNote = findViewById(R.id.spinnerNote);
         boutonEdit = findViewById(R.id.button);
         editIdee = findViewById(R.id.editText);
-        ideeEditee = findViewById(R.id.textView3);
         editIdee.setHint("Description Idee");
         deleteBouton = findViewById(R.id.button2);
+        stringIdee = findViewById(R.id.textView6);
 
         Intent intent = getIntent();
          String nomIdee = "";
@@ -49,7 +50,7 @@ public class EditerIdeeActivity extends AppCompatActivity {
         final String nomIdeeFinal = nomIdee; // je sais pas trop pourquoi mais sinon il veut pas
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.arrayTempsDispo, android.R.layout.simple_spinner_item);
+                R.array.arrayTempsDispoEditer, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerTempsDispo.setAdapter(adapter);
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
@@ -58,23 +59,43 @@ public class EditerIdeeActivity extends AppCompatActivity {
         spinnerNote.setAdapter(adapter2);
         final List<IdeeData> idees = databaseManager.lireTable();
         final IdeeData[] ideeData = new IdeeData[1];
+        for  (int i=0;i<idees.size();i++){
+            if (idees.get(i).getNom().equals(nomIdeeFinal)){
+                ideeEnCours = idees.get(i);
+            }
+        }
+        stringIdee.setText(ideeEnCours.toString1());
         boutonEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for  (int i=0;i<idees.size();i++){
-                    if (idees.get(i).getNom().equals(nomIdeeFinal)){
                         //c'est ici qu'on update l'idee dans la base de données
-                        int idIdee = idees.get(i).getIdIdee();
-                        String nouvelleDesc = String.valueOf(editIdee.getText());
-                        String nouvelleDuree = String.valueOf(spinnerTempsDispo.getSelectedItem());
-                        int nouvelleNote = Integer.valueOf(String.valueOf(spinnerNote.getSelectedItem()));
+                        int idIdee = ideeEnCours.getIdIdee();
+                        String nouvelleDesc = "";
+                        if (String.valueOf(editIdee.getText()).equals("")){
+                            nouvelleDesc = ideeEnCours.getContenu();
+                        }
+                        else{
+                            nouvelleDesc = String.valueOf(editIdee.getText());
+                        }
+                        String nouvelleDuree = "";
+                        if (String.valueOf(spinnerTempsDispo.getSelectedItem()).equals("selectionner")){
+                            nouvelleDuree = ideeEnCours.getDuree();
+                        }
+                        else{
+                            nouvelleDuree = String.valueOf(spinnerTempsDispo.getSelectedItem());
+                        }
+                        int nouvelleNote = 0;
+                        if (String.valueOf(spinnerNote.getSelectedItem()).equals("selectionner")){
+                            nouvelleNote = ideeEnCours.getNote();
+                        }
+                        else{
+                        nouvelleNote = Integer.valueOf(String.valueOf(spinnerNote.getSelectedItem()));
+                        }
                         String str = "update IDEE set contenu = '"+nouvelleDesc+"' , duree = '"+nouvelleDuree+"', note =" +nouvelleNote+" where idIdee = "+idIdee;
                         databaseManager.getWritableDatabase().execSQL(str);
                         List<IdeeData> idees1  = databaseManager.lireTable();
-                        ideeEditee.setText(idees1.get(i).toString());
-
-                    }
-                }
+                        Intent RetourGererPerso = new Intent(EditerIdeeActivity.this,GererPersoActivity.class);
+                        startActivity(RetourGererPerso);
             }
         });
         deleteBouton.setOnClickListener(new View.OnClickListener() {
@@ -92,7 +113,6 @@ public class EditerIdeeActivity extends AppCompatActivity {
             }
 
         });
-        //ideeEditee.setText(ideeData[0].toString());
         idee.setText(nomIdee);
 
     }

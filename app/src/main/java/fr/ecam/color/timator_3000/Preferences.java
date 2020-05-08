@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -19,13 +20,16 @@ public class Preferences extends AppCompatActivity {
     private Switch modeSombre;
     private DatabaseManager databaseManager;
     private TextView ideeView;
-
+    private EditText villeMeteo;
+    private String ville = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preferences);
         modeSombre = findViewById(R.id.modeSombre);
+        villeMeteo = findViewById(R.id.editText);
+        villeMeteo.setHint("selectionner ville (météo)");
         ideeView = findViewById(R.id.textView4);
         if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
             modeSombre.setChecked(true);
