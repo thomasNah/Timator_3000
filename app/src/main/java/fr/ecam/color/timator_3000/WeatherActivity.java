@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.icu.lang.UCharacter;
@@ -58,7 +59,6 @@ public class WeatherActivity extends AppCompatActivity {
     private ImageView image9;
     private TextView meteoVille;
     private String ville;
-
 
     class Weather extends AsyncTask<String, Void, String>{ // 1er string c'est la forme que prend l'url et le 2eme string c'est la forme que prend le retour
 
@@ -140,6 +140,7 @@ public class WeatherActivity extends AppCompatActivity {
                 JSONObject jsonObject = new JSONObject(content1); // l'url renvoi un objet JSON qui contient une array JSON
                 String data = jsonObject.getString("data");
                 JSONArray array = new JSONArray((data));
+                List<String> codes = new ArrayList<>();
                 for (int i = 0; i < array.length(); i++) {
                     String time = array.getJSONObject(i).getString("timestamp_utc");
                     String[] times = time.split("T");
@@ -149,12 +150,18 @@ public class WeatherActivity extends AppCompatActivity {
                     if (iconCode.substring(3).equals("n")) { //il y'a aussi des icones pour la nuit mais on en a pas besoin, elles se ressemblent beaucoup
                         iconCode = iconCode.substring(0, 3) + "d";
                     }
+                    codes.add(iconCode);
+                    System.out.println(iconCode);
                     String textFin = times[1].substring(0, times[1].length() - 3) + " " + temps.split(":")[3].substring(1, temps.split(":")[3].length() - 2) + "\n\n " + temp + "° ";
                     int imageResource = getResources().getIdentifier("drawable/" + iconCode, null, getPackageName());
                     Drawable res = getResources().getDrawable(imageResource);
+                    if (res.equals(null)){
+                        res = getResources().getDrawable(getResources().getIdentifier("drawable/erreur",null,getPackageName()));
+                    }
                     images[i].setImageDrawable(res);
                     textes[i].setText(textFin);
                 }
+                System.out.println(codes.toString());
             }
         } catch (Exception e) {
             e.printStackTrace();

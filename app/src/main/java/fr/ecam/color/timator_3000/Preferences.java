@@ -27,7 +27,6 @@ public class Preferences extends AppCompatActivity {
     private TextView ideeView;
     private EditText ville;
     private ImageButton validerVille;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppTheme);
@@ -48,6 +47,8 @@ public class Preferences extends AppCompatActivity {
             }
         });
         modeSombre = findViewById(R.id.modeSombre);
+        villeMeteo = findViewById(R.id.editText);
+        villeMeteo.setHint("selectionner ville (météo)");
         ideeView = findViewById(R.id.textView4);
         if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
             modeSombre.setChecked(true);

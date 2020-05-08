@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private DatabaseManager databaseManager;
     private DatabaseManager databaseManagerChallenge;
-
     String inputTempsDispo;
     private boolean darkTheme;
     private boolean flag = false;
@@ -53,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
+    private String ville;
 
 
 
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             else AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        ville = "Lyon";
         //NavigationView
         toolbar = findViewById(R.id.activity_main_toolbar);
         setSupportActionBar(toolbar);
@@ -169,16 +169,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    @Override
+    //@Override
     public boolean onNavigationItemSelected(MenuItem item) {
 
         // 4 - Handle Navigation Item Click
         int id = item.getItemId();
 
         if (id == R.id.nav_meteo) {
-            Intent WeatherActivityInt = new Intent(MainActivity.this, WeatherActivity.class);
-            startActivity(WeatherActivityInt);
-        } else if (id == R.id.nav_actu) {
+            WeatherActivity.Weather weather  = new WeatherActivity.Weather();
+            String content1;
+            try {
+
+                content1 = weather.execute("https://api.weatherbit.io/v2.0/forecast/hourly?city="+ville+"&lang=fr&key=d31be973eb0149218e716d52a361d0da&hours=10").get();
+                if (content1.equals("")){
+                    Toast.makeText(getApplicationContext(), "La ville spécifiée n'est pas valide", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Intent WeatherActivityInt = new Intent(MainActivity.this, WeatherActivity.class);
+                    startActivity(WeatherActivityInt);
+                }
+        }catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        else if (id == R.id.nav_actu) {
             Intent ActuActivity = new Intent(MainActivity.this, ActualiteActivity.class);
             startActivity(ActuActivity);
         }
@@ -199,7 +213,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     protected void onResume() {
         super.onResume();
-
         SharedPreferences preferences = getSharedPreferences("fr.ecam.color.timator_3000",MODE_PRIVATE);
         boolean darkThemeResumed = preferences.getBoolean("Dark_Theme",false);
         if (darkTheme!=darkThemeResumed) {

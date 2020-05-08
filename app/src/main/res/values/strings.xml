@@ -21,6 +21,19 @@
         <item>1h30</item>
     </string-array>
 
+    <string-array name="arrayTempsDispoEditer">
+        <item>selectionner</item>
+        <item>1 minute</item>
+        <item>2 minutes</item>
+        <item>5 minutes</item>
+        <item>10 minutes</item>
+        <item>20 minutes</item>
+        <item>30 minutes</item>
+        <item>45 minutes</item>
+        <item>1h</item>
+        <item>1h30</item>
+    </string-array>
+
     <integer-array name = "arrayTempsDispoConvertToMinutesInInteger">
         <item>1</item>
         <item>2</item>
@@ -34,6 +47,7 @@
     </integer-array>
 
     <string-array name="arrayNote">
+        <item>selectionner</item>
         <item>0</item>
         <item>1</item>
         <item>2</item>
