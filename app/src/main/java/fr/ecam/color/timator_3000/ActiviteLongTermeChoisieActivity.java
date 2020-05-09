@@ -1,11 +1,13 @@
 package fr.ecam.color.timator_3000;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -56,9 +58,9 @@ public class ActiviteLongTermeChoisieActivity extends AppCompatActivity {
             echeances.append(System.getProperty ("line.separator"));
         }
 
-
-
-
+        //ADD BACK BUTTON POUR RETOURNER SUR CHOIX IDEE LONG TERME
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
 
@@ -80,13 +82,11 @@ public class ActiviteLongTermeChoisieActivity extends AppCompatActivity {
         boolean flag = false;
 
         while(flag == false && iFoundSavedDataList<savedDataList.size()) {
-            System.out.println("ZOB");
             System.out.println(iFoundSavedDataList);
             System.out.println(savedDataList.get(iFoundSavedDataList));
             System.out.println(activiteChoisie);
 
             if (savedDataList.get(iFoundSavedDataList).equals(activiteChoisie)) {
-                System.out.println("INNN");
                 etapeActuelle = Integer.parseInt(savedDataList.get(iFoundSavedDataList+1));
                 System.out.println(activiteChoisie);
                 System.out.println(etapeActuelle);
@@ -180,7 +180,6 @@ public class ActiviteLongTermeChoisieActivity extends AppCompatActivity {
                 while(flag == false && jFoundSavedDataList<savedDataList.size()) {
 
                     if (savedDataList.get(jFoundSavedDataList).equals(activiteChoisie)) {
-                        //System.out.println("INNN");
                         etapeActuelle = 666;
                         int index = savedDataList.indexOf(activiteChoisie);
                         savedDataList.set(index+1,Integer.toString(etapeActuelle));
@@ -229,5 +228,15 @@ public class ActiviteLongTermeChoisieActivity extends AppCompatActivity {
 
     public ArrayList<String> getSavedDataList() {
         return savedDataList;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            Intent mainActivity = new Intent(ActiviteLongTermeChoisieActivity.this, ChoixIdeeLongTermeActivity.class);
+            startActivity(mainActivity);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
