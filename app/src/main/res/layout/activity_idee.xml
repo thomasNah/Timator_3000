@@ -29,18 +29,20 @@
                 android:id="@+id/affichageTempsIdee"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:autoLink="all"
                 android:foregroundGravity="center_vertical|center|center_horizontal"
                 android:gravity="center_horizontal"
-                android:textIsSelectable="true"
-                android:padding="20dp" />
+                android:padding="20dp"
+                android:textIsSelectable="true" />
 
             <TextView
                 android:id="@+id/ideeText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:autoLink="all"
                 android:gravity="center_horizontal|center_vertical"
-                android:textIsSelectable="true"
-                android:paddingBottom="20dp" />
+                android:paddingBottom="20dp"
+                android:textIsSelectable="true" />
 
         </LinearLayout>
 

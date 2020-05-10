@@ -305,21 +305,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         System.out.println("Bazinga");
         String duree = this.lireIdSpecifique(idIdee).getDuree();
         System.out.println(duree);
-        /*
 
-        int indice = 0;
-
-            for (int i=0 ; i< arrayTempsDispo.length ; i++) {
-                if (duree.equals(arrayTempsDispo[i])) {
-                    indice = i;
-                    //System.out.println("indice : " + indice);
-                }
-            }
-
-
-        int dureeConvert = arrayTempsDispoConvertToMinutesInInteger[indice];
-
-         */
         int dureeConvert = getIntegers(duree);
         System.out.println("dureeConvert : " + dureeConvert);
         return dureeConvert;

@@ -78,7 +78,7 @@ public class IdeeData implements Parcelable {
             return nom;
         }
         else{
-           return nom + " : " + "\n"+contenu;
+           return nom + "\n" +contenu;
         }
     }
 
