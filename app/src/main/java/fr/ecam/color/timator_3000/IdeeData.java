@@ -71,7 +71,15 @@ public class IdeeData implements Parcelable {
     public String toString() {
         return idIdee + " : "+nom+" , " + duree+" , "+contenu+" , "+note;
     }
-    public String toString1() { return contenu + " , " + duree + " , " + note +"/5";}
+    public String toString1() {
+        String desc;
+        if (contenu.equals("")){
+            desc = "pas de description";
+        }
+        else{
+            desc = contenu;
+        }
+        return desc + " , " + duree + " , " + note +"/5";}
 
     public String afficher() {
         if (contenu.equals("")==true ) {

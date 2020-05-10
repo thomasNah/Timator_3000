@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,6 +60,8 @@ public class GererPersoActivity extends AppCompatActivity implements AdapterView
         spinnerChoixNote.setAdapter(adapter1);
 
 
+
+
     }
 
 
@@ -68,11 +71,13 @@ public class GererPersoActivity extends AppCompatActivity implements AdapterView
 
         //SPINNER spinnerIdeeDejaExistantes
         final List<IdeeData> idees = databaseManager.lireTable();
-        ArrayList<String> spinnerItems= new ArrayList<String>();
+        ArrayList<String> spinnerItems= new ArrayList<>();
         for (int i = 0; i<idees.size(); i++){
             spinnerItems.add(idees.get(i).getNom());
         }
-
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this,   android.R.layout.simple_spinner_item, spinnerItems);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerIdeeDejaExistantes.setAdapter(adapter2);
         creerNouvelleIdeePerso.setEnabled(creerNouvelleIdeePersoState);
         spinnerChoixNote.setSelection(2);
 
@@ -163,3 +168,4 @@ public class GererPersoActivity extends AppCompatActivity implements AdapterView
 
     }
 }
+

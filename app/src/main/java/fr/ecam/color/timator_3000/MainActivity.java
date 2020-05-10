@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         databaseManager.insertIdee(4, "", "1 minute", "Répondre à quelqu'un par SMS", 3);
         databaseManager.insertIdee(5, "(ou à votre Papa d'ailleurs)", "1 minute", "Dire à votre maman que vous l'aimez", 3);
         databaseManager.insertIdee(6, "Covid-19 oblige", "1 minute", "Lavez vous les mains", 3);
-        databaseManager.insertIdee(7, "Ca nous aiderait bien vis-à-vis des autres matières dans la coloration ...", "1 minute", "Mettre un 20 à ceux qui ont créer cette application", 3);
+        databaseManager.insertIdee(7, "Ca nous aiderait bien vis-à-vis des autres matières dans la coloration ...", "1 minute", "Mettre un 20 à ceux qui ont créé cette application", 3);
         databaseManager.insertIdee(8, "C'est toujours mieux qu'il soit toujours prêt à être jouer", "1 minute", "Ré-accorder votre instrument de musique", 3);
         databaseManager.insertIdee(9, "", "1 minute", "Réfléchisser à votre prochain repas", 3);
         databaseManager.insertIdee(10, "", "1 minute", "Vider vos poches de pantalon des vieux tickets de caisse", 3);
@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //<item>10 minutes</item>
         databaseManager.insertIdee(31, "", "10 minutes", "Faire la vaisselle", 3);
-        databaseManager.insertIdee(32, "Si vous avez aucune idée - http://www.arkazia.fr/steven-universe.php", "10 minutes", "Regader un épisode de série de 10 minutes", 3);
+        databaseManager.insertIdee(32, "Si vous avez aucune idée - http://www.arkazia.fr/steven-universe.php", "10 minutes", "Regarder un épisode de série de 10 minutes", 3);
         databaseManager.insertIdee(33, "https://www.youtube.com/results?search_query=m%C3%A9ditation+10+minutes", "10 minutes", "Méditer", 3);
         databaseManager.insertIdee(34, "", "10 minutes", "Regarder votre prochaine destination pour vos vacances", 3);
         databaseManager.insertIdee(35, "", "10 minutes", "Trier vos papiers administratif", 3);
@@ -157,14 +157,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //<item>20 minutes</item>
         databaseManager.insertIdee(41, "", "20 minutes", "Jouer de votre instrument de musique", 3);
-        databaseManager.insertIdee(42, "Si vous avez aucune idée - http://simpson-en-streaming.com/", "20 minutes", "Regader un épisode de série de 20 minutes", 3);
+        databaseManager.insertIdee(42, "Si vous avez aucune idée - http://simpson-en-streaming.com/", "20 minutes", "Regarder un épisode de série de 20 minutes", 3);
         databaseManager.insertIdee(43, "", "20 minutes", "Faire les courses alimentaires", 3);
         databaseManager.insertIdee(44, "", "20 minutes", "Commencer un challenge long-terme", 3);
         databaseManager.insertIdee(45, "Et pourquoi pas donner les anciens ?", "20 minutes", "Trier vos vêtements", 3);
         databaseManager.insertIdee(46, "Si vous n'avez pas de programme de sport : https://gravityladies.net/portfolio/workout-fitness-routine-15-20minutes-maison/", "20 minutes", "Faire un entrainement de sport", 3);
         databaseManager.insertIdee(47, "", "20 minutes", "Faire un tour dehors, sans prendre son téléphone", 3);
         databaseManager.insertIdee(48, "", "20 minutes", "Faire de la pâte à crêpe", 3);
-        databaseManager.insertIdee(49, "https://www.youtube.com/playlist?list=PLx58Sm1jzcB5KTTLovalMvt8T1-Ji_bS8", "20 minutes", "Regader 'Crossed'", 3);
+        databaseManager.insertIdee(49, "https://www.youtube.com/playlist?list=PLx58Sm1jzcB5KTTLovalMvt8T1-Ji_bS8", "20 minutes", "Regarder 'Crossed'", 3);
         databaseManager.insertIdee(50, "Richard Sandeau : https://www.youtube.com/channel/UCeyasiFBP5VUhRaMoapQHVA", "20 minutes", "Regarder les vidéos d'un vidéaste peu connu ", 3);
 
 
